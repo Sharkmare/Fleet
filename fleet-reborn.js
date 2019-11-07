@@ -1,4 +1,4 @@
-const version = "Reborn 1.0.5"
+const version = "Reborn 1.0.5.1"
 
 try
 {
@@ -2273,48 +2273,57 @@ Commands.push(
 	}
 })
 
-Commands.push(
-{
-	name: 'tag',
-	aliases: ["t"],
-	help: 'Tagging system',
-	usage: '-t tagname; -t create/delete/owner tagname',
-	noDM: true,
-	hidden: true,
-	level: 3,
-	fn: function(msg, suffix, bot)
-	{tagdir='C:/resources/tags.json'
-		tags = require(tagdir)
-		if(!suffix) {tag= tags.filter(e=> e.name=="help")[0]
-		return msg.channel.sendMessage(`${tag.owner} : ${tag.value}`)}
-			suffix=suffix.replace(suffix.split(" ")[0]+" ","")
-			name = suffix.split(" ")[0]
-			value = suffix.replace(suffix.split(" ")[0]+" ","")
-			owner = msg.author.id
-	 		console.log(name,value,owner)
-	 
-		switch (suffix.split(" ")[0]){
+Commands.push({
+    name: 'tag',
+    aliases: ["t"],
+    help: 'Tagging system',
+    usage: '-t tagname; -t create/delete/owner tagname',
+    noDM: true,
+    hidden: true,
+    level: 3,
+    fn: function(msg, suffix, bot) {
+        tagdir = 'C:/resources/tags.json'
+	    mode=suffix.split(" ")[0]
+        tags = require(tagdir)
+        if (!suffix) {
+            tag = tags.filter(e => e.name == "help")[0]
+            return msg.channel.sendMessage(`${tag.owner} : ${tag.value}`)
+        }
+        suffix = suffix.replace(suffix.split(" ")[0] + " ", "")
+        name = suffix.split(" ")[0]
+        value = suffix.replace(suffix.split(" ")[0] + " ", "")
+        owner = msg.author.id
+        console.log(name, value, owner)
 
-			case 'create':
-			if (tags.filter(e=> e.name==name)>0)
-			{return msg.channel.sendMessage("Tag already exists")}
-				else {tags.push({name:name,value:value,owner:owner})
-				      console.log(name,value,owner, "Saving")
-					return fs.writeFileSync(tagdir,JSON.stringify(tags))}
-			break;
-			case 'delete':
-			
-			
-			break;
-			default:
-				if (tags.filter(e=> e.name==name)[0])
-			{return msg.channel.sendMessage(tags.filter(e=> e.name==name)[0].value)}
-				else {return msg.channel.sendMessage("Tag does not exist")}
-				
-			break;
-			}
-		
-	}
+        switch (mode) {
+
+            case 'create':
+                if (tags.filter(e => e.name == name) > 0) {
+                    return msg.channel.sendMessage("Tag already exists")
+                } else {
+                    tags.push({
+                        name: name,
+                        value: value,
+                        owner: owner
+                    })
+                    console.log(name, value, owner, "Saving")
+                    return fs.writeFileSync(tagdir, JSON.stringify(tags))
+                }
+                break;
+            case 'delete':
+
+                break;
+            default:
+                if (tags.filter(e => e.name == name)[0]) {
+                    return msg.channel.sendMessage(tags.filter(e => e.name == name)[0].value)
+                } else {
+                    return msg.channel.sendMessage("Tag does not exist")
+                }
+
+                break;
+        }
+
+    }
 })
 
 Commands.push(
