@@ -2266,6 +2266,7 @@ Commands.push(
 		return msg.guild.ban(suffix)
 	}
 })
+/*
 Commands.push(
 {
 	name: 'tag',
@@ -2281,6 +2282,7 @@ Commands.push(
 		msg.channel.sendMessage(`${tags.owner}:${tags.name}`)
 	}
 })
+*/
 Commands.push(
 {
 	name: 'kill',
