@@ -2284,11 +2284,11 @@ Commands.push(
 		if(!suffix) {tag= tags.filter(e=> e.name=="help")[0]
 		return msg.channel.sendMessage(`${tag.owner} : ${tag.value}`)}
 		switch (suffix.split(" ")[0]){
-			case 'create':
 			suffix=suffix.replace(suffix.split(" ")[0]+" ","")
 			name = suffix.split(" ")[0]
 			value = suffix.replace(suffix.split(" ")[0]+" ","")
 			owner = msg.author.id
+			case 'create':
 			if (tags.filter(e=> e.name==name)[0] && tags.filter(e=> e.name==name)[0].owner != msg.author.id || msg.author.id != botowner)
 			{return msg.channel.sendMessage("Tag already exists and is not yours to modify.")}
 				else {return tags.push({name,value,owner})}
