@@ -2277,10 +2277,10 @@ Commands.push({
     name: 'tag',
     aliases: ["t"],
     help: 'Tagging system',
-    usage: '-t tagname; -t create/delete/owner tagname',
+    usage: '-t tagname; -t create tagname',
     noDM: true,
-    hidden: true,
-    level: 3,
+    hidden: false,
+    level: 0,
     fn: function(msg, suffix, bot) {
         tagdir = 'C:/resources/tags.json'
 	    mode=suffix.split(" ")[0]
