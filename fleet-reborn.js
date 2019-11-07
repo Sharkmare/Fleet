@@ -2289,15 +2289,18 @@ Commands.push(
 			name = suffix.split(" ")[0]
 			value = suffix.replace(suffix.split(" ")[0]+" ","")
 			owner = msg.author.id
-			if (tags.filter(e=> e.name==name)[0])
-			{cconsole.log(BEEP)}
-			return console.log(name,value)
+			if (tags.filter(e=> e.name==name)[0] && tags.filter(e=> e.name==name)[0].owner != msg.author.id || msg.author.id != botowner)
+			{return msg.channel.sendMessage("Tag already exists and is not yours to modify.")}
+				else {return tags.push({name,value,owner})}
 			break;
 			case 'delete':
 			
 			
 			break;
 			default:
+				if (tags.filter(e=> e.name==name)[0])
+			{return msg.channel.sendMessage(tags.filter(e=> e.name==name)[0].value)}
+				
 			break;
 			}
 		
