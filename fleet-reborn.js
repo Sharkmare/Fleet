@@ -1970,4 +1970,16 @@ Commands.push({
 								   }
 })
 
+Commands.push({
+    name: 'kill',
+    aliases:["k"],
+    help: '',
+    usage: '',
+    noDM:false,
+    hidden:true,
+    level: 'master',
+    fn: function(msg, suffix, bot) {
+	    bot.disconnect()}
+})
+
 
