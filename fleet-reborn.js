@@ -1,4 +1,4 @@
-const version = "Reborn 1.0.4.1"
+const version = "Reborn 1.0.5"
 
 try
 {
