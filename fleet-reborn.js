@@ -1,4 +1,4 @@
-const version = "Reborn 1.0.3"
+const version = "Reborn 1.0.4"
 
 try
 {
@@ -2294,10 +2294,9 @@ Commands.push(
 		switch (suffix.split(" ")[0]){
 
 			case 'create':
-			if (tags.filter(e=> e.name==name)[0] && tags.filter(e=> e.name==name)[0].owner != msg.author.id || msg.author.id != botowner)
-			{return msg.channel.sendMessage("Tag already exists and is not yours to modify.")}
-				else {	tags=tags.filter(e=> e.name!=name)[0]
-					tags.push({name,value,owner})
+			if (tags.filter(e=> e.name==name)[0])
+			{return msg.channel.sendMessage("Tag already exists")}
+				else {tags.push({name,value,owner})
 				      console.log({name,value,owner})
 					return fs.writeFileSync(tagdir,JSON.stringify(tags))}
 			break;
