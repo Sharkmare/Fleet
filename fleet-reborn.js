@@ -1,11 +1,9 @@
 try {
-  Config = require('./config.json')
+    Config = require('./config.json')
 } catch (e) {
-  console.log('\Fleet encountered an error while trying to load the config file, please resolve this issue and restart Fleet\n\n' + e.message)
-  process.exit()
+    console.log('\Fleet encountered an error while trying to load the config file, please resolve this issue and restart Fleet\n\n' + e.message)
+    process.exit()
 }
-
-
 
 const botmain = require("discordie"),
     logchannel = "300130710671458304",
@@ -37,14 +35,16 @@ var strg = JSON.parse(strg),
 
 console.log(started)
 bot = new botmain({
-messageCacheLimit: 999999,
+    messageCacheLimit: 999999,
 });
 
-bot.connect({token: Config.bot.token})
+bot.connect({
+    token: Config.bot.token
+})
 
 bot.Dispatcher.on("GATEWAY_READY", e => {
     console.log("Connected as: " + bot.User.username); {
-	
+
         bot.User.setStatus("online", game)
         console.log(bot.User)
     }
@@ -121,8 +121,11 @@ bot.Dispatcher.on("MESSAGE_CREATE", e => {
         suffix = msg.content.split(" ")
         trigger = suffix[0].replace("-", "")
         suffix = suffix.join(" ")
-        if(suffix.split(trigger)[1].split("")[0]==" ") {suffix=suffix.replace("-" + trigger + " ", "")}
-        else {suffix=suffix.replace("-" + trigger , "")}
+        if (suffix.split(trigger)[1].split("")[0] == " ") {
+            suffix = suffix.replace("-" + trigger + " ", "")
+        } else {
+            suffix = suffix.replace("-" + trigger, "")
+        }
         execute = Commands.filter(e => e.name == trigger)
         if (execute.length < 1) {
             CommandsWithAliases = Commands.filter(e => e.aliases) //Ignore commands without aliases
@@ -258,7 +261,6 @@ bot.Dispatcher.on("MESSAGE_DELETE", (e) => {
     } else {
         var img = e.message.attachments[0].proxy_url
     }
-
 
     if (qualitycontent[0] == "-") {
         return
@@ -426,7 +428,6 @@ bot.Dispatcher.on("GUILD_BAN_ADD", (e) => {
             console.log("generated");
         })
     };
-    
 
     console.log("Ban added from " + srv + " " + name + "#" + discriminator + " Unique ID:" + discordid);
 });
@@ -1394,7 +1395,7 @@ Commands.push({
     name: 'dice',
     help: "I'll roll some dice!",
     aliases: ['roll'],
-    noDM:true,
+    noDM: true,
     timeout: 5,
     level: 0,
     fn: function(msg, suffix) {
@@ -1691,59 +1692,68 @@ Commands.push({
     level: 0,
     fn: function(msg, suffix) {
         console.log(suffix)
-  var msgArray = []
-  var msgArraytwo = []
-  var cmdone = []
-  if (!suffix) {
-    for (var index in Commands ) {
-      if (Commands[index].hidden || Commands[index].level === 'master') {
-        continue
-      } else {
-        cmdone.push(Commands[index].name + ' = "' + Commands[index].help + '"')
-      }
-    }
-    var cmdtwo = cmdone.splice(0, cmdone.length / 2)
-    msgArray.push('**Available Commands:** \n')
-    msgArray.push('```ini')
-    msgArray.push(cmdone.sort().join('\n') + '\n')
-    msgArray.push('```')
-    msgArraytwo.push('```ini')
-    msgArraytwo.push(cmdtwo.sort().join('\n') + '\n')
-    msgArraytwo.push('```')
-    msgArraytwo.push('')
-    msgArraytwo.push('')
-    msgArraytwo.push('')
-    msg.author.openDM().then((y) => {
-      if (!msg.isPrivate) {
-        msg.channel.sendMessage('Help is underway ' + msg.author.mention + '!')
-      }
-      y.sendMessage(msgArray.join('\n'))
-      y.sendMessage(msgArraytwo.join('\n'))
-    }).catch((e) => {
-      Logger.error(e)
-      msg.channel.sendMessage('Well, this is awkward, something went wrong while trying to PM you. Do you have them enabled on this server?')
-    })
-  } else if (suffix) {
-        command = Commands.filter(e => e.name == suffix)
-        if (command.length < 1) {
-            CommandsWithAliases = Commands.filter(e => e.aliases) //Ignore commands without aliases
-            command = CommandsWithAliases.filter(e => e.aliases.includes(suffix))
+        var msgArray = []
+        var msgArraytwo = []
+        var cmdone = []
+        if (!suffix) {
+            for (var index in Commands) {
+                if (Commands[index].hidden || Commands[index].level === 'master') {
+                    continue
+                } else {
+                    cmdone.push(Commands[index].name + ' = "' + Commands[index].help + '"')
+                }
+            }
+            var cmdtwo = cmdone.splice(0, cmdone.length / 2)
+            msgArray.push('**Available Commands:** \n')
+            msgArray.push('```ini')
+            msgArray.push(cmdone.sort().join('\n') + '\n')
+            msgArray.push('```')
+            msgArraytwo.push('```ini')
+            msgArraytwo.push(cmdtwo.sort().join('\n') + '\n')
+            msgArraytwo.push('```')
+            msgArraytwo.push('')
+            msgArraytwo.push('')
+            msgArraytwo.push('')
+            msg.author.openDM().then((y) => {
+                if (!msg.isPrivate) {
+                    msg.channel.sendMessage('Help is underway ' + msg.author.mention + '!')
+                }
+                y.sendMessage(msgArray.join('\n'))
+                y.sendMessage(msgArraytwo.join('\n'))
+            }).catch((e) => {
+                Logger.error(e)
+                msg.channel.sendMessage('Well, this is awkward, something went wrong while trying to PM you. Do you have them enabled on this server?')
+            })
+        } else if (suffix) {
+            command = Commands.filter(e => e.name == suffix)
+            if (command.length < 1) {
+                CommandsWithAliases = Commands.filter(e => e.aliases) //Ignore commands without aliases
+                command = CommandsWithAliases.filter(e => e.aliases.includes(suffix))
+            }
+            if (command.length > 0) {
+                command = command[0]
+            } else {
+                msg.channel.sendMessage(suffix + " not found.")
+            }
+            text = `\`Name: ${command.name}\`\n`
+            text = text + `\`Description: ${command.help}\`\n`
+            text = text + `\`Level: ${command.level}\`\n`
+            if (command.usage) {
+                text = text + `\`Usage: ${command.usage}\`\n`
+            }
+
+            if (typeof command.noDM != 'undefined') {
+                text = text + `\`Unusable in DM: ${command.noDM}\`\n`
+            }
+
+            if (typeof command.hidden != 'undefined' && command.hidden) {
+                text = suffix + " not found."
+            }
+            msg.channel.sendMessage(text)
+
         }
-        if(command.length>0)
-            {command=command[0]}
-        else {msg.channel.sendMessage(suffix+" not found.")}
-        text =  `\`Name: ${command.name}\`\n`
-        text = text + `\`Description: ${command.help}\`\n`
-        text = text + `\`Level: ${command.level}\`\n`
-        if(command.usage) { text = text + `\`Usage: ${command.usage}\`\n`}
-
-        if(typeof command.noDM != 'undefined'){text = text + `\`Unusable in DM: ${command.noDM}\`\n`}
-
-      if(typeof command.hidden != 'undefined' && command.hidden) {text = suffix+" not found."}
-        msg.channel.sendMessage(text)
-
-  }
-}})
+    }
+})
 
 Commands.push({
     name: 'hcharacters',
@@ -1755,14 +1765,15 @@ Commands.push({
     fn: function(msg, suffix, bot) {
         characters = fs.readFileSync('C:/resources/variables/characters');
         characters = JSON.parse(characters)
-        text=[]
-        for (i=0;i<characters.length;i++)
-        {character=characters[i]
-            text.push("Name: "+character.name+"\n")
-            text.push("Trigger: "+character.identifier+"\n")
-            text.push("Avatar: `"+character.avatar+"`\n")
+        text = []
+        for (i = 0; i < characters.length; i++) {
+            character = characters[i]
+            text.push("Name: " + character.name + "\n")
+            text.push("Trigger: " + character.identifier + "\n")
+            text.push("Avatar: `" + character.avatar + "`\n")
             text.push("\n")
-        }msg.channel.sendMessage(text.join(""))
+        }
+        msg.channel.sendMessage(text.join(""))
     }
 })
 
@@ -1823,17 +1834,50 @@ Commands.push({
 
     }
 })
-Commands.push( {
-  name: 'systemreboot',
-  help: 'This will instantly terminate all running bot processes',
-  level: 'master',
-  hidden: true,
-  fn: function (msg, suffix, bot) {
-	  var child_process = require('child_process');
+Commands.push({
+    name: 'systemreboot',
+    help: 'This will instantly terminate all running bot processes',
+    level: 'master',
+    hidden: true,
+    fn: function(msg, suffix, bot) {
+        var child_process = require('child_process');
 
-child_process.exec('sysrb.bat', function(error, stdout, stderr) {
-    msg.reply(stdout);
-	bot.disconnect()
-});
-  }
+        child_process.exec('sysrb.bat', function(error, stdout, stderr) {
+            msg.reply(stdout);
+            bot.disconnect()
+        });
+    }
+})
+
+Commands.push({
+    name: 'setstatus',
+    help: 'Change my playing status on Discord to something else or pass nothing to clear the status!',
+    usage: '<online / idle / dnd / invisible / twitch url> [playing status]',
+    level: 'master',
+    fn: function(msg, suffix, bot) {
+        var first = suffix.split(' ')
+        if (!suffix) {
+            bot.User.setStatus('online', null)
+            msg.channel.sendMessage(`Cleared status.`)
+        } else {
+            if (/^https?/.test(first[0])) {
+                bot.User.setStatus(null, {
+                    type: 1,
+                    name: (first[1] ? suffix.substring(first[0].length + 1) : null),
+                    url: first[0]
+                })
+                msg.channel.sendMessage(`Set status to streaming with message ${suffix.substring(first[0].length + 1)}`)
+            } else if (['online', 'idle', 'dnd', 'invisible'].indexOf(first[0]) > -1) {
+                bot.User.setStatus(first[0], {
+                    name: (first[1] ? suffix.substring(first[0].length + 1) : null)
+                })
+                msg.channel.sendMessage(`Set status to ${first[0]} with message ${suffix.substring(first[0].length + 1)}`)
+            } else if (suffix.substring(first[0].length + 1).length < 1) {
+                msg.reply('Can only be `online`, `idle`, `dnd` or `invisible`!')
+            } else {
+                bot.User.setStatus('online', null)
+                msg.channel.sendMessage(`Cleared status.`)
+            }
+        }
+    }
 })
