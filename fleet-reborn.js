@@ -1,4 +1,4 @@
-const version = "Reborn 1.0.6"
+const version = "Reborn 1.0.8"
 
 try
 {
@@ -2298,7 +2298,7 @@ Commands.push({
         switch (mode) {
 
             case 'create':
-                if (tags.filter(e => e.name == name) > 0) {
+                if (tags.filter(e => e.name == name).length > 0) {
                     return msg.channel.sendMessage("Tag already exists")
                 } else {
                     tags.push({
