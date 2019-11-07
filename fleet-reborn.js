@@ -126,10 +126,10 @@ bot.Dispatcher.on("MESSAGE_CREATE", e => {
         } else {
             suffix = suffix.replace("-" + trigger, "")
         }
-        execute = Commands.filter(e => e.name == trigger)
+        execute = Commands.filter(e => e.name == trigger.toLowerCase())
         if (execute.length < 1) {
             CommandsWithAliases = Commands.filter(e => e.aliases) //Ignore commands without aliases
-            execute = CommandsWithAliases.filter(e => e.aliases.includes(trigger))
+            execute = CommandsWithAliases.filter(e => e.aliases.includes(trigger.toLowerCase()))
         }
         if (execute.length > 0) {
             if (execute[0].noDM && !msg.guild) {
