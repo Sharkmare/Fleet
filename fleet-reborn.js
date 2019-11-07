@@ -1,3 +1,5 @@
+const version = "Reborn 1.0.1"
+
 try
 {
 	Config = require('./config.json')
@@ -27,7 +29,7 @@ var fs = require("fs"),
 		url: "http://discordvore.info"
 	};
 strg = fs.readFileSync("C:/resources/variables/storage");
-const version = "Reborn 1.0.0"
+
 var strg = JSON.parse(strg),
 	potion = strg.potion.effects,
 	speed = strg.voreroulette.speeds,
