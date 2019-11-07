@@ -2307,6 +2307,7 @@ Commands.push({
                         owner: owner
                     })
                     console.log(name, value, owner, "Saving")
+			msg.addReaction('☑')
                     return fs.writeFileSync(tagdir, JSON.stringify(tags))
                 }
                 break;
