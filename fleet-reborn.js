@@ -130,11 +130,13 @@ bot.Dispatcher.on("MESSAGE_CREATE", e =>
 	{
 		msg = e.message
 	}
+	if(msg.author=="311682437728043009") {return}
 	//console.log(e.message.author.username + " | " + e.message.content + " | " + guild)
 	//Fleet Legacy Handling
 	levelone = fs.readFileSync("C:/resources/variables/levelone", "utf8").split("\n")
 	leveltwo = fs.readFileSync("C:/resources/variables/leveltwo", "utf8").split("\n")
 	levelthree = fs.readFileSync("C:/resources/variables/levelthree", "utf8").split("\n")
+	
 	if (msg.content.split("")[0] == "-")
 	{
 		console.log(e.message.author.username + " | " + e.message.content + " | " + guild)
