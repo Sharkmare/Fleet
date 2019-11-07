@@ -2277,9 +2277,7 @@ Commands.push(
 	level: 3,
 	fn: function(msg, suffix, bot)
 	{
-		tagstorage = 'C:/resources/tags.json'
-		fs.writeFileSync(tagstorage, "[{\"owner\":\"Fleet\",\"name\":\"help\",\"value\":\"-t create name value\"}]")
-		tags = fs.readFileSync(tagstorage)
+		tags = require('C:/resources/tags.json')
 		msg.channel.sendMessage(tags)
 	}
 })
