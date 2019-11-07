@@ -2281,9 +2281,21 @@ Commands.push(
 	fn: function(msg, suffix, bot)
 	{
 		tags = require('C:/resources/tags.json')
-		
 		if(!suffix) {tag= tags.filter(e=> e.name=="help")[0]
-		msg.channel.sendMessage(`${tag.owner}:${tag.name}`)}
+		return msg.channel.sendMessage(`${tag.owner} : ${tag.value}`)}
+		switch (suffix.split(" ")[0]){
+			case 'create':
+			suffix=suffix.replace(suffix.split(" ")[0]+" ","")
+			return console.log(suffix)
+			break;
+			case 'delete':
+			
+			
+			break;
+			default:
+			break;
+			}
+		
 	}
 })
 
