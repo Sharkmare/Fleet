@@ -2288,8 +2288,10 @@ Commands.push(
 			suffix=suffix.replace(suffix.split(" ")[0]+" ","")
 			name = suffix.split(" ")[0]
 			value = suffix.replace(suffix.split(" ")[0]+" ","")
-				
-			return console.log("Yes "+name,value)
+			owner = msg.author.id
+			if (tags.filter(e=> e.name==name)[0])
+			{cconsole.log(BEEP)}
+			return console.log(name,value)
 			break;
 			case 'delete':
 			
