@@ -1962,7 +1962,7 @@ Commands.push({
     hidden:true,
     level: 3,
     fn: function(msg, suffix, bot) {tagstorage='C:/resources/tags.json'
-    fs.writeFileSync(tagstorage,"[]")
+    fs.writeFileSync(tagstorage,"[{owner:\"Fleet\",name:\"help\",value:\"-t create name value\",}]")
 	tags= JSON.parse(fs.readFileSync(tagstorage))
     msg.channel.sendMessage(
 	    JSON.stringify(tags+" X")
