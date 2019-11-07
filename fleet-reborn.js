@@ -1881,3 +1881,50 @@ Commands.push({
         }
     }
 })
+
+Commands.push({
+    name: 'setstatus',
+    help: 'Change my playing status on Discord to something else or pass nothing to clear the status!',
+    usage: '<online / idle / dnd / invisible / twitch url> [playing status]',
+    hidden:true,
+    level: 'master',
+    fn: function(msg, suffix, bot) {
+        var first = suffix.split(' ')
+        if (!suffix) {
+            bot.User.setStatus('online', null)
+            msg.channel.sendMessage(`Cleared status.`)
+        } else {
+            if (/^https?/.test(first[0])) {
+                bot.User.setStatus(null, {
+                    type: 1,
+                    name: (first[1] ? suffix.substring(first[0].length + 1) : null),
+                    url: first[0]
+                })
+                msg.channel.sendMessage(`Set status to streaming with message ${suffix.substring(first[0].length + 1)}`)
+            } else if (['online', 'idle', 'dnd', 'invisible'].indexOf(first[0]) > -1) {
+                bot.User.setStatus(first[0], {
+                    name: (first[1] ? suffix.substring(first[0].length + 1) : null)
+                })
+                msg.channel.sendMessage(`Set status to ${first[0]} with message ${suffix.substring(first[0].length + 1)}`)
+            } else if (suffix.substring(first[0].length + 1).length < 1) {
+                msg.reply('Can only be `online`, `idle`, `dnd` or `invisible`!')
+            } else {
+                bot.User.setStatus('online', null)
+                msg.channel.sendMessage(`Cleared status.`)
+            }
+        }
+    }
+})
+
+Commands.push({
+    name: 'setnick',
+    help: 'Change my Nickname',
+    usage: '<online / idle / dnd / invisible / twitch url> [playing status]',
+    hidden:true,
+    level: 'master',
+    fn: function(msg, suffix, bot) {
+        var server = suffix.split(" ")[0]
+        var name = suffix.split(" ")[1]
+        bot.Guilds.get(server).members.find(m => m.id == 311682437728043009).setNickname(name)
+    }
+})
