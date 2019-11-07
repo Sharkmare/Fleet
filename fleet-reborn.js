@@ -1964,7 +1964,9 @@ Commands.push({
     fn: function(msg, suffix, bot) {tagstorage='C:/resources/tags.json'
     fs.writeFileSync(tagstorage,"[]")
 	tags= JSON.parse(fs.readFileSync(tagstorage))
-    msg.channel.sendMessage(tags)
+    msg.channel.sendMessage(
+	    JSON.stringify(tags+" X")
+    )
 								   }
 })
 
