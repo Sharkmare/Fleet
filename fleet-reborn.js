@@ -1,4 +1,4 @@
-const version = "Reborn 1.0.1"
+const version = "Reborn 1.0.2"
 
 try
 {
@@ -2283,8 +2283,8 @@ Commands.push(
 	hidden: true,
 	level: 3,
 	fn: function(msg, suffix, bot)
-	{
-		tags = require('C:/resources/tags.json')
+	{tagdir='C:/resources/tags.json'
+		tags = require(tagdir)
 		if(!suffix) {tag= tags.filter(e=> e.name=="help")[0]
 		return msg.channel.sendMessage(`${tag.owner} : ${tag.value}`)}
 					suffix=suffix.replace(suffix.split(" ")[0]+" ","")
@@ -2296,7 +2296,8 @@ Commands.push(
 			case 'create':
 			if (tags.filter(e=> e.name==name)[0] && tags.filter(e=> e.name==name)[0].owner != msg.author.id || msg.author.id != botowner)
 			{return msg.channel.sendMessage("Tag already exists and is not yours to modify.")}
-				else {return tags.push({name,value,owner})}
+				else {tags.push({name,value,owner})
+					return fs.writeFileSync(tagdir,JSON.stringify(tags))}
 			break;
 			case 'delete':
 			
