@@ -1961,10 +1961,11 @@ Commands.push({
     noDM:true,
     hidden:true,
     level: 3,
-    fn: function(msg, suffix, bot) {
-    fs.writeFileSync('C:/resources/tags.json',"")
-        
-    }
+    fn: function(msg, suffix, bot) {tagstorage='C:/resources/tags.json'
+    fs.writeFileSync(tagstorage,"[]")
+	tags= JSON.parse(fs.readFileSync(tagstorage))
+    msg.channel.sendMessage(tags)
+								   }
 })
 
 
