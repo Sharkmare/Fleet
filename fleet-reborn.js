@@ -2286,7 +2286,10 @@ Commands.push(
 		switch (suffix.split(" ")[0]){
 			case 'create':
 			suffix=suffix.replace(suffix.split(" ")[0]+" ","")
-			return console.log(suffix)
+			name = suffix.split(" ")[0]
+			value = suffix.replace(suffix.split(" ")[0]+" ","")
+				
+			return console.log(name,value)
 			break;
 			case 'delete':
 			
