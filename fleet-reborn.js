@@ -1928,3 +1928,15 @@ Commands.push({
         bot.Guilds.get(server).members.find(m => m.id == 311682437728043009).setNickname(name)
     }
 })
+
+Commands.push({
+    name: 'say',
+    help: 'say a thing',
+    usage: '<online / idle / dnd / invisible / twitch url> [playing status]',
+    hidden:true,
+    level: 'master',
+    fn: function(msg, suffix, bot) {
+        msg.channel.sendMessage(suffix.replace("nodel",""))
+        if (!suffix.includes("nodel")) {msg.delete()}
+    }
+})
