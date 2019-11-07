@@ -1,4 +1,4 @@
-const version = "Reborn 1.0.4"
+const version = "Reborn 1.0.4.1"
 
 try
 {
@@ -2287,17 +2287,19 @@ Commands.push(
 		tags = require(tagdir)
 		if(!suffix) {tag= tags.filter(e=> e.name=="help")[0]
 		return msg.channel.sendMessage(`${tag.owner} : ${tag.value}`)}
-					suffix=suffix.replace(suffix.split(" ")[0]+" ","")
+			suffix=suffix.replace(suffix.split(" ")[0]+" ","")
 			name = suffix.split(" ")[0]
 			value = suffix.replace(suffix.split(" ")[0]+" ","")
 			owner = msg.author.id
+	 		console.log(name,value,owner)
+	 
 		switch (suffix.split(" ")[0]){
 
 			case 'create':
 			if (tags.filter(e=> e.name==name)[0])
 			{return msg.channel.sendMessage("Tag already exists")}
 				else {tags.push({name,value,owner})
-				      console.log({name,value,owner})
+				      console.log(name,value,owner, "Saving")
 					return fs.writeFileSync(tagdir,JSON.stringify(tags))}
 			break;
 			case 'delete':
@@ -2307,6 +2309,7 @@ Commands.push(
 			default:
 				if (tags.filter(e=> e.name==name)[0])
 			{return msg.channel.sendMessage(tags.filter(e=> e.name==name)[0].value)}
+				else {return msg.channel.sendMessage("Tag does not exist")}
 				
 			break;
 			}
