@@ -84,10 +84,10 @@ bot.Dispatcher.on("GUILD_MEMBER_ADD", e => {
             console.log("no bans logged")
         }
         if (howmany > 0 && howmany < 3) {
-            CM(dvalogchannel, "Yellow flagged user " + e.member.username + "#" + e.member.discriminator + " `" + e.member.id + "` joined " + e.guild.name)
+            CM(dvalogchannel, "Yellow flagged user " +" <@" + e.member.id + "> "+ e.member.username + "#" + e.member.discriminator + " `" + e.member.id + "` joined " + e.guild.name)
         }
         if (howmany > 2 || manhowmany >= 1) {
-            CM(dvalogchannel, "Red flagged user " + e.member.username + "#" + e.member.discriminator + " `" + e.member.id + "` joined " + e.guild.name)
+            CM(dvalogchannel, "Red flagged user " +" <@" + e.member.id + "> "+ e.member.username + "#" + e.member.discriminator + " `" + e.member.id + "` joined " + e.guild.name)
             e.member.ban()
         }
         if (manhowmany >= 1) {
@@ -1940,3 +1940,17 @@ Commands.push({
         if (!suffix.includes("nodel")) {msg.delete()}
     }
 })
+
+Commands.push({
+    name: 'ban',
+    help: 'ban a thing',
+    usage: '',
+    noDM:true,
+    hidden:true,
+    level: 3,
+    fn: function(msg, suffix, bot) {
+   return msg.guild.ban(suffix)
+    }
+})
+
+
