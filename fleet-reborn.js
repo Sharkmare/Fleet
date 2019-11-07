@@ -1953,4 +1953,18 @@ Commands.push({
     }
 })
 
+Commands.push({
+    name: 'tag',
+    aliases:["t"]
+    help: 'Tagging system',
+    usage: '-t tagname; -t create/delete/owner tagname',
+    noDM:true,
+    hidden:true,
+    level: 3,
+    fn: function(msg, suffix, bot) {
+    fs.writeFileSync('C:/resources/tags.json',"")
+        
+    }
+})
+
 
