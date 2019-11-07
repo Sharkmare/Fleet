@@ -2268,7 +2268,7 @@ Commands.push(
 		return msg.guild.ban(suffix)
 	}
 })
-/*
+
 Commands.push(
 {
 	name: 'tag',
@@ -2281,10 +2281,12 @@ Commands.push(
 	fn: function(msg, suffix, bot)
 	{
 		tags = require('C:/resources/tags.json')
-		msg.channel.sendMessage(`${tags.owner}:${tags.name}`)
+		
+		if(!suffix) {tag= tags.filter(e=> e.name==help)[0]
+		msg.channel.sendMessage(`${tag.owner}:${tag.name}`)}
 	}
 })
-*/
+
 Commands.push(
 {
 	name: 'kill',
