@@ -1955,7 +1955,7 @@ Commands.push({
 
 Commands.push({
     name: 'tag',
-    aliases:["t"]
+    aliases:["t"],
     help: 'Tagging system',
     usage: '-t tagname; -t create/delete/owner tagname',
     noDM:true,
