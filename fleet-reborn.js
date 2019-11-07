@@ -2282,7 +2282,7 @@ Commands.push(
 	{
 		tags = require('C:/resources/tags.json')
 		
-		if(!suffix) {tag= tags.filter(e=> e.name==help)[0]
+		if(!suffix) {tag= tags.filter(e=> e.name=="help")[0]
 		msg.channel.sendMessage(`${tag.owner}:${tag.name}`)}
 	}
 })
