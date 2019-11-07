@@ -2296,9 +2296,9 @@ Commands.push(
 		switch (suffix.split(" ")[0]){
 
 			case 'create':
-			if (tags.filter(e=> e.name==name)[0])
+			if (tags.filter(e=> e.name==name)>0)
 			{return msg.channel.sendMessage("Tag already exists")}
-				else {tags.push({name,value,owner})
+				else {tags.push({name:name,value:value,owner:owner})
 				      console.log(name,value,owner, "Saving")
 					return fs.writeFileSync(tagdir,JSON.stringify(tags))}
 			break;
