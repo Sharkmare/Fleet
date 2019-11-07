@@ -2289,7 +2289,7 @@ Commands.push(
 			name = suffix.split(" ")[0]
 			value = suffix.replace(suffix.split(" ")[0]+" ","")
 				
-			return console.log(name,value)
+			return console.log("Yes "+name,value)
 			break;
 			case 'delete':
 			
