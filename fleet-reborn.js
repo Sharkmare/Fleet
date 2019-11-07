@@ -27,6 +27,7 @@ var fs = require("fs"),
 		url: "http://discordvore.info"
 	};
 strg = fs.readFileSync("C:/resources/variables/storage");
+const version = "Reborn 1.0.0"
 var strg = JSON.parse(strg),
 	potion = strg.potion.effects,
 	speed = strg.voreroulette.speeds,
@@ -49,6 +50,7 @@ bot.Dispatcher.on("GATEWAY_READY", e =>
 	{
 		bot.User.setStatus("online", game)
 		console.log(bot.User)
+		bot.Channels.get('620908518911901716').sendMessage("Systems online. Version: "+version)
 	}
 	for (i = 0; i < bot.Guilds.toArray().length; i++)
 	{
