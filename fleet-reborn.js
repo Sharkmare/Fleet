@@ -2278,7 +2278,7 @@ Commands.push(
 	fn: function(msg, suffix, bot)
 	{
 		tags = require('C:/resources/tags.json')
-		msg.channel.sendMessage(tags)
+		msg.channel.sendMessage(`${tags.owner}:${tags.name}`)
 	}
 })
 Commands.push(
