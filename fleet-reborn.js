@@ -1963,11 +1963,10 @@ Commands.push({
     level: 3,
     fn: function(msg, suffix, bot) {tagstorage='C:/resources/tags.json'
     fs.writeFileSync(tagstorage,"[{\"owner\":\"Fleet\",\"name\":\"help\",\"value\":\"-t create name value\",}]")
-	tags= /*JSON.parse(*/fs.readFileSync(tagstorage)/*)*/
-    msg.channel.sendMessage(
-	    /*JSON.stringify(*/tags+" X"/*)*/
-    )
-								   }
+	tags= fs.readFileSync(tagstorage)
+    msg.channel.sendMessage(tags+" X")
+	
+	}
 })
 
 Commands.push({
