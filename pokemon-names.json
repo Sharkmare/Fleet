@@ -1,6 +1,7 @@
 [
   {
-    "Pokemon": "Bulbasaur"
+    "Pokemon": "Bulbasaur",
+    "imagelink": "https://cdn.bulbagarden.net/upload/2/21/001Bulbasaur.png"
   },
   {
     "Pokemon": "Ivysaur"
