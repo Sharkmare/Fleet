@@ -72,7 +72,7 @@
     "Pokemon": "Arbok"
   },
   {
-    "Pokemon": "Pikachu[c]"
+    "Pokemon": "Pikachu"
   },
   {
     "Pokemon": "Raichu"
@@ -396,7 +396,7 @@
     "Pokemon": "Ditto"
   },
   {
-    "Pokemon": "Eevee[d]"
+    "Pokemon": "Eevee"
   },
   {
     "Pokemon": "Vaporeon"
@@ -411,19 +411,19 @@
     "Pokemon": "Porygon"
   },
   {
-    "Pokemon": "Omanyte ~"
+    "Pokemon": "Omanyte"
   },
   {
-    "Pokemon": "Omastar ~"
+    "Pokemon": "Omastar"
   },
   {
-    "Pokemon": "Kabuto ~"
+    "Pokemon": "Kabuto"
   },
   {
-    "Pokemon": "Kabutops ~"
+    "Pokemon": "Kabutops"
   },
   {
-    "Pokemon": "Aerodactyl ~"
+    "Pokemon": "Aerodactyl"
   },
   {
     "Pokemon": "Snorlax"
@@ -450,7 +450,7 @@
     "Pokemon": "Mewtwo"
   },
   {
-    "Pokemon": "Mew ?"
+    "Pokemon": "Mew"
   },
   {
     "Pokemon": "Chikorita"
@@ -513,16 +513,16 @@
     "Pokemon": "Lanturn"
   },
   {
-    "Pokemon": "Pichu ?"
+    "Pokemon": "Pichu"
   },
   {
-    "Pokemon": "Cleffa ?"
+    "Pokemon": "Cleffa"
   },
   {
-    "Pokemon": "Igglybuff ?"
+    "Pokemon": "Igglybuff"
   },
   {
-    "Pokemon": "Togepi ?"
+    "Pokemon": "Togepi"
   },
   {
     "Pokemon": "Togetic"
@@ -705,19 +705,19 @@
     "Pokemon": "Smeargle"
   },
   {
-    "Pokemon": "Tyrogue ?"
+    "Pokemon": "Tyrogue"
   },
   {
     "Pokemon": "Hitmontop"
   },
   {
-    "Pokemon": "Smoochum ?"
+    "Pokemon": "Smoochum"
   },
   {
-    "Pokemon": "Elekid ?"
+    "Pokemon": "Elekid"
   },
   {
-    "Pokemon": "Magby ?"
+    "Pokemon": "Magby"
   },
   {
     "Pokemon": "Miltank"
@@ -750,7 +750,7 @@
     "Pokemon": "Ho-oh"
   },
   {
-    "Pokemon": "Celebi ?"
+    "Pokemon": "Celebi"
   },
   {
     "Pokemon": "Treecko"
@@ -891,7 +891,7 @@
     "Pokemon": "Hariyama"
   },
   {
-    "Pokemon": "Azurill ?"
+    "Pokemon": "Azurill"
   },
   {
     "Pokemon": "Nosepass"
@@ -1032,16 +1032,16 @@
     "Pokemon": "Claydol"
   },
   {
-    "Pokemon": "Lileep ~"
+    "Pokemon": "Lileep"
   },
   {
-    "Pokemon": "Cradily ~"
+    "Pokemon": "Cradily"
   },
   {
-    "Pokemon": "Anorith ~"
+    "Pokemon": "Anorith"
   },
   {
-    "Pokemon": "Armaldo ~"
+    "Pokemon": "Armaldo"
   },
   {
     "Pokemon": "Feebas"
@@ -1077,7 +1077,7 @@
     "Pokemon": "Absol"
   },
   {
-    "Pokemon": "Wynaut ?"
+    "Pokemon": "Wynaut"
   },
   {
     "Pokemon": "Snorunt"
@@ -1152,10 +1152,10 @@
     "Pokemon": "Rayquaza"
   },
   {
-    "Pokemon": "Jirachi ?"
+    "Pokemon": "Jirachi"
   },
   {
-    "Pokemon": "Deoxys ?[e]"
+    "Pokemon": "Deoxys"
   },
   {
     "Pokemon": "Turtwig"
@@ -1215,22 +1215,22 @@
     "Pokemon": "Luxray"
   },
   {
-    "Pokemon": "Budew ?"
+    "Pokemon": "Budew"
   },
   {
     "Pokemon": "Roserade"
   },
   {
-    "Pokemon": "Cranidos ~"
+    "Pokemon": "Cranidos"
   },
   {
-    "Pokemon": "Rampardos ~"
+    "Pokemon": "Rampardos"
   },
   {
-    "Pokemon": "Shieldon ~"
+    "Pokemon": "Shieldon"
   },
   {
-    "Pokemon": "Bastiodon ~"
+    "Pokemon": "Bastiodon"
   },
   {
     "Pokemon": "Burmy"
@@ -1296,7 +1296,7 @@
     "Pokemon": "Purugly"
   },
   {
-    "Pokemon": "Chingling ?"
+    "Pokemon": "Chingling"
   },
   {
     "Pokemon": "Stunky"
@@ -1311,13 +1311,13 @@
     "Pokemon": "Bronzong"
   },
   {
-    "Pokemon": "Bonsly ?"
+    "Pokemon": "Bonsly"
   },
   {
-    "Pokemon": "Mime Jr. ?"
+    "Pokemon": "Mime Jr."
   },
   {
-    "Pokemon": "Happiny ?"
+    "Pokemon": "Happiny"
   },
   {
     "Pokemon": "Chatot"
@@ -1335,10 +1335,10 @@
     "Pokemon": "Garchomp"
   },
   {
-    "Pokemon": "Munchlax ?"
+    "Pokemon": "Munchlax"
   },
   {
-    "Pokemon": "Riolu ?"
+    "Pokemon": "Riolu"
   },
   {
     "Pokemon": "Lucario"
@@ -1371,7 +1371,7 @@
     "Pokemon": "Lumineon"
   },
   {
-    "Pokemon": "Mantyke ?"
+    "Pokemon": "Mantyke"
   },
   {
     "Pokemon": "Snover"
@@ -1464,22 +1464,22 @@
     "Pokemon": "Cresselia"
   },
   {
-    "Pokemon": "Phione ?"
+    "Pokemon": "Phione"
   },
   {
-    "Pokemon": "Manaphy ?"
+    "Pokemon": "Manaphy"
   },
   {
-    "Pokemon": "Darkrai ?"
+    "Pokemon": "Darkrai"
   },
   {
-    "Pokemon": "Shaymin ?"
+    "Pokemon": "Shaymin"
   },
   {
-    "Pokemon": "Arceus ?"
+    "Pokemon": "Arceus"
   },
   {
-    "Pokemon": "Victini ?"
+    "Pokemon": "Victini"
   },
   {
     "Pokemon": "Snivy"
@@ -1689,16 +1689,16 @@
     "Pokemon": "Cofagrigus"
   },
   {
-    "Pokemon": "Tirtouga ~"
+    "Pokemon": "Tirtouga"
   },
   {
-    "Pokemon": "Carracosta ~"
+    "Pokemon": "Carracosta"
   },
   {
-    "Pokemon": "Archen ~"
+    "Pokemon": "Archen"
   },
   {
-    "Pokemon": "Archeops ~"
+    "Pokemon": "Archeops"
   },
   {
     "Pokemon": "Trubbish"
@@ -1938,13 +1938,13 @@
     "Pokemon": "Kyurem"
   },
   {
-    "Pokemon": "Keldeo ?"
+    "Pokemon": "Keldeo"
   },
   {
-    "Pokemon": "Meloetta ?"
+    "Pokemon": "Meloetta"
   },
   {
-    "Pokemon": "Genesect ?"
+    "Pokemon": "Genesect"
   },
   {
     "Pokemon": "Chespin"
@@ -2085,16 +2085,16 @@
     "Pokemon": "Heliolisk"
   },
   {
-    "Pokemon": "Tyrunt ~"
+    "Pokemon": "Tyrunt"
   },
   {
-    "Pokemon": "Tyrantrum ~"
+    "Pokemon": "Tyrantrum"
   },
   {
-    "Pokemon": "Amaura ~"
+    "Pokemon": "Amaura"
   },
   {
-    "Pokemon": "Aurorus ~"
+    "Pokemon": "Aurorus"
   },
   {
     "Pokemon": "Sylveon"
@@ -2154,13 +2154,13 @@
     "Pokemon": "Zygarde"
   },
   {
-    "Pokemon": "Diancie ?"
+    "Pokemon": "Diancie"
   },
   {
-    "Pokemon": "Hoopa ?"
+    "Pokemon": "Hoopa"
   },
   {
-    "Pokemon": "Volcanion ?"
+    "Pokemon": "Volcanion"
   },
   {
     "Pokemon": "Rowlet"
@@ -2376,55 +2376,55 @@
     "Pokemon": "Lunala"
   },
   {
-    "Pokemon": "Nihilego ?"
+    "Pokemon": "Nihilego"
   },
   {
-    "Pokemon": "Buzzwole ?"
+    "Pokemon": "Buzzwole"
   },
   {
-    "Pokemon": "Pheromosa ?"
+    "Pokemon": "Pheromosa"
   },
   {
-    "Pokemon": "Xurkitree ?"
+    "Pokemon": "Xurkitree"
   },
   {
-    "Pokemon": "Celesteela ?"
+    "Pokemon": "Celesteela"
   },
   {
-    "Pokemon": "Kartana ?"
+    "Pokemon": "Kartana"
   },
   {
-    "Pokemon": "Guzzlord ?"
+    "Pokemon": "Guzzlord"
   },
   {
     "Pokemon": "Necrozma"
   },
   {
-    "Pokemon": "Magearna ?"
+    "Pokemon": "Magearna"
   },
   {
-    "Pokemon": "Marshadow ?"
+    "Pokemon": "Marshadow"
   },
   {
-    "Pokemon": "Poipole ?"
+    "Pokemon": "Poipole"
   },
   {
-    "Pokemon": "Naganadel ?"
+    "Pokemon": "Naganadel"
   },
   {
-    "Pokemon": "Stakataka ?"
+    "Pokemon": "Stakataka"
   },
   {
-    "Pokemon": "Blacephalon ?"
+    "Pokemon": "Blacephalon"
   },
   {
-    "Pokemon": "Zeraora ?"
+    "Pokemon": "Zeraora"
   },
   {
-    "Pokemon": "Meltan ?"
+    "Pokemon": "Meltan"
   },
   {
-    "Pokemon": "Melmetal ?"
+    "Pokemon": "Melmetal"
   },
   {
     "Pokemon": "Grookey"
