@@ -1,4 +1,4 @@
-const version = "Reborn 1.1.0"
+const version = "Reborn 1.2.0"
 try
 {
 	Config = require('./config.json')
@@ -571,6 +571,28 @@ function cry(a, b)
 		x++
 	}
 }
+
+bot.Dispatcher.on(Event.GUILD_MEMBER_ADD, (e) => {
+    var unirest = require('unirest')
+    var hookurl = 'https://ptb.discordapp.com/api/webhooks/326895738871218176/EeN8B6dxZ21cC8d2fUf1sOPeb5cckNZonS8AJSrya0cD8hdI8eFybW05pUkZXyZ46UHX'
+    var hookavatar = 'http://i.imgur.com/oV25b7q.png'
+    var hookname = 'Trashcan'
+    let jmember = e.member
+    let joineduser = e.member.username
+    let discordid = e.member.id
+    let srv = e.guild.name
+    let srvuid = e.guild.id
+    console.log(joineduser + discordid + srv)
+
+    if (srvuid != '574956208645996547') {
+        var message = `Welcome to ${srv}! \nPlease take a moment to read the rules!\nWe hope you have a great time.`
+        if (srvuid == '180538463655821312') //Chompers
+        {
+            message = `Welcome to ${srv}! \nPlease bring your attention to <#575623788977455104> to learn how to access the rest of the server.\nWe hope you have a great time.`
+        }
+        protoDM(discordid, message, bot)
+    }
+})
 
 function pokelookup(suffix, msg, dir)
 {
