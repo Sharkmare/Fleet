@@ -1,4 +1,4 @@
-const version = "Reborn 1.0.8"
+const version = "Reborn 1.0.9"
 
 try
 {
@@ -1791,7 +1791,8 @@ Commands.push(
 				potionr
 			]
 			var answer = answers[Math.floor(Math.random() * answers.length)]
-			msg.channel.sendMessage('' + msg.author.mention + '`' + answer + '`')
+			if( Math.trunc( Math.random()*100) == 50 ) {msg.channel.sendMessage('' + msg.author.mention + '`If you have a pre-evolution you suddenly devolve! If you have an evolution you suddenly evolve!`')}
+			else {msg.channel.sendMessage('' + msg.author.mention + '`' + answer + '`')}
 		}
 		msg.delete()
 	}
