@@ -574,9 +574,6 @@ function cry(a, b)
 
 bot.Dispatcher.on(Event.GUILD_MEMBER_ADD, (e) => {
     var unirest = require('unirest')
-    var hookurl = 'https://ptb.discordapp.com/api/webhooks/326895738871218176/EeN8B6dxZ21cC8d2fUf1sOPeb5cckNZonS8AJSrya0cD8hdI8eFybW05pUkZXyZ46UHX'
-    var hookavatar = 'http://i.imgur.com/oV25b7q.png'
-    var hookname = 'Trashcan'
     let jmember = e.member
     let joineduser = e.member.username
     let discordid = e.member.id
