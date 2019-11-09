@@ -2303,6 +2303,7 @@ Commands.push(
 	name: 'ban',
 	help: 'ban a thing',
 	usage: '',
+	aliases: ['gaybabyjail'],
 	noDM: true,
 	hidden: true,
 	level: 3,
