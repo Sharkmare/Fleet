@@ -1,4 +1,4 @@
-const version = "Reborn 1.3.3"
+const version = "Reborn 1.3.4"
 try
 {
 	Config = require('./config.json')
@@ -38,8 +38,8 @@ var strg = JSON.parse(strg),
 console.log(started)
 bot = new botmain(
 {
-	messageCacheLimit: 99999,
-	autoReconnect: false,
+	messageCacheLimit: 9999,
+	autoReconnect: true,
 	
 });
 bot.connect(
