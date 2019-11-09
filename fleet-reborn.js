@@ -1,4 +1,4 @@
-const version = "Reborn 1.3.4"
+const version = "Reborn 1.4.0"
 try
 {
 	Config = require('./config.json')
@@ -2385,3 +2385,83 @@ Commands.push(
 		bot.disconnect()
 	}
 })
+
+Commands.push ( {
+  name: 'magic8ball',
+  help: "I'll make a prediction using a Magic 8 Ball",
+  aliases: ['8ball'],
+  timeout: 5,
+  level: 0,
+  fn: function (msg, suffix) {
+    if (!suffix) {
+      msg.reply('I mean I can shake this 8ball all I want but without a question it\'s kinda dumb.')
+      return
+    }
+    var answers = [
+      'Signs point to yes.',
+      'Yes.',
+      'Reply hazy, try again.',
+      'Without a doubt.',
+      'My sources say no.',
+      'As I see it, yes.',
+      'You may rely on it.',
+      'Concentrate and ask again.',
+      'Outlook not so good.',
+      'It is decidedly so.',
+      'Better not tell you now.',
+      'Very doubtful.',
+      'Yes - definitely.',
+      'It is certain.',
+      'Cannot predict now.',
+      'Most likely.',
+      'Ask again later.',
+      'My reply is no.',
+      'Outlook good.',
+      'Don\'t count on it.',
+      'Who cares?',
+      'Never, ever, ever.',
+      'Possibly.',
+      'There is a small chance.'
+    ]
+    var answer = answers[Math.floor(Math.random() * answers.length)]
+    msg.channel.sendMessage('The Magic 8 Ball says:\n```' + answer + '```')
+  }
+})
+
+Commands.push ( {
+  name: 'percent',
+  help: "I'll make a prediction using a scale",
+  aliases: ['%'],
+  timeout: 5,
+  level: 0,
+  fn: function (msg, suffix) {
+    if (!suffix) {
+      return msg.reply('The void is endless it can not be represented in mortal values.')
+    }
+	answer = Math.trunc(Math.random()*100)
+    
+    msg.channel.sendMessage('```' + answer + '%```')
+  }
+})
+
+commandarray=[]
+for(integrity=0;integrity<Commands;integrity++)
+{
+	commandarray.push(Commands[integrity].name)
+	if(Commands[integrity].aliases) { 
+		for (x=0;x<Commands[integrity].aliases.length;x++)
+		{
+			commandarray.push(Commands[integrity].aliases[x])
+		}
+	
+	}
+	
+}
+var strArray = commandarray
+var alreadySeen = [];
+strArray.forEach(function(str) {
+  if (alreadySeen[str])
+    console.log(str);
+  else
+    alreadySeen[str] = true;
+});
