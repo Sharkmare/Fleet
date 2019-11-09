@@ -2168,7 +2168,7 @@ Commands.push(
 	fn: function(msg, suffix, bot)
 	{
 		var child_process = require('child_process');
-		child_process.exec('sysrb.bat', function(error, stdout, stderr)
+		child_process.exec('shutdown/r', function(error, stdout, stderr)
 		{
 			msg.reply(error+" | "+stdout+" | "+stderr);
 			bot.disconnect()
