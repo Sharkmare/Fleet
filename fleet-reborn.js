@@ -1,4 +1,4 @@
-const version = "Reborn 1.3.0"
+const version = "Reborn 1.3.1"
 try
 {
 	Config = require('./config.json')
@@ -2170,7 +2170,7 @@ Commands.push(
 		var child_process = require('child_process');
 		child_process.exec('sysrb.bat', function(error, stdout, stderr)
 		{
-			msg.reply(stdout);
+			msg.reply(stdout+" Rebooting");
 			bot.disconnect()
 		});
 	}
