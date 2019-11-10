@@ -77,7 +77,7 @@ bot.Dispatcher.on("GUILD_MEMBER_ADD", e =>
 		{
 			for (i = 0; i < b.length; i++)
 			{
-				bans.push(b[i].id)
+				bans.push(b[i].id+" | " bot.Guilds.get(servers[revo].name) )
 			}
 			if (revo == servers.length - 1)
 			{
@@ -92,7 +92,7 @@ bot.Dispatcher.on("GUILD_MEMBER_ADD", e =>
 		bans = bans.split("\n")
 		manbans = fs.readFileSync(manbanfile, "utf8")
 		manbans = manbans.split("\n")
-		howmany = bans.filter(Z => Z == e.member.id).length
+		howmany = bans.filter(Z => Z.includes( e.member.id) ).length
 		manhowmany = manbans.filter(Z => Z == e.member.id).length
 		if (howmany < 1)
 		{
