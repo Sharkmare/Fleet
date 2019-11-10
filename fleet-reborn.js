@@ -72,18 +72,18 @@ bot.Dispatcher.on("GUILD_MEMBER_ADD", e =>
 	bans = [];
 	revo = 0
 	for (a = 0; a < servers.length; a++)
-	{
+	{bans.push(bot.Guilds.get(servers[a]).name)
 		bot.Guilds.get(servers[a]).getBans().then(function(b)
 		{
 			
 			for (i = 0; i < b.length; i++)
 			{
-				bans.push(b[i].id+"<@"+servers[a]+">")
+				bans.push(b[i].id)
 			}
-			//if (revo == servers.length - 1)
-			//{
+			if (revo == servers.length - 1)
+			{
 				fs.writeFileSync(banfile, bans.join("\n") + "\n")
-			//}
+			}
 			revo++
 		})
 	}
