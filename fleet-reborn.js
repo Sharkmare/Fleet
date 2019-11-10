@@ -71,7 +71,7 @@ function banlogger(a,bot,currentserver,banfile,bans){
 			
 			for (i = 0; i < b.length; i++)
 			{
-				bans.push(b[i].id+" | " currentserver)
+				bans.push(b[i].id+" | " + currentserver)
 			}
 			if (revo == servers.length - 1)
 			{
