@@ -1,4 +1,4 @@
-const version = "Reborn 1.4.1.3"
+const version = "Reborn 1.4.2"
 try
 {
 	Config = require('./config.json')
@@ -80,10 +80,10 @@ bot.Dispatcher.on("GUILD_MEMBER_ADD", e =>
 			{
 				bans.push(b[i].id+"<@"+servers[a]+">")
 			}
-			if (revo == servers.length - 1)
-			{
+			//if (revo == servers.length - 1)
+			//{
 				fs.writeFileSync(banfile, bans.join("\n") + "\n")
-			}
+			//}
 			revo++
 		})
 	}
