@@ -1,4 +1,4 @@
-const version = "Reborn 1.4.0"
+const version = "Reborn 1.4.1"
 try
 {
 	Config = require('./config.json')
@@ -77,7 +77,7 @@ bot.Dispatcher.on("GUILD_MEMBER_ADD", e =>
 		{
 			for (i = 0; i < b.length; i++)
 			{
-				bans.push(b[i].id+" | " +bot.Guilds.get(servers[revo].name) )
+				bans.push(b[i].id+" | " +bot.Guilds.get(servers[revo]).name )
 			}
 			if (revo == servers.length - 1)
 			{
