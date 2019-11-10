@@ -1,4 +1,4 @@
-const version = "Reborn 1.4.2.2"
+const version = "Reborn 1.4.2.3"
 try
 {
 	Config = require('./config.json')
@@ -71,7 +71,7 @@ function banlogger(a,bot,currentserver,banfile,bans){
 			
 			for (i = 0; i < b.length; i++)
 			{
-				bans.push(b[i].id)
+				bans.push(b[i].id+" | " currentserver)
 			}
 			if (revo == servers.length - 1)
 			{
