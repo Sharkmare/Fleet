@@ -1,4 +1,4 @@
-const version = "Reborn 1.4.2"
+const version = "Reborn 1.4.2.2"
 try
 {
 	Config = require('./config.json')
@@ -64,15 +64,8 @@ bot.Dispatcher.on("DISCONNECTED", e =>
 {
 	return console.log("Connection lost", console.log(servers))
 });
-bot.Dispatcher.on("GUILD_MEMBER_ADD", e =>
-{
-	var banfile = "C:/resources/BANS/BANLOG/banlog"
-	var manbanfile = "C:/resources/BANS/BANLOG/blackbanlog"
-	console.log(e.member.username)
-	bans = [];
-	revo = 0
-	for (a = 0; a < servers.length; a++)
-	{bans.push(bot.Guilds.get(servers[a]).name)
+
+function banlogger(a,bot,currentserver,banfile,bans){
 		bot.Guilds.get(servers[a]).getBans().then(function(b)
 		{
 			
@@ -85,7 +78,19 @@ bot.Dispatcher.on("GUILD_MEMBER_ADD", e =>
 				fs.writeFileSync(banfile, bans.join("\n") + "\n")
 			}
 			revo++
-		})
+			
+		})}
+
+bot.Dispatcher.on("GUILD_MEMBER_ADD", e =>
+{
+	var banfile = "C:/resources/BANS/BANLOG/banlog"
+	var manbanfile = "C:/resources/BANS/BANLOG/blackbanlog"
+	console.log(e.member.username)
+	bans = [];
+	revo = 0
+	for (a = 0; a < servers.length; a++)
+	{ currentserver = bot.Guilds.get(servers[a]).name
+		banlogger(a,bot,currentserver,banfile,bans)
 	}
 	setTimeout(function()
 	{
