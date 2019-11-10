@@ -1,4 +1,4 @@
-const version = "Reborn 1.4.2.3"
+const version = "Reborn 1.4.2.5"
 try
 {
 	Config = require('./config.json')
@@ -1182,6 +1182,16 @@ Commands.push(
 	level: 1,
 	fn: function(msg, suffix, bot)
 	{
+		var banfile = "C:/resources/BANS/BANLOG/banlog"
+		bannedon = []
+		bans = fs.readFileSync(banfile, "utf8")
+		bans = bans.split("\n")
+		bans = bans.filter(Z => Z.includes(suffix))
+		for (i=0;i<bans.length;i++)
+		{
+			bannedon.push(bans[i].split(" | ")[1])
+		}
+		bannedon = bannedon.join("\n")
 		var dir = "C:/resources/BANS"
 		var discordid = suffix
 		var path = dir + "/" + discordid + "/"
@@ -1222,7 +1232,7 @@ Commands.push(
 				var x = items.join("\n")
 				if (!x)
 				{
-					var x = "None"
+					var x = bannedon
 				};
 				msg.channel.sendMessage("", false,
 				{
@@ -1230,7 +1240,7 @@ Commands.push(
 					fields: [
 					{
 						name: "Flags:",
-						value: x
+						value: bannedon
 					}]
 				});
 				for (var i = 0; i < items.length; i++)
@@ -1240,7 +1250,7 @@ Commands.push(
 			})
 		} ///////////////////////////////////ADVANCED LOOKUP PAST HERE
 		const fullobject = [];
-		const ERISTOKEN = Config.token
+		const ERISTOKEN = Config.bot.token
 		const id = suffix
 		const z = 17 //this is the object count we expect
 		const Http = new XMLHttpRequest();
