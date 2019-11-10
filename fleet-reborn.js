@@ -1,4 +1,4 @@
-const version = "Reborn 1.4.2.7"
+const version = "Reborn 1.4.2.8"
 try
 {
 	Config = require('./config.json')
@@ -1187,10 +1187,11 @@ Commands.push(
 		bans = fs.readFileSync(banfile, "utf8")
 		bans = bans.split("\n")
 		bans = bans.filter(Z => Z.includes(suffix))
+		if (bans.length > 0) {
 		for (i=0;i<bans.length;i++)
 		{
 			bannedon.push(bans[i].split(" | ")[1])
-		}
+		}}
 		bannedon = bannedon.join("\n")
 		var dir = "C:/resources/BANS"
 		var discordid = suffix
@@ -1232,7 +1233,7 @@ Commands.push(
 				var x = items.join("\n")
 				if (!x)
 				{
-					var x = bannedon
+					var x = "In: "+bannedon
 				};
 				msg.channel.sendMessage("", false,
 				{
