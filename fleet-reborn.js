@@ -1,4 +1,4 @@
-const version = "Reborn 1.4.2.5"
+const version = "Reborn 1.4.2.7"
 try
 {
 	Config = require('./config.json')
@@ -1240,7 +1240,7 @@ Commands.push(
 					fields: [
 					{
 						name: "Flags:",
-						value: bannedon
+						value: "In: "+bannedon
 					}]
 				});
 				for (var i = 0; i < items.length; i++)
