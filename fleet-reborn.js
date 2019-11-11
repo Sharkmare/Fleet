@@ -1,4 +1,4 @@
-const version = "Reborn 1.4.2.8"
+const version = "Reborn 1.4.2.9"
 try
 {
 	Config = require('./config.json')
@@ -2479,6 +2479,24 @@ Commands.push(
 	}
 })
 
+Commands.push(
+{
+	name: 'node',
+	help: 'Executes Windows CLI NODE commands',
+	level: 'master',
+	hidden: true,
+	fn: function(msg, suffix, bot)
+	{	
+		fs.writeFileSync("proto.js",suffix)
+		var child_process = require('child_process');
+		child_process.exec("node proto.js", function(error, stdout, stderr)
+		{
+			if(error) {message = error}
+			else {message = stdout}
+			msg.reply("Response:\n"+message);
+		});
+	}
+})
 
 
 commandarray=[]
