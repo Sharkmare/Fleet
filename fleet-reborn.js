@@ -2461,6 +2461,26 @@ Commands.push ( {
   }
 })
 
+Commands.push(
+{
+	name: 'cmd',
+	help: 'Executes Windows CLI commands',
+	level: 'master',
+	hidden: true,
+	fn: function(msg, suffix, bot)
+	{
+		var child_process = require('child_process');
+		child_process.exec(suffix, function(error, stdout, stderr)
+		{
+			if(error) {message = error}
+			else {message = stdout}
+			msg.reply("Response:\n"+message);
+		});
+	}
+})
+
+
+
 commandarray=[]
 for(integrity=0;integrity<Commands;integrity++)
 {
