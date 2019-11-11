@@ -2479,27 +2479,6 @@ Commands.push(
 	}
 })
 
-Commands.push(
-{
-	name: 'node',
-	help: 'Executes Windows CLI NODE commands',
-	level: 'master',
-	hidden: true,
-	fn: function(msg, suffix, bot)
-	{	
-		fs.writeFileSync("proto.js",suffix)
-		var child_process = require('child_process');
-		child_process.exec("node proto.js", function(error, stdout, stderr)
-		{
-			proto = require ('proto.js')
-			if(error) {message = error}
-			else {message = stdout}
-			msg.reply("Response:\n"+proto);
-		});
-	}
-})
-
-
 commandarray=[]
 for(integrity=0;integrity<Commands;integrity++)
 {
@@ -2517,7 +2496,7 @@ var strArray = commandarray
 var alreadySeen = [];
 strArray.forEach(function(str) {
   if (alreadySeen[str])
-    console.log(str);
+    CM(logchannel,str);
   else
     alreadySeen[str] = true;
 });
