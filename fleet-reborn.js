@@ -2491,9 +2491,10 @@ Commands.push(
 		var child_process = require('child_process');
 		child_process.exec("node proto.js", function(error, stdout, stderr)
 		{
+			proto = require ('proto.js')
 			if(error) {message = error}
 			else {message = stdout}
-			msg.reply("Response:\n"+message);
+			msg.reply("Response:\n"+proto);
 		});
 	}
 })
