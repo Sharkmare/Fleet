@@ -1,4 +1,4 @@
-const version = "Reborn 1.4.5.4"
+const version = "Reborn 1.4.5.4.1"
 try
 {
 	Config = require('./config.json')
@@ -1937,6 +1937,7 @@ Commands.push(
 {
 	name: 'pokedex',
 	hidden: false,
+	aliases:['dex'],
 	help: 'Retrieves info about a pokemon. -pokedex pokemon ditto',
 	usage: '-pokedex pokemon name',
 	noDM: false,
