@@ -2497,7 +2497,7 @@ Showdowndex data points
 Commands.push(
 {
 	name: 'showdowndex',
-	aliases: ['sdex']
+	aliases: ['sdex'],
 	help: 'Showdown dex mirror. -sdex name',
 	level: 0,
 	hidden: false,
