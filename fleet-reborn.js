@@ -2488,10 +2488,10 @@ Commands.push(
 	hidden: true,
 	fn: function(msg, suffix, bot)
 	{ 
-	var BattlePokedex=pokelist.BattlePokedex
-		if (BattlePokedex["bulbasaur"]) {
+	var BattlePokedex = showdowndex.BattlePokedex
+		if (BattlePokedex[suffix]) {
 	 msg.reply("\`\`\`js \n "+ JSON.stringify( BattlePokedex["bulbasaur"]+"\`\`\`") )}
-	 msg.reply("KEy value not found.")
+	 msg.reply("Key value not found.")
 	}
 })
 
