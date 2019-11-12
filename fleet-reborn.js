@@ -1,4 +1,4 @@
-const version = "Reborn 1.4.5.1"
+const version = "Reborn 1.4.5.2"
 try
 {
 	Config = require('./config.json')
@@ -2505,8 +2505,8 @@ Commands.push(
 	{ 
 	var BattlePokedex = showdowndex.BattlePokedex
 	if (BattlePokedex[suffix]) { mon = BattlePokedex[suffix];
-	msg.reply(`\`\`\`\nID: $[mon.num]\nSpecies: $[mon.species]\nTypes: $[mon.types]\nGender Ratio: M: $[mon.genderRatio.M] F: $[mon.genderRatio.F]\nColor: $[mon.color]\nEgg Groups: $[mon.eggGroups]\`\`\`` )}
-	else { msg.reply("Key value not found.") }
+	msg.channel.sendMessage(`\`\`\`\nID: ${mon.num}\nSpecies: ${mon.species}\nTypes: ${mon.types}\nGender Ratio: M: ${mon.genderRatio.M} F: ${mon.genderRatio.F}\nColor: ${mon.color}\nEgg Groups: ${mon.eggGroups}\`\`\`` )}
+	else { msg.reply("Key value not found.\nOnly pokemon names are supported.") }
 	}
 })
 
