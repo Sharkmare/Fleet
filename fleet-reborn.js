@@ -1805,6 +1805,7 @@ Commands.push(
 	}
 })
 pokelist = require(Config.pokemon.list)
+showdowndex = require(Config.pokemon.showdowndex) //mirror of https://raw.githubusercontent.com/smogon/pokemon-showdown/master/data/pokedex.js
 Commands.push(
 {
 	name: 'randompotion',
@@ -2479,6 +2480,18 @@ Commands.push(
 	}
 })
 
+Commands.push(
+{
+	name: 'dex',
+	help: 'Showdown mirror',
+	level: 'master',
+	hidden: true,
+	fn: function(msg, suffix, bot)
+	{ 
+		console.log(showdowndex)
+	}
+})
+
 commandarray=[]
 for(integrity=0;integrity<Commands;integrity++)
 {
@@ -2500,3 +2513,4 @@ strArray.forEach(function(str) {
   else
     alreadySeen[str] = true;
 });
+
