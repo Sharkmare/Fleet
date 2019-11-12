@@ -2504,7 +2504,7 @@ Commands.push(
 	{ 
 	var BattlePokedex = showdowndex.BattlePokedex
 	if (BattlePokedex[suffix]) { mon = BattlePokedex[suffix];
-	msg.reply(`\`\`\`\nID: $[mon.num]\nSpecies: $[mon.species]\nTypes: $[mon.types]\nGender Ratio: M: $[mon.genderRatio.M] F: $[mon.genderRatio.F]\nColor: $[mon.color]\nEgg Groups: $[mon.eggGroups]\`\`\``) )}
+	msg.reply(`\`\`\`\nID: $[mon.num]\nSpecies: $[mon.species]\nTypes: $[mon.types]\nGender Ratio: M: $[mon.genderRatio.M] F: $[mon.genderRatio.F]\nColor: $[mon.color]\nEgg Groups: $[mon.eggGroups]\`\`\`` )}
 	else { msg.reply("Key value not found.") }
 	}
 })
