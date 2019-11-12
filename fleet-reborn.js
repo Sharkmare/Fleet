@@ -2487,7 +2487,9 @@ Commands.push(
 	level: 'master',
 	hidden: true,
 	fn: function(msg, suffix, bot)
-	{ if (BattlePokedex["bulbasaur"]) {
+	{ 
+	var BattlePokedex=pokelist.BattlePokedex
+		if (BattlePokedex["bulbasaur"]) {
 	 msg.reply("\`\`\`js \n "+ JSON.stringify( BattlePokedex["bulbasaur"]+"\`\`\`") )}
 	 msg.reply("KEy value not found.")
 	}
