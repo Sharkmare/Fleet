@@ -1,4 +1,4 @@
-const version = "Reborn 1.4.5"
+const version = "Reborn 1.4.5.1"
 try
 {
 	Config = require('./config.json')
@@ -2496,10 +2496,11 @@ Showdowndex data points
 */
 Commands.push(
 {
-	name: 'dex',
-	help: 'Showdown mirror',
-	level: 'master',
-	hidden: true,
+	name: 'showdowndex',
+	aliases: ['sdex']
+	help: 'Showdown dex mirror. -sdex name',
+	level: 0,
+	hidden: false,
 	fn: function(msg, suffix, bot)
 	{ 
 	var BattlePokedex = showdowndex.BattlePokedex
