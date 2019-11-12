@@ -1,4 +1,4 @@
-const version = "Reborn 1.4.5.3"
+const version = "Reborn 1.4.5.4"
 try
 {
 	Config = require('./config.json')
@@ -2512,8 +2512,8 @@ Commands.push(
 	if (mon.num) {result = stringcombineSH(result,	"ID: "+	mon.num	)};
 	if (mon.species) {result = stringcombineSH(result,	"Species: "+	mon.species	)};
 	if (mon.types) {result = stringcombineSH(result,	"Types: "+	mon.types	)};
-	if (mon.genderRatio.M) {result = stringcombineSH(result,	"Gender Ratio M: "+	mon.genderRatio.M	)};
-	if (mon.genderRatio.F) {result = stringcombineSH(result,	"Gender Ratio F: "+	mon.genderRatio.F	)};
+	if (mon.genderRatio) {result = stringcombineSH(result,	"Gender Ratio: "+"M: "+mon.genderRatio.M+" F: "+mon.genderRatio.F)}
+	else if (mon.gender) {result = stringcombineSH(result,	"Gender: "+	mon.gender	)};
 	if (mon.color) {result = stringcombineSH(result,	"Color: "+	mon.color	)};
 	if (mon.eggGroups) {result = stringcombineSH(result,	"Egg Groups: "+	mon.eggGroups	)};
 	msg.channel.sendMessage("```"+`${result}`+`"""`)}
