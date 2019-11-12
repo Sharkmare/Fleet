@@ -1,4 +1,4 @@
-const version = "Reborn 1.4.5.2"
+const version = "Reborn 1.4.5.3"
 try
 {
 	Config = require('./config.json')
@@ -2494,6 +2494,10 @@ Showdowndex data points
 		evos: ["ivysaur"],
 		eggGroups: ["Monster", "Grass"],
 */
+function stringcombineSH (text,addition)
+{
+	return text+addition+"\n"
+}
 Commands.push(
 {
 	name: 'showdowndex',
@@ -2504,8 +2508,15 @@ Commands.push(
 	fn: function(msg, suffix, bot)
 	{ 
 	var BattlePokedex = showdowndex.BattlePokedex
-	if (BattlePokedex[suffix]) { mon = BattlePokedex[suffix];
-	msg.channel.sendMessage(`\`\`\`\nID: ${mon.num}\nSpecies: ${mon.species}\nTypes: ${mon.types}\nGender Ratio: M: ${mon.genderRatio.M} F: ${mon.genderRatio.F}\nColor: ${mon.color}\nEgg Groups: ${mon.eggGroups}\`\`\`` )}
+	if (BattlePokedex[suffix]) { mon = BattlePokedex[suffix]; var result="";
+	if (mon.num) {result = stringcombineSH(result,	"ID: "+	mon.num	)};
+	if (mon.species) {result = stringcombineSH(result,	"Species: "+	mon.species	)};
+	if (mon.types) {result = stringcombineSH(result,	"Types: "+	mon.types	)};
+	if (mon.genderRatio.M) {result = stringcombineSH(result,	"Gender Ratio M: "+	mon.genderRatio.M	)};
+	if (mon.genderRatio.F) {result = stringcombineSH(result,	"Gender Ratio F: "+	mon.genderRatio.F	)};
+	if (mon.color) {result = stringcombineSH(result,	"Color: "+	mon.color	)};
+	if (mon.eggGroups) {result = stringcombineSH(result,	"Egg Groups: "+	mon.eggGroups	)};
+	msg.channel.sendMessage("```"+`${result}`+`"""`)}
 	else { msg.reply("Key value not found.\nOnly pokemon names are supported.") }
 	}
 })
