@@ -1,4 +1,4 @@
-const version = "Reborn 1.4.3"
+const version = "Reborn 1.4.5"
 try
 {
 	Config = require('./config.json')
@@ -2480,6 +2480,20 @@ Commands.push(
 	}
 })
 
+/*
+Showdowndex data points
+		num: 1,
+		species: "Bulbasaur",
+		types: ["Grass", "Poison"],
+		genderRatio: {M: 0.875, F: 0.125},
+		baseStats: {hp: 45, atk: 49, def: 49, spa: 65, spd: 65, spe: 45},
+		abilities: {0: "Overgrow", H: "Chlorophyll"},
+		heightm: 0.7,
+		weightkg: 6.9,
+		color: "Green",
+		evos: ["ivysaur"],
+		eggGroups: ["Monster", "Grass"],
+*/
 Commands.push(
 {
 	name: 'dex',
@@ -2489,9 +2503,9 @@ Commands.push(
 	fn: function(msg, suffix, bot)
 	{ 
 	var BattlePokedex = showdowndex.BattlePokedex
-		if (BattlePokedex[suffix]) {
-	 msg.reply("\`\`\`js \n "+ JSON.stringify( BattlePokedex[suffix]+"\`\`\`") )}
-	 msg.reply("Key value not found.")
+	if (BattlePokedex[suffix]) { mon = BattlePokedex[suffix];
+	msg.reply(`\`\`\`\nID: $[mon.num]\nSpecies: $[mon.species]\nTypes: $[mon.types]\nGender Ratio: M: $[mon.genderRatio.M] F: $[mon.genderRatio.F]\nColor: $[mon.color]\nEgg Groups: $[mon.eggGroups]\`\`\``) )}
+	else { msg.reply("Key value not found.") }
 	}
 })
 
