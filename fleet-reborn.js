@@ -2517,7 +2517,7 @@ Commands.push(
 	else if (mon.gender) {result = stringcombineSH(result,	"Gender: "+	mon.gender	)};
 	if (mon.color) {result = stringcombineSH(result,	"Color: "+	mon.color	)};
 	if (mon.eggGroups) {result = stringcombineSH(result,	"Egg Groups: "+	mon.eggGroups	)};
-	msg.channel.sendMessage("```"+`${result}`+`"""`)}
+	msg.channel.sendMessage("```"+`${result}`+"```")}
 	else { msg.reply("Key value not found.\nOnly pokemon names are supported.") }
 	}
 })
