@@ -2490,7 +2490,7 @@ Commands.push(
 	{ 
 	var BattlePokedex = showdowndex.BattlePokedex
 		if (BattlePokedex[suffix]) {
-	 msg.reply("\`\`\`js \n "+ JSON.stringify( BattlePokedex["bulbasaur"]+"\`\`\`") )}
+	 msg.reply("\`\`\`js \n "+ JSON.stringify( BattlePokedex[suffix]+"\`\`\`") )}
 	 msg.reply("Key value not found.")
 	}
 })
