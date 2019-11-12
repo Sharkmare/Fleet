@@ -2487,8 +2487,8 @@ Commands.push(
 	level: 'master',
 	hidden: true,
 	fn: function(msg, suffix, bot)
-	{ 
-		console.log(showdowndex)
+	{ output = showdowndex.BattlePokedex.filter(e=> e.num == suffix || e.species == suffix)
+	 console.log(output)
 	}
 })
 
