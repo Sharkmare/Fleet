@@ -1,4 +1,4 @@
-const version = "Reborn 1.4.2.9"
+const version = "Reborn 1.4.3"
 try
 {
 	Config = require('./config.json')
@@ -2487,8 +2487,9 @@ Commands.push(
 	level: 'master',
 	hidden: true,
 	fn: function(msg, suffix, bot)
-	{ output = showdowndex.BattlePokedex.filter(e=> e.num == suffix || e.species == suffix)
-	 console.log(output)
+	{ if (BattlePokedex["bulbasaur"]) {
+	 msg.reply("\`\`\`js \n "+ JSON.stringify( BattlePokedex["bulbasaur"]+"\`\`\`") )}
+	 msg.reply("KEy value not found.")
 	}
 })
 
