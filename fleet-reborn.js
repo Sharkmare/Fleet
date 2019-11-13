@@ -1,4 +1,4 @@
-const version = "Reborn 1.5.777"
+const version = "Reborn 1.5.778"
 try
 {
 	Config = require('./config.json')
@@ -2501,7 +2501,7 @@ Commands.push(
 })
 Commands.push(
 {
-	name: 'sharp',
+	name: 'upload',
 	help: 'Proto',
 	level: 'master',
 	hidden: true,
