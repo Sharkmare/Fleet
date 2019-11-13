@@ -1,4 +1,4 @@
-const version = "Reborn 1.4.5.5.5"
+const version = "Reborn 1.4.5.5.6"
 try
 {
 	Config = require('./config.json')
@@ -2516,7 +2516,7 @@ Commands.push(
     writer.on('finish', resolve)
     writer.on('error', reject)
     writer.on('finish', (resolve) =>{
-    channel.uploadFile(imgdir+filename+ext)
+    msg.channel.uploadFile(imgdir+filename+ext)
     })
   })
 }
