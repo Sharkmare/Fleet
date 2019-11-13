@@ -1,4 +1,4 @@
-const version = "Reborn 1.5.778"
+const version = "Reborn 1.5.779"
 try
 {
 	Config = require('./config.json')
@@ -2506,37 +2506,27 @@ Commands.push(
 	level: 'master',
 	hidden: true,
 	fn: function(msg, suffix, bot)
-	{	console.log("Image Upload:")
-	 	if (!msg.attachments[0]){console.log("using URL")}
-	else
-	{var suffix = msg.attachments[0].proxy_url;console.log("using FILE") }
-	 
-	 
-		var imgdir = "C:/gay/";
-		suffix = suffix.replace("<", "").replace(">", "").suffix.split(" ");
-		var ext = "." + suffix.split("")[suffix.split("").length - 3] + suffix.split("")[suffix.split("").length - 2] + suffix.split("")[suffix.split("").length - 1]
-		var filename = msg.author.id + ext;
-		async function downloadImage()
+	{
+		if (!msg.attachments[0]){console.log("using URL")}
+		else{var suffix = msg.attachments[0].proxy_url;console.log("using FILE") }
+	 	var imgdir = "C:/gay/images/"; suffix = suffix.replace("<", "").replace(">", "").suffix.split(" ");var ext = "." + suffix.split("")[suffix.split("").length - 3] + suffix.split("")[suffix.split("").length - 2] + suffix.split("")[suffix.split("").length - 1];var filename = msg.author.id + ext;
+		
+		var child_process = require('child_process');
+		child_process.exec("bitsadmin /transfer n "+suffix+" "+imgdir+filename, function(error, stdout, stderr)
 		{
-			console.log("writing")
-			const url = suffix
-			const path = Path.resolve(imgdir, 'images', filename)
-			const writer = fs.createWriteStream(path)
-			console.log(url,path)
-			const response = await axios(
+			if (error)
 			{
-				url,
-				method: 'GET',
-				responseType: 'stream'
-			})
-			response.data.pipe(writer)
-		  return new Promise((resolve, reject) => {
-		    writer.on('finish', resolve)
-		    writer.on('error', reject)
-		  })
-		}
-		downloadImage()
-		console.log("Upload finished.")
+				message = error
+				msg.reply(error)
+			}
+			else
+			{
+				message = stdout
+				msg.reply("Succesful upload!")
+			}
+			console.log(message)
+			
+		});
 	}
 })
 /*
