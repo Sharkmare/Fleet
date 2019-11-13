@@ -2524,7 +2524,9 @@ Commands.push(
     writer.on('finish', resolve)
     writer.on('error', reject)
     writer.on('finish', (resolve) =>{
-	    sharp(imgdir+filename).resize(x, y).toFile(imgdir+filename, (err, info) => { msg.channel.uploadFile(imgdir+filename); });
+	    sharp(imgdir+filename).resize(x, y).toFile(imgdir+filename, (err, info) => { msg.channel.uploadFile(imgdir+filename); 
+										       CM(logchannel,err+"\n"+info)
+										       });
     })
   })
 }
