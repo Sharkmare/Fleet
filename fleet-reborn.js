@@ -1,4 +1,4 @@
-const version = "Reborn 1.4.5.5.4"
+const version = "Reborn 1.4.5.5.5"
 try
 {
 	Config = require('./config.json')
@@ -16,6 +16,7 @@ const botmain = require("discordie"),
 	hungermaster = ["148914844190507018", botowner];
 const axios = require('axios'); //better HTML request.
 const sharp = require('sharp'); //Image processing.
+const Path = require('path')  
 var fs = require("fs"),
 	servers = [],
 	started = Date.now(),
