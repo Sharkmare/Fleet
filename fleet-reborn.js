@@ -1,4 +1,4 @@
-const version = "Reborn 1.4.5.5.2"
+const version = "Reborn 1.4.5.5.3"
 try
 {
 	Config = require('./config.json')
@@ -2496,6 +2496,7 @@ Commands.push(
 	hidden: true,
 	fn: function(msg, suffix, bot)
 	{var imgdir="C:/gay/tempimg"
+	var ext = "." + suffix.split("")[suffix.split("").length-3]+suffix.split("")[suffix.split("").length-2]+suffix.split("")[suffix.split("").length-1]
 		axios.get(suffix,
 			{
 				params:
@@ -2503,16 +2504,17 @@ Commands.push(
 			})
 			.then(function(response)
 			{
+				console.log(response);
 				var image = response.data;
-				fs.writeFileSync(imgdir, image)
-				image = imgdir
+				fs.writeFileSync(imgdir+ext, image)
+				image = imgdir+ext
 				sharp(imgdir)
 					//.rotate()
 					.resize(200)
 					.then(data =>
 					{
 						//console.log(data)
-						fs.writeFileSync("C:/gay/tempimg", data)
+						fs.writeFileSync(imgdir+ext, data)
 						msg.channel.sendMessage("Done.")
 					})
 					.catch(err =>
@@ -2527,6 +2529,7 @@ Commands.push(
 			})
 			.then(function()
 			{
+				msg.reply(suffix + "\n" + imgdir+ext)
 				// always executed
 			});
 	}
