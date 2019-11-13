@@ -1,4 +1,4 @@
-const version = "Reborn 1.5.666"
+const version = "Reborn 1.5.777"
 try
 {
 	Config = require('./config.json')
@@ -2518,9 +2518,11 @@ Commands.push(
 		var filename = msg.author.id + ext;
 		async function downloadImage()
 		{
+			console.log("writing")
 			const url = suffix
 			const path = Path.resolve(imgdir, 'images', filename)
 			const writer = fs.createWriteStream(path)
+			console.log(url,path)
 			const response = await axios(
 			{
 				url,
@@ -2528,11 +2530,10 @@ Commands.push(
 				responseType: 'stream'
 			})
 			response.data.pipe(writer)
-			return new Promise((resolve, reject) =>
-			{
-				writer.on('error', reject)
-				writer.on('finish', resolve)
-			})
+		  return new Promise((resolve, reject) => {
+		    writer.on('finish', resolve)
+		    writer.on('error', reject)
+		  })
 		}
 		downloadImage()
 		console.log("Upload finished.")
