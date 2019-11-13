@@ -1,4 +1,4 @@
-const version = "Reborn 1.5.780"
+const version = "Reborn 1.6.6.6"
 try
 {
 	Config = require('./config.json')
@@ -9,7 +9,7 @@ catch (e)
 	process.exit()
 }
 const botmain = require("discordie"),
-	logchannel = "300130710671458304",
+	logchannel = "620908518911901716",
 	dvaserver = "186245290431348737",
 	dvalogchannel = "226952415797051394",
 	botowner = "201983882625548299",
