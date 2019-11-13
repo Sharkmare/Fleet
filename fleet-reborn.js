@@ -2496,23 +2496,28 @@ Commands.push(
 	level: 'master',
 	hidden: true,
 	fn: function(msg, suffix, bot)
-	{var imgdir="C:/gay/"
+	{var imgdir="C:/gay/";
 	var ext = "." + suffix.split("")[suffix.split("").length-3]+suffix.split("")[suffix.split("").length-2]+suffix.split("")[suffix.split("").length-1]
+	var filename = msg.author.id+ext;
 	async function downloadImage () {  
   	const url = suffix
-  	const path = Path.resolve(imgdir, 'images', 'tempimg'+ext)
+  	const path = Path.resolve(imgdir, 'images', filename)
   	const writer = fs.createWriteStream(path)
  	const response = await axios({
 		url,
 		method: 'GET',
 		responseType: 'stream'
 		})
+	
 
   response.data.pipe(writer)
 
   return new Promise((resolve, reject) => {
     writer.on('finish', resolve)
     writer.on('error', reject)
+    writer.on('finish', (resolve) =>{
+    channel.uploadFile(imgdir+filename+ext)
+    })
   })
 }
 
