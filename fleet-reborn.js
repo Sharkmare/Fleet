@@ -1,4 +1,4 @@
-const version = "Reborn 1.4.5.5.6"
+const version = "Reborn 1.4.5.6"
 try
 {
 	Config = require('./config.json')
@@ -2496,7 +2496,7 @@ Commands.push(
 	level: 'master',
 	hidden: true,
 	fn: function(msg, suffix, bot)
-	{var imgdir="C:/gay/";
+	{var imgdir="C:/gay/";suffix=suffix.replace("<","").replace(">","")
 	var ext = "." + suffix.split("")[suffix.split("").length-3]+suffix.split("")[suffix.split("").length-2]+suffix.split("")[suffix.split("").length-1]
 	var filename = msg.author.id+ext;
 	async function downloadImage () {  
