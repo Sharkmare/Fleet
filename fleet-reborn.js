@@ -1,4 +1,4 @@
-const version = "Reborn 1.4.5.4.1"
+const version = "Reborn 1.4.5.5"
 try
 {
 	Config = require('./config.json')
@@ -14,6 +14,8 @@ const botmain = require("discordie"),
 	dvalogchannel = "226952415797051394",
 	botowner = "201983882625548299",
 	hungermaster = ["148914844190507018", botowner];
+const axios = require('axios'); //better HTML request.
+const sharp = require('sharp'); //Image processing.
 var fs = require("fs"),
 	servers = [],
 	started = Date.now(),
@@ -27,6 +29,11 @@ var fs = require("fs"),
 		name: "with your soul~",
 		url: "http://discordvore.info"
 	};
+
+
+
+
+
 strg = fs.readFileSync("C:/resources/variables/storage");
 var strg = JSON.parse(strg),
 	potion = strg.potion.effects,
@@ -2478,6 +2485,47 @@ Commands.push(
 			else {message = stdout}
 			msg.reply("Response:\n"+message);
 		});
+	}
+})
+
+Commands.push(
+{
+	name: 'sharp',
+	help: 'Proto',
+	level: 'master',
+	hidden: true,
+	fn: function(msg, suffix, bot)
+	{
+		axios.get(suffix,
+			{
+				params:
+				{}
+			})
+			.then(function(response)
+			{
+				var image = response.data;
+				sharp(image)
+					//.rotate()
+					.resize(200)
+					.toBuffer()
+					.then(data =>
+					{
+						fs.writeFileSync("tempimg", data)
+					})
+					.catch(err =>
+					{
+						console.log(err)
+					});
+			})
+			.catch(function(error)
+			{
+				msg.reply("An error occured.")
+				console.log(error);
+			})
+			.then(function()
+			{
+				// always executed
+			});
 	}
 })
 
