@@ -1,4 +1,4 @@
-const version = "Reborn 1.5.2"
+const version = "Reborn 1.5.3"
 try
 {
 	Config = require('./config.json')
@@ -2550,7 +2550,7 @@ Commands.push(
 			})
 		}
 		downloadImage().then(function(value) {msg.channel.uploadFile(imgdir + filename);})
-
+		msg.channel.uploadFile(fs.createReadStream(imgdir + filename), "upload"+ext);
 	}
 })
 
