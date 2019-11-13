@@ -1,4 +1,4 @@
-const version = "Reborn 1.6.6.6"
+const version = "Reborn 1.5.777"
 try
 {
 	Config = require('./config.json')
@@ -9,7 +9,7 @@ catch (e)
 	process.exit()
 }
 const botmain = require("discordie"),
-	logchannel = "620908518911901716",
+	logchannel = "300130710671458304",
 	dvaserver = "186245290431348737",
 	dvalogchannel = "226952415797051394",
 	botowner = "201983882625548299",
@@ -2501,41 +2501,42 @@ Commands.push(
 })
 Commands.push(
 {
-	name: 'upload',
+	name: 'sharp',
 	help: 'Proto',
 	level: 'master',
 	hidden: true,
 	fn: function(msg, suffix, bot)
-	{
-		if (!msg.attachments[0]){console.log("using URL")}
-		else{var suffix = msg.attachments[0].proxy_url;console.log("using FILE") }
-	 	
-		
-		var imgdir = "C:/gay/images/"; suffix = suffix.replace("<", "").replace(">", "")
-		
-		var ext = "." + suffix.split("")[suffix.split("").length - 3] + suffix.split("")[suffix.split("").length - 2] + suffix.split("")[suffix.split("").length - 1];
-		
+	{	console.log("Image Upload:")
+	 	if (!msg.attachments[0]){console.log("using URL")}
+	else
+	{var suffix = msg.attachments[0].proxy_url;console.log("using FILE") }
+	 
+	 
+		var imgdir = "C:/gay/";
+		suffix = suffix.replace("<", "").replace(">", "")
+		var ext = "." + suffix.split("")[suffix.split("").length - 3] + suffix.split("")[suffix.split("").length - 2] + suffix.split("")[suffix.split("").length - 1]
 		var filename = msg.author.id + ext;
-		
-		var child_process = require('child_process');
-		child_process.exec("bitsadmin /transfer n "+suffix+" "+imgdir+filename, function(error, stdout, stderr)
+		async function downloadImage()
 		{
-			if (error)
+			console.log("writing")
+			const url = suffix
+			const path = Path.resolve(imgdir, 'images', filename)
+			const writer = fs.createWriteStream(path)
+			console.log(url,path)
+			const response = await axios(
 			{
-				message = error
-				msg.reply(error)
-			}
-			else
-			{
-				message = stdout
-				msg.reply("Succesful upload!")
-				sharp(imgdir+filename)
-				.resize(280, 280)
-  				.toFile(imgdir+filename, (err, info) => { console.log("Done.") });
-			}
-			console.log(message)
-			
-		});
+				url,
+				method: 'GET',
+				responseType: 'stream'
+			})
+			response.data.pipe(writer)
+		  return new Promise((resolve, reject) => {
+		    writer.on('finish', resolve)
+		    writer.on('error', reject)
+		  })
+		}
+		downloadImage()
+		console.log("Upload finished.")
 	}
 })
 /*
