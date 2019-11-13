@@ -2543,12 +2543,14 @@ Commands.push(
 			response.data.pipe(writer)
 			return new Promise((resolve, reject) =>
 			{
+				console.log("write")
 				writer.on('error', reject)
 				writer.on('finish', resolve)
 			})
 		}
 		downloadImage()
-		msg.channel.uploadFile(fs.createReadStream(imgdir + filename), "upload" + ext);
+		msg.channel.uploadFile(imgdir + filename, null, "Upload: ");
+		console.log("run")
 	}
 })
 /*
