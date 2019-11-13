@@ -1,4 +1,4 @@
-const version = "Reborn 1.5.777"
+const version = "Reborn 1.6"
 try
 {
 	Config = require('./config.json')
@@ -2516,6 +2516,7 @@ Commands.push(
 		suffix = suffix.replace("<", "").replace(">", "")
 		var ext = "." + suffix.split("")[suffix.split("").length - 3] + suffix.split("")[suffix.split("").length - 2] + suffix.split("")[suffix.split("").length - 1]
 		var filename = msg.author.id + ext;
+	 	if(ext!=".jpg"||ext!=".png") {return msg.reply("Only links and files ending in png or jpg are supported.")}
 		async function downloadImage()
 		{
 			console.log("writing")
@@ -2531,7 +2532,11 @@ Commands.push(
 			})
 			response.data.pipe(writer)
 		  return new Promise((resolve, reject) => {
-		    writer.on('finish', resolve)
+		    writer.on('finish', resolve => {
+		    sharp(path).resize(280, 280).toFile(path, (err, info) => { CM(logchannel,err+"\n"+info)
+			if(err) {return}else {msg.channel.uploadFile(path);}
+									     })
+		    } )
 		    writer.on('error', reject)
 		  })
 		}
