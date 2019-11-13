@@ -1,4 +1,4 @@
-const version = "Reborn 1.4.5.5.3"
+const version = "Reborn 1.4.5.5.4"
 try
 {
 	Config = require('./config.json')
@@ -2495,43 +2495,29 @@ Commands.push(
 	level: 'master',
 	hidden: true,
 	fn: function(msg, suffix, bot)
-	{var imgdir="C:/gay/tempimg"
+	{var imgdir="C:/gay/"
 	var ext = "." + suffix.split("")[suffix.split("").length-3]+suffix.split("")[suffix.split("").length-2]+suffix.split("")[suffix.split("").length-1]
-		axios.get(suffix,
-			{
-				params:
-				{}
-			})
-			.then(function(response)
-			{
-				console.log(response);
-				var image = response.data;
-				fs.writeFileSync(imgdir+ext, image)
-				image = imgdir+ext
-				sharp(imgdir)
-					//.rotate()
-					.resize(200)
-					.then(data =>
-					{
-						//console.log(data)
-						fs.writeFileSync(imgdir+ext, data)
-						msg.channel.sendMessage("Done.")
-					})
-					.catch(err =>
-					{
-						console.log(err)
-					});
-			})
-			.catch(function(error)
-			{
-				msg.reply("An error occured.")
-				console.log(error);
-			})
-			.then(function()
-			{
-				msg.reply(suffix + "\n" + imgdir+ext)
-				// always executed
-			});
+	async function downloadImage () {  
+  	const url = suffix
+  	const path = Path.resolve(imgdir, 'images', 'tempimg'+ext)
+  	const writer = Fs.createWriteStream(path)
+ 	const response = await Axios({
+		url,
+		method: 'GET',
+		responseType: 'stream'
+		})
+
+  response.data.pipe(writer)
+
+  return new Promise((resolve, reject) => {
+    writer.on('finish', resolve)
+    writer.on('error', reject)
+  })
+}
+
+downloadImage()  
+	
+	
 	}
 })
 
