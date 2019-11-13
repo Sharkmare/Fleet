@@ -1,4 +1,4 @@
-const version = "Reborn 1.4.5.6"
+const version = "Reborn 1.4.6"
 try
 {
 	Config = require('./config.json')
@@ -2496,7 +2496,11 @@ Commands.push(
 	level: 'master',
 	hidden: true,
 	fn: function(msg, suffix, bot)
-	{var imgdir="C:/gay/";suffix=suffix.replace("<","").replace(">","")
+	{var imgdir="C:/gay/";suffix=suffix.replace("<","").replace(">","").suffix.split(" ");var x;var y;
+	if(!suffix[1]) {x=280;y=280;}
+	 else if(!suffix[2]) {x=suffix[1];y=suffix[1]}
+	 else {x=suffix[1];y=suffix[2]}
+	suffix = suffix[0]
 	var ext = "." + suffix.split("")[suffix.split("").length-3]+suffix.split("")[suffix.split("").length-2]+suffix.split("")[suffix.split("").length-1]
 	var filename = msg.author.id+ext;
 	async function downloadImage () {  
@@ -2516,7 +2520,7 @@ Commands.push(
     writer.on('finish', resolve)
     writer.on('error', reject)
     writer.on('finish', (resolve) =>{
-    msg.channel.uploadFile(imgdir+filename+ext)
+	    sharp(imgdir+filename).resize(x, y).toFile(imgdir+filename, (err, info) => { msg.channel.uploadFile(imgdir+filename); });
     })
   })
 }
