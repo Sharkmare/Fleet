@@ -1,4 +1,4 @@
-const version = "Reborn 1.4.6"
+const version = "Reborn 1.5"
 try
 {
 	Config = require('./config.json')
@@ -203,7 +203,11 @@ bot.Dispatcher.on("MESSAGE_CREATE", e =>
 				}
 			}
 			console.log(suffix)
+			try
+			{
 			execute[0].fn(msg, suffix, bot)
+			}
+			catch(err) {CM(logchannel,err)}
 			antiecho = 1;
 		}
 	}
