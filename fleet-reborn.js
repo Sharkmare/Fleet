@@ -1,4 +1,4 @@
-const version = "Reborn 1.4.5.5"
+const version = "Reborn 1.4.5.5.1"
 try
 {
 	Config = require('./config.json')
@@ -2510,7 +2510,9 @@ Commands.push(
 					.toBuffer()
 					.then(data =>
 					{
-						fs.writeFileSync("tempimg", data)
+						console.log("Saving")
+						fs.writeFileSync("C:/gay/tempimg", data)
+						msg.channel.sendMessage("Done.")
 					})
 					.catch(err =>
 					{
