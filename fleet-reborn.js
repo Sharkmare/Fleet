@@ -1,4 +1,4 @@
-const version = "Reborn 1.6.2"
+const version = "Reborn 1.6.3"
 try
 {
 	Config = require('./config.json')
@@ -2534,7 +2534,9 @@ Commands.push(
 			response.data.pipe(writer)
 		  return new Promise((resolve, reject) => {
 		    writer.on('finish', resolve => {
-		    sharp(path).resize(280, 280).toFile(path+"output", (err, info) => { CM(logchannel,err+"\n"+info)
+		    sharp(path)  .resize(200, {
+    fit: 'fill'
+  }).toFile(path+"output", (err, info) => { CM(logchannel,err+"\n"+info)
 			if(err) {return}else {msg.channel.uploadFile(path+"output");}
 									     })
 		    } )
