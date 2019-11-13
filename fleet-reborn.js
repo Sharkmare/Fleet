@@ -2529,6 +2529,9 @@ Commands.push(
 			{
 				message = stdout
 				msg.reply("Succesful upload!")
+				sharp(imgdir+filename)
+				.resize(280, 280)
+  				.toFile(imgdir+filename, (err, info) => { console.log(Done.) });
 			}
 			console.log(message)
 			
