@@ -2501,7 +2501,7 @@ Commands.push(
 	async function downloadImage () {  
   	const url = suffix
   	const path = Path.resolve(imgdir, 'images', 'tempimg'+ext)
-  	const writer = Fs.createWriteStream(path)
+  	const writer = fs.createWriteStream(path)
  	const response = await Axios({
 		url,
 		method: 'GET',
