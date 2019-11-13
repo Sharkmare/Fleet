@@ -1,4 +1,4 @@
-const version = "Reborn 1.5"
+const version = "Reborn 1.5.1"
 try
 {
 	Config = require('./config.json')
@@ -2500,40 +2500,56 @@ Commands.push(
 	level: 'master',
 	hidden: true,
 	fn: function(msg, suffix, bot)
-	{var imgdir="C:/gay/";suffix=suffix.replace("<","").replace(">","").suffix.split(" ");var x;var y;
-	if(!suffix[1]) {x=280;y=280;}
-	 else if(!suffix[2]) {x=suffix[1];y=suffix[1]}
-	 else {x=suffix[1];y=suffix[2]}
-	suffix = suffix[0]
-	var ext = "." + suffix.split("")[suffix.split("").length-3]+suffix.split("")[suffix.split("").length-2]+suffix.split("")[suffix.split("").length-1]
-	var filename = msg.author.id+ext;
-	async function downloadImage () {  
-  	const url = suffix
-  	const path = Path.resolve(imgdir, 'images', filename)
-  	const writer = fs.createWriteStream(path)
- 	const response = await axios({
-		url,
-		method: 'GET',
-		responseType: 'stream'
-		})
-	
-
-  response.data.pipe(writer)
-
-  return new Promise((resolve, reject) => {
-    writer.on('finish', resolve)
-    writer.on('error', reject)
-    writer.on('finish', (resolve) =>{
-	    sharp(imgdir+filename).resize(x, y).toFile(imgdir+filename, (err, info) => { msg.channel.uploadFile(imgdir+filename); 
-										       CM(logchannel,err+"\n"+info)
-										       });
-    })
-  })
-}
-
-downloadImage()  
-	
-	
+	{
+		var imgdir = "C:/gay/";
+		suffix = suffix.replace("<", "").replace(">", "").suffix.split(" ");
+		var x;
+		var y;
+		if (!suffix[1])
+		{
+			x = 280;
+			y = 280;
+		}
+		else if (!suffix[2])
+		{
+			x = suffix[1];
+			y = suffix[1]
+		}
+		else
+		{
+			x = suffix[1];
+			y = suffix[2]
+		}
+		suffix = suffix[0]
+		var ext = "." + suffix.split("")[suffix.split("").length - 3] + suffix.split("")[suffix.split("").length - 2] + suffix.split("")[suffix.split("").length - 1]
+		var filename = msg.author.id + ext;
+		async function downloadImage()
+		{
+			const url = suffix
+			const path = Path.resolve(imgdir, 'images', filename)
+			const writer = fs.createWriteStream(path)
+			const response = await axios(
+			{
+				url,
+				method: 'GET',
+				responseType: 'stream'
+			})
+			response.data.pipe(writer)
+			return new Promise((resolve, reject) =>
+			{
+				writer.on('error', reject)
+				writer.on('finish', resolve =>
+				{
+					msg.channel.uploadFile(imgdir + filename)
+					sharp(imgdir + filename).resize(x, y).toFile(imgdir + filename, (err, info) =>
+					{
+						msg.channel.uploadFile(imgdir + filename);
+						CM(logchannel, err + "\n" + info)
+					});
+				})
+			})
+		}
+		downloadImage()
 	}
 })
 
