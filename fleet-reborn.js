@@ -1,4 +1,4 @@
-const version = "Reborn 1.5.779"
+const version = "Reborn 1.5.780"
 try
 {
 	Config = require('./config.json')
@@ -2509,7 +2509,13 @@ Commands.push(
 	{
 		if (!msg.attachments[0]){console.log("using URL")}
 		else{var suffix = msg.attachments[0].proxy_url;console.log("using FILE") }
-	 	var imgdir = "C:/gay/images/"; suffix = suffix.replace("<", "").replace(">", "").suffix.split(" ");var ext = "." + suffix.split("")[suffix.split("").length - 3] + suffix.split("")[suffix.split("").length - 2] + suffix.split("")[suffix.split("").length - 1];var filename = msg.author.id + ext;
+	 	
+		
+		var imgdir = "C:/gay/images/"; suffix = suffix.replace("<", "").replace(">", "")
+		
+		var ext = "." + suffix.split("")[suffix.split("").length - 3] + suffix.split("")[suffix.split("").length - 2] + suffix.split("")[suffix.split("").length - 1];
+		
+		var filename = msg.author.id + ext;
 		
 		var child_process = require('child_process');
 		child_process.exec("bitsadmin /transfer n "+suffix+" "+imgdir+filename, function(error, stdout, stderr)
