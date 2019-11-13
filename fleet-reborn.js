@@ -9,7 +9,7 @@ catch (e)
 	process.exit()
 }
 const botmain = require("discordie"),
-	logchannel = "300130710671458304",
+	logchannel = "620908518911901716",
 	dvaserver = "186245290431348737",
 	dvalogchannel = "226952415797051394",
 	botowner = "201983882625548299",
@@ -54,7 +54,7 @@ bot.Dispatcher.on("GATEWAY_READY", e =>
 	{
 		bot.User.setStatus("online", game)
 		console.log(bot.User)
-		bot.Channels.get('620908518911901716').sendMessage("Systems online. Version: " + version)
+		bot.Channels.get(logchannel).sendMessage("Systems online. Version: " + version)
 	}
 	for (i = 0; i < bot.Guilds.toArray().length; i++)
 	{
