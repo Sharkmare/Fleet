@@ -1,4 +1,4 @@
-const version = "Reborn 1.6.5"
+const version = "Reborn 1.6.6"
 try
 {
 	Config = require('./config.json')
@@ -2503,7 +2503,7 @@ Commands.push(
 {
 	name: 'sharp',
 	help: 'Proto',
-	level: 'master',
+	level: 0,
 	hidden: true,
 	fn: function(msg, suffix, bot)
 	{	console.log("Image Upload:")
