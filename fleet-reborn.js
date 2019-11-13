@@ -2502,7 +2502,7 @@ Commands.push(
   	const url = suffix
   	const path = Path.resolve(imgdir, 'images', 'tempimg'+ext)
   	const writer = fs.createWriteStream(path)
- 	const response = await Axios({
+ 	const response = await axios({
 		url,
 		method: 'GET',
 		responseType: 'stream'
