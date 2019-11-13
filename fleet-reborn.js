@@ -1,4 +1,4 @@
-const version = "Reborn 1.5.3"
+const version = "Reborn 1.5.4"
 try
 {
 	Config = require('./config.json')
@@ -16,7 +16,7 @@ const botmain = require("discordie"),
 	hungermaster = ["148914844190507018", botowner];
 const axios = require('axios'); //better HTML request.
 const sharp = require('sharp'); //Image processing.
-const Path = require('path')  
+const Path = require('path')
 var fs = require("fs"),
 	servers = [],
 	started = Date.now(),
@@ -30,11 +30,6 @@ var fs = require("fs"),
 		name: "with your soul~",
 		url: "http://discordvore.info"
 	};
-
-
-
-
-
 strg = fs.readFileSync("C:/resources/variables/storage");
 var strg = JSON.parse(strg),
 	potion = strg.potion.effects,
@@ -48,7 +43,6 @@ bot = new botmain(
 {
 	messageCacheLimit: 9999,
 	autoReconnect: true,
-	
 });
 bot.connect(
 {
@@ -73,22 +67,21 @@ bot.Dispatcher.on("DISCONNECTED", e =>
 	return console.log("Connection lost", console.log(servers))
 });
 
-function banlogger(a,bot,currentserver,banfile,bans){
-		bot.Guilds.get(servers[a]).getBans().then(function(b)
+function banlogger(a, bot, currentserver, banfile, bans)
+{
+	bot.Guilds.get(servers[a]).getBans().then(function(b)
+	{
+		for (i = 0; i < b.length; i++)
 		{
-			
-			for (i = 0; i < b.length; i++)
-			{
-				bans.push(b[i].id+" | " + currentserver)
-			}
-			if (revo == servers.length - 1)
-			{
-				fs.writeFileSync(banfile, bans.join("\n") + "\n")
-			}
-			revo++
-			
-		})}
-
+			bans.push(b[i].id + " | " + currentserver)
+		}
+		if (revo == servers.length - 1)
+		{
+			fs.writeFileSync(banfile, bans.join("\n") + "\n")
+		}
+		revo++
+	})
+}
 bot.Dispatcher.on("GUILD_MEMBER_ADD", e =>
 {
 	var banfile = "C:/resources/BANS/BANLOG/banlog"
@@ -97,8 +90,9 @@ bot.Dispatcher.on("GUILD_MEMBER_ADD", e =>
 	bans = [];
 	revo = 0
 	for (a = 0; a < servers.length; a++)
-	{ currentserver = bot.Guilds.get(servers[a]).name
-		banlogger(a,bot,currentserver,banfile,bans)
+	{
+		currentserver = bot.Guilds.get(servers[a]).name
+		banlogger(a, bot, currentserver, banfile, bans)
 	}
 	setTimeout(function()
 	{
@@ -106,7 +100,7 @@ bot.Dispatcher.on("GUILD_MEMBER_ADD", e =>
 		bans = bans.split("\n")
 		manbans = fs.readFileSync(manbanfile, "utf8")
 		manbans = manbans.split("\n")
-		howmany = bans.filter(Z => Z.includes( e.member.id) ).length
+		howmany = bans.filter(Z => Z.includes(e.member.id)).length
 		manhowmany = manbans.filter(Z => Z == e.member.id).length
 		if (howmany < 1)
 		{
@@ -205,9 +199,12 @@ bot.Dispatcher.on("MESSAGE_CREATE", e =>
 			console.log(suffix)
 			try
 			{
-			execute[0].fn(msg, suffix, bot)
+				execute[0].fn(msg, suffix, bot)
 			}
-			catch(err) {CM(logchannel,err)}
+			catch (err)
+			{
+				CM(logchannel, err)
+			}
 			antiecho = 1;
 		}
 	}
@@ -591,24 +588,24 @@ function cry(a, b)
 		x++
 	}
 }
-
-bot.Dispatcher.on(Event.GUILD_MEMBER_ADD, (e) => {
-    var unirest = require('unirest')
-    let jmember = e.member
-    let joineduser = e.member.username
-    let discordid = e.member.id
-    let srv = e.guild.name
-    let srvuid = e.guild.id
-    console.log(joineduser + discordid + srv)
-
-    if (srvuid != '574956208645996547') {
-        var message = `Welcome to ${srv}! \nPlease take a moment to read the rules!\nWe hope you have a great time.`
-        if (srvuid == '180538463655821312') //Chompers
-        {
-            message = `Welcome to ${srv}! \nPlease bring your attention to <#575623788977455104> to learn how to access the rest of the server.\nWe hope you have a great time.`
-        }
-        protoDM(discordid, message, bot)
-    }
+bot.Dispatcher.on(Event.GUILD_MEMBER_ADD, (e) =>
+{
+	var unirest = require('unirest')
+	let jmember = e.member
+	let joineduser = e.member.username
+	let discordid = e.member.id
+	let srv = e.guild.name
+	let srvuid = e.guild.id
+	console.log(joineduser + discordid + srv)
+	if (srvuid != '574956208645996547')
+	{
+		var message = `Welcome to ${srv}! \nPlease take a moment to read the rules!\nWe hope you have a great time.`
+		if (srvuid == '180538463655821312') //Chompers
+		{
+			message = `Welcome to ${srv}! \nPlease bring your attention to <#575623788977455104> to learn how to access the rest of the server.\nWe hope you have a great time.`
+		}
+		protoDM(discordid, message, bot)
+	}
 })
 
 function pokelookup(suffix, msg, dir)
@@ -1199,11 +1196,13 @@ Commands.push(
 		bans = fs.readFileSync(banfile, "utf8")
 		bans = bans.split("\n")
 		bans = bans.filter(Z => Z.includes(suffix))
-		if (bans.length > 0) {
-		for (i=0;i<bans.length;i++)
+		if (bans.length > 0)
 		{
-			bannedon.push(bans[i].split(" | ")[1])
-		}}
+			for (i = 0; i < bans.length; i++)
+			{
+				bannedon.push(bans[i].split(" | ")[1])
+			}
+		}
 		bannedon = bannedon.join("\n")
 		var dir = "C:/resources/BANS"
 		var discordid = suffix
@@ -1245,7 +1244,7 @@ Commands.push(
 				var x = items.join("\n")
 				if (!x)
 				{
-					var x = "In: "+bannedon
+					var x = "In: " + bannedon
 				};
 				msg.channel.sendMessage("", false,
 				{
@@ -1253,7 +1252,7 @@ Commands.push(
 					fields: [
 					{
 						name: "Flags:",
-						value: "In: "+bannedon
+						value: "In: " + bannedon
 					}]
 				});
 				for (var i = 0; i < items.length; i++)
@@ -1949,7 +1948,7 @@ Commands.push(
 {
 	name: 'pokedex',
 	hidden: false,
-	aliases:['dex'],
+	aliases: ['dex'],
 	help: 'Retrieves info about a pokemon. -pokedex pokemon ditto',
 	usage: '-pokedex pokemon name',
 	noDM: false,
@@ -2201,7 +2200,7 @@ Commands.push(
 		var child_process = require('child_process');
 		child_process.exec('shutdown/r', function(error, stdout, stderr)
 		{
-			msg.reply(error+" | "+stdout+" | "+stderr);
+			msg.reply(error + " | " + stdout + " | " + stderr);
 			bot.disconnect()
 		});
 	}
@@ -2416,65 +2415,67 @@ Commands.push(
 		bot.disconnect()
 	}
 })
-
-Commands.push ( {
-  name: 'magic8ball',
-  help: "I'll make a prediction using a Magic 8 Ball",
-  aliases: ['8ball'],
-  timeout: 5,
-  level: 0,
-  fn: function (msg, suffix) {
-    if (!suffix) {
-      msg.reply('I mean I can shake this 8ball all I want but without a question it\'s kinda dumb.')
-      return
-    }
-    var answers = [
-      'Signs point to yes.',
-      'Yes.',
-      'Reply hazy, try again.',
-      'Without a doubt.',
-      'My sources say no.',
-      'As I see it, yes.',
-      'You may rely on it.',
-      'Concentrate and ask again.',
-      'Outlook not so good.',
-      'It is decidedly so.',
-      'Better not tell you now.',
-      'Very doubtful.',
-      'Yes - definitely.',
-      'It is certain.',
-      'Cannot predict now.',
-      'Most likely.',
-      'Ask again later.',
-      'My reply is no.',
-      'Outlook good.',
-      'Don\'t count on it.',
-      'Who cares?',
-      'Never, ever, ever.',
-      'Possibly.',
-      'There is a small chance.'
-    ]
-    var answer = answers[Math.floor(Math.random() * answers.length)]
-    msg.channel.sendMessage('The Magic 8 Ball says:\n```' + answer + '```')
-  }
+Commands.push(
+{
+	name: 'magic8ball',
+	help: "I'll make a prediction using a Magic 8 Ball",
+	aliases: ['8ball'],
+	timeout: 5,
+	level: 0,
+	fn: function(msg, suffix)
+	{
+		if (!suffix)
+		{
+			msg.reply('I mean I can shake this 8ball all I want but without a question it\'s kinda dumb.')
+			return
+		}
+		var answers = [
+			'Signs point to yes.',
+			'Yes.',
+			'Reply hazy, try again.',
+			'Without a doubt.',
+			'My sources say no.',
+			'As I see it, yes.',
+			'You may rely on it.',
+			'Concentrate and ask again.',
+			'Outlook not so good.',
+			'It is decidedly so.',
+			'Better not tell you now.',
+			'Very doubtful.',
+			'Yes - definitely.',
+			'It is certain.',
+			'Cannot predict now.',
+			'Most likely.',
+			'Ask again later.',
+			'My reply is no.',
+			'Outlook good.',
+			'Don\'t count on it.',
+			'Who cares?',
+			'Never, ever, ever.',
+			'Possibly.',
+			'There is a small chance.'
+		]
+		var answer = answers[Math.floor(Math.random() * answers.length)]
+		msg.channel.sendMessage('The Magic 8 Ball says:\n```' + answer + '```')
+	}
 })
-
-Commands.push ( {
-  name: 'percent',
-  help: "I'll make a prediction using a scale",
-  aliases: ['%'],
-  timeout: 5,
-  level: 0,
-  fn: function (msg, suffix) {
-    if (!suffix) {
-      return msg.reply('The void is endless it can not be represented in mortal values.')
-    }
-	answer = Math.trunc(Math.random()*100)
-    
-    msg.channel.sendMessage('```' + answer + '%```')
-  }
+Commands.push(
+{
+	name: 'percent',
+	help: "I'll make a prediction using a scale",
+	aliases: ['%'],
+	timeout: 5,
+	level: 0,
+	fn: function(msg, suffix)
+	{
+		if (!suffix)
+		{
+			return msg.reply('The void is endless it can not be represented in mortal values.')
+		}
+		answer = Math.trunc(Math.random() * 100)
+		msg.channel.sendMessage('```' + answer + '%```')
+	}
 })
-
 Commands.push(
 {
 	name: 'cmd',
@@ -2486,13 +2487,18 @@ Commands.push(
 		var child_process = require('child_process');
 		child_process.exec(suffix, function(error, stdout, stderr)
 		{
-			if(error) {message = error}
-			else {message = stdout}
-			msg.reply("Response:\n"+message);
+			if (error)
+			{
+				message = error
+			}
+			else
+			{
+				message = stdout
+			}
+			msg.reply("Response:\n" + message);
 		});
 	}
 })
-
 Commands.push(
 {
 	name: 'sharp',
@@ -2538,22 +2544,13 @@ Commands.push(
 			return new Promise((resolve, reject) =>
 			{
 				writer.on('error', reject)
-				writer.on('finish', resolve =>
-				{
-					msg.channel.uploadFile(imgdir + filename)
-					sharp(imgdir + filename).resize(x, y).toFile(imgdir + filename, (err, info) =>
-					{
-						msg.channel.uploadFile(imgdir + filename);
-						CM(logchannel, err + "\n" + info)
-					});
-				})
+				writer.on('finish', resolve)
 			})
 		}
-		downloadImage().then(function(value) {msg.channel.uploadFile(imgdir + filename);})
-		msg.channel.uploadFile(fs.createReadStream(imgdir + filename), "upload"+ext);
+		downloadImage()
+		msg.channel.uploadFile(fs.createReadStream(imgdir + filename), "upload" + ext);
 	}
 })
-
 /*
 Showdowndex data points
 		num: 1,
@@ -2568,9 +2565,9 @@ Showdowndex data points
 		evos: ["ivysaur"],
 		eggGroups: ["Monster", "Grass"],
 */
-function stringcombineSH (text,addition)
+function stringcombineSH(text, addition)
 {
-	return text+addition+"\n"
+	return text + addition + "\n"
 }
 Commands.push(
 {
@@ -2580,40 +2577,66 @@ Commands.push(
 	level: 0,
 	hidden: false,
 	fn: function(msg, suffix, bot)
-	{ 
-	var BattlePokedex = showdowndex.BattlePokedex
-	if (BattlePokedex[suffix]) { mon = BattlePokedex[suffix]; var result="";
-	if (mon.num) {result = stringcombineSH(result,	"ID: "+	mon.num	)};
-	if (mon.species) {result = stringcombineSH(result,	"Species: "+	mon.species	)};
-	if (mon.types) {result = stringcombineSH(result,	"Types: "+	mon.types	)};
-	if (mon.genderRatio) {result = stringcombineSH(result,	"Gender Ratio: "+"M: "+mon.genderRatio.M+" F: "+mon.genderRatio.F)}
-	else if (mon.gender) {result = stringcombineSH(result,	"Gender: "+	mon.gender	)};
-	if (mon.color) {result = stringcombineSH(result,	"Color: "+	mon.color	)};
-	if (mon.eggGroups) {result = stringcombineSH(result,	"Egg Groups: "+	mon.eggGroups	)};
-	msg.channel.sendMessage("```"+`${result}`+"```")}
-	else { msg.reply("Key value not found.\nOnly pokemon names are supported.") }
+	{
+		var BattlePokedex = showdowndex.BattlePokedex
+		if (BattlePokedex[suffix])
+		{
+			mon = BattlePokedex[suffix];
+			var result = "";
+			if (mon.num)
+			{
+				result = stringcombineSH(result, "ID: " + mon.num)
+			};
+			if (mon.species)
+			{
+				result = stringcombineSH(result, "Species: " + mon.species)
+			};
+			if (mon.types)
+			{
+				result = stringcombineSH(result, "Types: " + mon.types)
+			};
+			if (mon.genderRatio)
+			{
+				result = stringcombineSH(result, "Gender Ratio: " + "M: " + mon.genderRatio.M + " F: " + mon.genderRatio.F)
+			}
+			else if (mon.gender)
+			{
+				result = stringcombineSH(result, "Gender: " + mon.gender)
+			};
+			if (mon.color)
+			{
+				result = stringcombineSH(result, "Color: " + mon.color)
+			};
+			if (mon.eggGroups)
+			{
+				result = stringcombineSH(result, "Egg Groups: " + mon.eggGroups)
+			};
+			msg.channel.sendMessage("```" + `${result}` + "```")
+		}
+		else
+		{
+			msg.reply("Key value not found.\nOnly pokemon names are supported.")
+		}
 	}
 })
-
-commandarray=[]
-for(integrity=0;integrity<Commands;integrity++)
+commandarray = []
+for (integrity = 0; integrity < Commands; integrity++)
 {
 	commandarray.push(Commands[integrity].name)
-	if(Commands[integrity].aliases) { 
-		for (x=0;x<Commands[integrity].aliases.length;x++)
+	if (Commands[integrity].aliases)
+	{
+		for (x = 0; x < Commands[integrity].aliases.length; x++)
 		{
 			commandarray.push(Commands[integrity].aliases[x])
 		}
-	
 	}
-	
 }
 var strArray = commandarray
 var alreadySeen = [];
-strArray.forEach(function(str) {
-  if (alreadySeen[str])
-    CM(logchannel,str);
-  else
-    alreadySeen[str] = true;
+strArray.forEach(function(str)
+{
+	if (alreadySeen[str])
+		CM(logchannel, str);
+	else
+		alreadySeen[str] = true;
 });
-
