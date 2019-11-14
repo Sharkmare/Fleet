@@ -1,4 +1,4 @@
-const version = "Reborn 1.6.7"
+const version = "Reborn 1.6.9"
 try
 {
 	Config = require('./config.json')
@@ -2515,7 +2515,7 @@ Commands.push(
 	{	console.log("Image Upload:")
 	 
 	 //Dimension Code
-	 var x; var y;
+	 let x; let y;
 	 switch(suffix.split(" ").length)
 	 {
 		 case 1:
@@ -2531,15 +2531,15 @@ Commands.push(
 	//File upload handling
 	if (!msg.attachments[0]){console.log("using URL")}
 	else
-	{var suffix = msg.attachments[0].proxy_url;console.log("using FILE");x=280;y=280; }
+	{let suffix = msg.attachments[0].proxy_url;console.log("using FILE");x=280;y=280; }
 	 x=parseInt(x);y=parseInt(y);
 	 //Validation of dimensions
 	if(!isNum(x) || !isNum(y) || y<1 || x<1 || x>2000 || y>2000) {return msg.reply("Error invalid sizes!\nSize can not be 0 or bigger than 2000")}
 	 
-		var imgdir = "C:/gay/";
+		let imgdir = "C:/gay/";
 		suffix = suffix.replace("<", "").replace(">", "")
-		var ext = "." + suffix.split("")[suffix.split("").length - 3] + suffix.split("")[suffix.split("").length - 2] + suffix.split("")[suffix.split("").length - 1]
-		var filename = msg.author.id + ext;
+		let ext = "." + suffix.split("")[suffix.split("").length - 3] + suffix.split("")[suffix.split("").length - 2] + suffix.split("")[suffix.split("").length - 1]
+		let filename = msg.author.id + ext;
 	 	//Validation of file ending. (Technically we dont need one but this is to try and make sure people give raw links)
 	 	if(ext==".jpg"||ext==".png") {}
 	 	else {return msg.reply("Only links and files ending in png or jpg are supported. Attempted file ext: "+ext)}
@@ -2547,9 +2547,9 @@ Commands.push(
 	 	async function downloadImage()
 		{
 			console.log("writing")
-			const url = suffix
-			const path = Path.resolve(imgdir, 'images', filename)
-			const writer = fs.createWriteStream(path)
+			let url = suffix
+			let path = Path.resolve(imgdir, 'images', filename)
+			let writer = fs.createWriteStream(path)
 			console.log(url,path)
 			const response = await axios(
 			{
@@ -2560,7 +2560,7 @@ Commands.push(
 			response.data.pipe(writer)
 		  return new Promise((resolve, reject) => {
 		    writer.on('finish', resolve => {
-		    sharp(path)  .resize(x,y, {
+		    sharp(path).resize(x,y, {
     fit: 'fill'
   }).toFile(path+"output", (err, info) => { if(err) {CM(logchannel,err)}
 			if(err) {return}else {msg.channel.uploadFile(path+"output");}
