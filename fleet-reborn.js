@@ -1,4 +1,4 @@
-const version = "Reborn 1.7.7"
+const version = "Reborn 1.7.8"
 try
 {
 	Config = require('./config.json')
@@ -1540,7 +1540,7 @@ Commands.push(
 			return
 		if (msg.guild.id == 180538463655821312) //Chompers
 		{
-			msg.reply("☑")
+			msg.reply("your request has been received. A mod will be by to set your roles shortly!")
 			var CID = "180860061998907392"
 			let embed = {
 				author:
@@ -1602,8 +1602,8 @@ Commands.push(
 			return
 		if (msg.guild.id == 180538463655821312)
 		{
-			msg.reply("☑")
-			var CID = "180860061998907392"
+			msg.reply("your request has been received. A mod will be by to set your roles shortly!")
+			var CID = "180860061998907392" //chompers
 			let embed = {
 				author:
 				{
