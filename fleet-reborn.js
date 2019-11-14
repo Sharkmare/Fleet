@@ -2508,9 +2508,9 @@ function isNum(value)
 Commands.push(
 {
 	name: 'sharp',
-	help: 'Proto',
+	help: 'Image resizing, \"-sharp link\"; or \"-sharp link width height\". If you only define width height will be the same as width.',
 	level: 0,
-	hidden: true,
+	hidden: false,
 	fn: function(msg, suffix, bot)
 	{	console.log("Image Upload:")
 	 
@@ -2533,15 +2533,18 @@ Commands.push(
 	else
 	{var suffix = msg.attachments[0].proxy_url;console.log("using FILE");x=280;y=280; }
 	 x=parseInt(x);y=parseInt(y);
+	 //Validation of dimensions
 	if(!isNum(x) || !isNum(y) || y<1 || x<1 || x>2000 || y>2000) {return msg.reply("Error invalid sizes!\nSize can not be 0 or bigger than 2000")}
 	 
 		var imgdir = "C:/gay/";
 		suffix = suffix.replace("<", "").replace(">", "")
 		var ext = "." + suffix.split("")[suffix.split("").length - 3] + suffix.split("")[suffix.split("").length - 2] + suffix.split("")[suffix.split("").length - 1]
 		var filename = msg.author.id + ext;
+	 	//Validation of file ending. (Technically we dont need one but this is to try and make sure people give raw links)
 	 	if(ext==".jpg"||ext==".png") {}
 	 	else {return msg.reply("Only links and files ending in png or jpg are supported. Attempted file ext: "+ext)}
-		async function downloadImage()
+		//Start Stream/Axios Async
+	 	async function downloadImage()
 		{
 			console.log("writing")
 			const url = suffix
