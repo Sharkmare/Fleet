@@ -1,4 +1,4 @@
-const version = "Reborn 1.7.3.2"
+const version = "Reborn 1.7.3.3"
 try
 {
 	Config = require('./config.json')
@@ -2669,7 +2669,10 @@ Commands.push(
 	{if(!suffix) {return msg.reply("Error, no arugments given")}
 	try
 	{
-		msg.channel.sendMessage( JSON.stringify(pokeRand.pickRandomPokemon(JSON.parse(suffix))) )
+		pokeRand.pickRandomPokemon(JSON.parse(suffix)).then(function(b)
+	{
+		msg.reply(b)
+		})
 	}
 	catch (e)
 	{
