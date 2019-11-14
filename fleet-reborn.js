@@ -129,6 +129,9 @@ function CM(channel, message)
 {
 	bot.Channels.get(channel).sendMessage(message)
 }
+
+bot.log = CM;bot.dm = protoDM;
+
 bot.Dispatcher.on("MESSAGE_CREATE", e =>
 {
 	var antiecho;
