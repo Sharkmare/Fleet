@@ -1,4 +1,4 @@
-const version = "Reborn 1.6.9"
+const version = "Reborn 1.7"
 try
 {
 	Config = require('./config.json')
@@ -2513,6 +2513,7 @@ Commands.push(
 	hidden: false,
 	fn: function(msg, suffix, bot)
 	{	console.log("Image Upload:")
+	 let uti=Date.now()
 	 
 	 //Dimension Code
 	 let x; let y;
@@ -2562,8 +2563,8 @@ Commands.push(
 		    writer.on('finish', resolve => {
 		    sharp(path).resize(x,y, {
     fit: 'fill'
-  }).toFile(path+"output", (err, info) => { if(err) {CM(logchannel,err)}
-			if(err) {return}else {msg.channel.uploadFile(path+"output");}
+  }).toFile(path+"output"+uti, (err, info) => { if(err) {CM(logchannel,err)}
+			if(err) {return}else {msg.channel.uploadFile(path+"output"+uti);}
 									     })
 		    } )
 		    writer.on('error', reject)
