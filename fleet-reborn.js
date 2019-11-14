@@ -1,4 +1,4 @@
-const version = "Reborn 1.7.4"
+const version = "Reborn 1.7.5"
 try
 {
 	Config = require('./config.json')
@@ -2660,10 +2660,10 @@ Commands.push(
 
 Commands.push(
 {
-	name: 'ascii',
-	help: 'Image to text.',
+	name: 'overlay',
+	help: 'Image to image.',
 	level: 'master',
-	hidden: false,
+	hidden: true,
 	fn: function(msg, suffix, bot)
 	{	console.log("Image Upload:")
 	 let uti=Date.now()
@@ -2714,13 +2714,12 @@ Commands.push(
 			response.data.pipe(writer)
 		  return new Promise((resolve, reject) => {
 		    writer.on('finish', resolve => {
-			var Ascii = require('ascii')
-			var pic = new Ascii(path)
-			pic.convert(function(err, result) {
-				if(result.split("").length<2000) {msg.channel.sendMessage(result)}
-				else {"Result is bigger than 2k characters."}
-			});
-			    
+			    		    sharp(path).resize(x,y, {fit: 'fill'
+  }).composite([{ input: 'C:/gay/ZigZagGoon.png'}])
+.toFile(path+"output"+uti, (err, info) => { if(err) {CM(logchannel,err)}
+			if(err) {return}else {msg.channel.uploadFile(path+"output"+uti);}
+									     })
+			
 		    } )
 		    writer.on('error', reject)
 		  })
