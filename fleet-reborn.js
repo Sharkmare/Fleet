@@ -1,4 +1,4 @@
-const version = "Reborn 1.7.5"
+const version = "Reborn 1.7.6"
 try
 {
 	Config = require('./config.json')
@@ -2715,7 +2715,7 @@ Commands.push(
 		  return new Promise((resolve, reject) => {
 		    writer.on('finish', resolve => {
 			    		    sharp(path).resize(x,y, {fit: 'fill'
-  }).composite([{ input: 'C:/gay/ZigZagGoon.png'}])
+  }).composite([{ input: 'C:/gay/overlay.png'}])
 .toFile(path+"output"+uti, (err, info) => { if(err) {CM(logchannel,err)}
 			if(err) {return}else {msg.channel.uploadFile(path+"output"+uti);}
 									     })
