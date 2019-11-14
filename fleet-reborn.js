@@ -2499,6 +2499,12 @@ Commands.push(
 		});
 	}
 })
+
+function isNum(value)
+{
+	return "number"==typeof value&&!isNaN(value);
+}
+
 Commands.push(
 {
 	name: 'sharp',
@@ -2507,10 +2513,28 @@ Commands.push(
 	hidden: true,
 	fn: function(msg, suffix, bot)
 	{	console.log("Image Upload:")
-	 	if (!msg.attachments[0]){console.log("using URL")}
-	else
-	{var suffix = msg.attachments[0].proxy_url;console.log("using FILE") }
 	 
+	 //Dimension Code
+	 var x; var y;
+	 switch(suffix.split(" ").length)
+	 {
+		 case 1:
+			 x=280;y=280;
+			 break;
+		 case 2:
+			 x= suffix.split(" ")[1];y= suffix.split(" ")[1]
+			 break;
+		 case 3:
+			 x= suffix.split(" ")[1];y= suffix.split(" ")[2]
+			 break;
+	 }suffix = suffix.split(" ")[0]
+	//File upload handling
+	if (!msg.attachments[0]){console.log("using URL")}
+	else
+	{var suffix = msg.attachments[0].proxy_url;console.log("using FILE");x=280;y=280; }
+	 x=parseInt(x);y=parseInt(y);
+			 if(!isNum(x)) {return msg.reply("Error x is not a number!")}
+			else if(!isNum(y)) {return msg.reply("Error y is not a number!")}
 	 
 		var imgdir = "C:/gay/";
 		suffix = suffix.replace("<", "").replace(">", "")
@@ -2534,7 +2558,7 @@ Commands.push(
 			response.data.pipe(writer)
 		  return new Promise((resolve, reject) => {
 		    writer.on('finish', resolve => {
-		    sharp(path)  .resize(280,280, {
+		    sharp(path)  .resize(x,y, {
     fit: 'fill'
   }).toFile(path+"output", (err, info) => { if(err) {CM(logchannel,err)}
 			if(err) {return}else {msg.channel.uploadFile(path+"output");}
@@ -2547,6 +2571,7 @@ Commands.push(
 		console.log("Upload finished.")
 	}
 })
+
 /*
 Showdowndex data points
 		num: 1,
