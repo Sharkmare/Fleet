@@ -1,4 +1,4 @@
-const version = "Reborn 1.7.3"
+const version = "Reborn 1.7.3.1"
 try
 {
 	Config = require('./config.json')
@@ -2660,9 +2660,9 @@ Commands.push(
 
 Commands.push(
 {
-	name: 'showdowndex',
-	aliases: ['sdex'],
-	help: 'Showdown dex mirror. -sdex name',
+	name: 'randompoke',
+	aliases: ['rpoke'],
+	help: 'Outputs random pokemon',
 	level: 0,
 	hidden: false,
 	fn: function(msg, suffix, bot)
