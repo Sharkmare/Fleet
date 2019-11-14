@@ -1,4 +1,4 @@
-const version = "Reborn 1.7.6"
+const version = "Reborn 1.7.7"
 try
 {
 	Config = require('./config.json')
@@ -39,6 +39,7 @@ var strg = JSON.parse(strg),
 	nom2 = strg.voreroulette.noms2,
 	actionsing = strg.voreroulette.actions,
 	animal = strg.voreroulette.animals;
+asTable = require ('as-table')
 console.log(started)
 bot = new botmain(
 {
@@ -2586,6 +2587,19 @@ Commands.push(
 	fn: function(msg, suffix)
 	{
 		msg.reply(msg.author.avatarURL.replace(".jpg","").replace(".png","").replace(".gif",""))
+	}
+})
+
+Commands.push(
+{
+	name: 'table',
+	help: "Displays your OWN table.",
+	aliases: ['tableme'],
+	timeout: 3,
+	level: 0,
+	fn: function(msg, suffix)
+	{
+		msg.channel.sendMessage(asTable(msg.author))
 	}
 })
 
