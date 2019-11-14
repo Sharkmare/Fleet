@@ -1,4 +1,4 @@
-const version = "Reborn 1.7.2"
+const version = "Reborn 1.7.3"
 try
 {
 	Config = require('./config.json')
@@ -14,6 +14,7 @@ const botmain = require("discordie"),
 	dvalogchannel = "226952415797051394",
 	botowner = "201983882625548299",
 	hungermaster = ["148914844190507018", botowner];
+const pokeRand = require('pokemon-randomizer'); //Generates random pokemon teams.
 const axios = require('axios'); //better HTML request.
 const sharp = require('sharp'); //Image processing.
 const Path = require('path')
@@ -2656,6 +2657,27 @@ Commands.push(
 		}
 	}
 })
+
+Commands.push(
+{
+	name: 'showdowndex',
+	aliases: ['sdex'],
+	help: 'Showdown dex mirror. -sdex name',
+	level: 0,
+	hidden: false,
+	fn: function(msg, suffix, bot)
+	{if(!suffix) {return msg.reply("Error, no arugments given")}
+	try
+	{
+		msg.channel.sendMessage(pokeRand.pickRandomPokemon(JSON.parse(suffix)))
+	}
+	catch (e)
+	{
+		msg.reply(e)
+	}		
+	}
+})
+
 commandarray = []
 for (integrity = 0; integrity < Commands; integrity++)
 {
