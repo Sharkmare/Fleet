@@ -1,4 +1,4 @@
-const version = "Reborn 1.7.1"
+const version = "Reborn 1.7.2"
 try
 {
 	Config = require('./config.json')
@@ -2575,8 +2575,21 @@ Commands.push(
 	}
 })
 
+Commands.push(
+{
+	name: 'avatar',
+	help: "Displays your OWN avatar.",
+	aliases: ['getavatar'],
+	timeout: 3,
+	level: 0,
+	fn: function(msg, suffix)
+	{
+		msg.reply(msg.author.avatarURL.replace(".jpg","").replace(".png","").replace(".gif",""))
+	}
+})
+
 /*
-Showdowndex data points
+Showdowndex data points  
 		num: 1,
 		species: "Bulbasaur",
 		types: ["Grass", "Poison"],
