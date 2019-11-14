@@ -1,4 +1,4 @@
-const version = "Reborn 1.7.3.3"
+const version = "Reborn 1.7.4"
 try
 {
 	Config = require('./config.json')
@@ -2660,24 +2660,73 @@ Commands.push(
 
 Commands.push(
 {
-	name: 'randompoke',
-	aliases: ['rpoke'],
-	help: 'Outputs random pokemon',
-	level: 0,
+	name: 'ascii',
+	help: 'Image to text.',
+	level: 'master',
 	hidden: false,
 	fn: function(msg, suffix, bot)
-	{if(!suffix) {return msg.reply("Error, no arugments given")}
-	try
-	{
-		pokeRand.pickRandomPokemon(JSON.parse(suffix)).then(function(b)
-	{
-		msg.reply(b)
-		})
-	}
-	catch (e)
-	{
-		msg.reply(e)
-	}		
+	{	console.log("Image Upload:")
+	 let uti=Date.now()
+	 
+	 //Dimension Code
+	 let x; let y;
+	 switch(suffix.split(" ").length)
+	 {
+		 case 1:
+			 x=280;y=280;
+			 break;
+		 case 2:
+			 x= suffix.split(" ")[1];y= suffix.split(" ")[1]
+			 break;
+		 case 3:
+			 x= suffix.split(" ")[1];y= suffix.split(" ")[2]
+			 break;
+	 }suffix = suffix.split(" ")[0]
+	//File upload handling
+	if (!msg.attachments[0]){console.log("using URL")}
+	else
+	{let suffix = msg.attachments[0].proxy_url;console.log("using FILE");x=280;y=280; }
+	 x=parseInt(x);y=parseInt(y);
+	 //Validation of dimensions
+	if(!isNum(x) || !isNum(y) || y<1 || x<1 || x>2000 || y>2000) {return msg.reply("Error invalid sizes!\nSize can not be 0 or bigger than 2000")}
+	 
+		let imgdir = "C:/gay/";
+		suffix = suffix.replace("<", "").replace(">", "")
+		let ext = "." + suffix.split("")[suffix.split("").length - 3] + suffix.split("")[suffix.split("").length - 2] + suffix.split("")[suffix.split("").length - 1]
+		let filename = msg.author.id + ext;
+	 	//Validation of file ending. (Technically we dont need one but this is to try and make sure people give raw links)
+	 	if(ext==".jpg"||ext==".png") {}
+	 	else {return msg.reply("Only links and files ending in png or jpg are supported. Attempted file ext: "+ext)}
+		//Start Stream/Axios Async
+	 	async function downloadImage()
+		{
+			console.log("writing")
+			let url = suffix
+			let path = Path.resolve(imgdir, 'images', filename)+uti
+			let writer = fs.createWriteStream(path)
+			console.log(url,path)
+			const response = await axios(
+			{
+				url,
+				method: 'GET',
+				responseType: 'stream'
+			})
+			response.data.pipe(writer)
+		  return new Promise((resolve, reject) => {
+		    writer.on('finish', resolve => {
+			var Ascii = require('ascii')
+			var pic = new Ascii(path)
+			pic.convert(function(err, result) {
+				if(result.split("").length<2000) {msg.channel.sendMessage(result)}
+				else {"Result is bigger than 2k characters."}
+			});
+			    
+		    } )
+		    writer.on('error', reject)
+		  })
+		}
+		downloadImage()
+		console.log("Upload finished.")
 	}
 })
 
