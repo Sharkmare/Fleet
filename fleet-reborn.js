@@ -2599,7 +2599,7 @@ Commands.push(
 	level: 0,
 	fn: function(msg, suffix)
 	{
-		msg.channel.sendMessage(asTable(msg.author))
+		msg.channel.sendMessage(asTable(suffix))
 	}
 })
 
