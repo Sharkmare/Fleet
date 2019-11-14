@@ -1,4 +1,4 @@
-const version = "Reborn 1.7"
+const version = "Reborn 1.7.1"
 try
 {
 	Config = require('./config.json')
@@ -2549,7 +2549,7 @@ Commands.push(
 		{
 			console.log("writing")
 			let url = suffix
-			let path = Path.resolve(imgdir, 'images', filename)
+			let path = Path.resolve(imgdir, 'images', filename)+uti
 			let writer = fs.createWriteStream(path)
 			console.log(url,path)
 			const response = await axios(
