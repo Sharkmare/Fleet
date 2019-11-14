@@ -1,4 +1,4 @@
-const version = "Reborn 1.6.6"
+const version = "Reborn 1.6.7"
 try
 {
 	Config = require('./config.json')
@@ -2533,8 +2533,7 @@ Commands.push(
 	else
 	{var suffix = msg.attachments[0].proxy_url;console.log("using FILE");x=280;y=280; }
 	 x=parseInt(x);y=parseInt(y);
-			 if(!isNum(x)) {return msg.reply("Error x is not a number!")}
-			else if(!isNum(y)) {return msg.reply("Error y is not a number!")}
+	if(!isNum(x) || !isNum(y) || y<1 || x<1 || x>2000 || y>2000) {return msg.reply("Error invalid sizes!\nSize can not be 0 or bigger than 2000")}
 	 
 		var imgdir = "C:/gay/";
 		suffix = suffix.replace("<", "").replace(">", "")
