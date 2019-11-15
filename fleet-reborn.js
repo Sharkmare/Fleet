@@ -290,7 +290,7 @@ function commands(msg, suffix, trigger)
 					t = (e = e.split("-"))[1] + "," + e[0] + "," + e[2];
 				t = new Date(t).getTime(), X = Date.now(), X = t - X;
 				var a = " ms";
-				if (x<0) {return msg.reply("your soul has been succesfully sold!")}
+				if (X<0) {return msg.reply("your soul has been succesfully sold!")}
 				return X /= 6e4, a = " minutes", X = Math.trunc(X), X > 60 && (X = Math.trunc(X / 60), a = " hours", X > 24 && (X = Math.trunc(X / 24), a = " days")), X + a
 			}
 			return msg.channel.sendMessage(release())
