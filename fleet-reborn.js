@@ -1829,6 +1829,7 @@ Commands.push(
 	help: "Drink a random potion, is good idea, dimitri promises. NO REFUNDS",
 	aliases: ['potion'],
 	timeout: 3,
+	noDM: false,
 	level: 0,
 	fn: function(msg, suffix)
 	{
