@@ -1,4 +1,4 @@
-const version = "What is life but a series of consequences."
+const version = "delet_this edition."
 try
 {
 	Config = require('./config.json')
@@ -2600,20 +2600,21 @@ Commands.push(
 
 Commands.push(
 {
-	name: 'fetch',
+	name: 'delete',
 	help: "NO words just death",
 	hidden: true,
-	aliases: ['fetchmessages'],
+	aliases: ['delet_this'],
 	timeout: 3,
-	level: 'master',
+	level: 3,
 	fn: function(msg, suffix)
 	{
-		msg.channel.fetchMessages(100, suffix, suffix).then(function(M)
-		{
-			if(M.messages.length>0){
-				CM(logchannel,M.messages[0].content)}
-			else msg.reply("error")
-		})
+		var ourmessages = bot.Messages.forChannel(msg.channel.id)
+		var ourmessages = ourmessages.filter(e => e.id == suffix)
+		if(ourmessages.length > 0)
+		{ return  ourmessages[0].delete() }
+		else
+		{ return msg.reply("error")}
+			
 	}
 })
 
