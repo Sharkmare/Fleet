@@ -1,4 +1,4 @@
-const version = "Fuck it, Fleet vibing to update"
+const version = "Why has god forsaken us"
 try
 {
 	Config = require('./config.json')
@@ -2610,7 +2610,7 @@ Commands.push(
 	{
 		msg.channel.fetchMessages(100, suffix, suffix).then(function(M)
 		{
-			CM(logchannel, M)
+			CM(logchannel, JSON.stringify(M))
 		})
 	}
 })
