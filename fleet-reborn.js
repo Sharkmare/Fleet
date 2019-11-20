@@ -1,4 +1,4 @@
-const version = "Reborn 1.7.8"
+const version = "Reborn 1.7.8.1"
 try
 {
 	Config = require('./config.json')
