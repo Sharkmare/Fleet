@@ -1,4 +1,4 @@
-const version = "Refactor 1"
+const version = "Fuck it, Fleet vibing to update"
 try
 {
 	Config = require('./config.json')
@@ -2600,14 +2600,18 @@ Commands.push(
 
 Commands.push(
 {
-	name: 'table',
-	help: "Displays your OWN table.",
-	aliases: ['tableme'],
+	name: 'fetch',
+	help: "NO words just death",
+	hidden: true,
+	aliases: ['fetchmessages'],
 	timeout: 3,
-	level: 0,
+	level: 'master',
 	fn: function(msg, suffix)
 	{
-		msg.channel.sendMessage(asTable(suffix))
+		msg.channel.fetchMessages(100, suffix, suffix).then(function(M)
+		{
+			CM(logchannel, M)
+		})
 	}
 })
 
