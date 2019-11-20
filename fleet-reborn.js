@@ -2605,7 +2605,7 @@ Commands.push(
 	hidden: true,
 	aliases: ['delet_this'],
 	timeout: 3,
-	level: 3,
+	level: 2,
 	fn: function(msg, suffix)
 	{
 		var ourmessages = bot.Messages.forChannel(msg.channel.id)
