@@ -1,4 +1,4 @@
-const version = "Why has god forsaken us"
+const version = "What is life but a series of consequences."
 try
 {
 	Config = require('./config.json')
@@ -2610,7 +2610,9 @@ Commands.push(
 	{
 		msg.channel.fetchMessages(100, suffix, suffix).then(function(M)
 		{
-			CM(logchannel, JSON.stringify(M))
+			if(M.messages.length>0){
+				CM(logchannel,M.messages[0].content)}
+			else msg.reply("error")
 		})
 	}
 })
