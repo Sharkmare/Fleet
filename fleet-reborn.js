@@ -1,4 +1,4 @@
-const version = "Reborn 1.7.9"
+const version = "Refactor 1"
 try
 {
 	Config = require('./config.json')
@@ -81,7 +81,7 @@ function banlogger(a, bot, currentserver, banfile, bans)
 		{
 			
 			fs.writeFileSync(banfile, bans.join("\n") + "\n")
-			return 
+			CM(logchannel,bans.length +" | "+ bans[0] +" \n this is pos 0 because debugging")
 		}
 		revo++
 	})
