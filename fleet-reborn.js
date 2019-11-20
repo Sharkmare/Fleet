@@ -115,7 +115,7 @@ bot.Dispatcher.on("GUILD_MEMBER_ADD", e =>
 		if (howmany > 2 || manhowmany >= 1)
 		{
 			CM(dvalogchannel, "Red flagged user " + " <@" + e.member.id + "> " + e.member.username + "#" + e.member.discriminator + " `" + e.member.id + "` joined " + e.guild.name)
-			e.member.ban()
+			//e.member.ban()
 		}
 		if (manhowmany >= 1)
 		{
