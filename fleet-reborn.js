@@ -1,4 +1,4 @@
-const version = "delet_this edition."
+const version = "Everything that glitters is gold."
 try
 {
 	Config = require('./config.json')
@@ -69,7 +69,7 @@ bot.Dispatcher.on("DISCONNECTED", e =>
 	return console.log("Connection lost", console.log(servers))
 });
 
-function banlogger(a, bot, currentserver, banfile, bans)
+function banlogger(a, bot, currentserver, banfile, bans,userid,joinedserver)
 {
 	bot.Guilds.get(servers[a]).getBans().then(function(b)
 	{
@@ -81,13 +81,17 @@ function banlogger(a, bot, currentserver, banfile, bans)
 		{
 			
 			fs.writeFileSync(banfile, bans.join("\n") + "\n")
-			CM(logchannel,bans.length +" | "+ bans[0] +" \n this is pos 0 because debugging")
+			//CM(logchannel,bans.length)
+			var banproto = bans.filter(Z=> Z.includes(userid))
+			if(banproto.length>0) {CM(logchannel,banproto)}
+			else CM(logchannel,`<@${userid}> joined ${joinedserver}`)
 		}
 		revo++
 	})
 }
 bot.Dispatcher.on("GUILD_MEMBER_ADD", e =>
-{
+{	var userid = e.member.id
+	var joinedserver = e.guild.name
 	var timeid = Date.now()
 	var banfile = "C:/resources/BANS/BANLOG/banlog"+timeid
 	var manbanfile = "C:/resources/BANS/BANLOG/blackbanlog"
@@ -97,7 +101,7 @@ bot.Dispatcher.on("GUILD_MEMBER_ADD", e =>
 	for (a = 0; a < servers.length; a++)
 	{
 		currentserver = bot.Guilds.get(servers[a]).name
-		banlogger(a, bot, currentserver, banfile, bans)
+		banlogger(a, bot, currentserver, banfile, bans,userid,joinedserver)
 	}
 	setTimeout(function()
 	{
