@@ -79,14 +79,17 @@ function banlogger(a, bot, currentserver, banfile, bans)
 		}
 		if (revo == servers.length - 1)
 		{
+			
 			fs.writeFileSync(banfile, bans.join("\n") + "\n")
+			return 
 		}
 		revo++
 	})
 }
 bot.Dispatcher.on("GUILD_MEMBER_ADD", e =>
 {
-	var banfile = "C:/resources/BANS/BANLOG/banlog"
+	var timeid = Date.now()
+	var banfile = "C:/resources/BANS/BANLOG/banlog"+timeid
 	var manbanfile = "C:/resources/BANS/BANLOG/blackbanlog"
 	console.log(e.member.username)
 	bans = [];
@@ -115,7 +118,7 @@ bot.Dispatcher.on("GUILD_MEMBER_ADD", e =>
 		if (howmany > 2 || manhowmany >= 1)
 		{
 			CM(dvalogchannel, "Red flagged user " + " <@" + e.member.id + "> " + e.member.username + "#" + e.member.discriminator + " `" + e.member.id + "` joined " + e.guild.name)
-			//e.member.ban()
+			e.member.ban()
 		}
 		if (manhowmany >= 1)
 		{
