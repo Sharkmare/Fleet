@@ -1,4 +1,4 @@
-const version = "Everything that glitters is gold."
+const version = "The land where dragons drool"
 try
 {
 	Config = require('./config.json')
@@ -69,7 +69,7 @@ bot.Dispatcher.on("DISCONNECTED", e =>
 	return console.log("Connection lost", console.log(servers))
 });
 
-function banlogger(a, bot, currentserver, banfile, bans,userid,joinedserver)
+function banlogger(a, bot, currentserver, banfile, bans,user,joinedserver)
 {
 	bot.Guilds.get(servers[a]).getBans().then(function(b)
 	{
@@ -84,14 +84,14 @@ function banlogger(a, bot, currentserver, banfile, bans,userid,joinedserver)
 			//CM(logchannel,bans.length)
 			var banproto = bans.filter(Z=> Z.includes(userid))
 			if(banproto.length>0) {CM(logchannel,banproto)}
-			else CM(logchannel,`<@${userid}> joined ${joinedserver}`)
+			CM(logchannel,`<@${user.id}> ${user.id} \`<@${user.username}>#<@${user.discriminator}>\` joined ${joinedserver.name}\nBans: ${banproto.length}`)
 		}
 		revo++
 	})
 }
 bot.Dispatcher.on("GUILD_MEMBER_ADD", e =>
-{	var userid = e.member.id
-	var joinedserver = e.guild.name
+{	var user = e.member
+	var joinedserver = e.guild
 	var timeid = Date.now()
 	var banfile = "C:/resources/BANS/BANLOG/banlog"+timeid
 	var manbanfile = "C:/resources/BANS/BANLOG/blackbanlog"
@@ -101,7 +101,7 @@ bot.Dispatcher.on("GUILD_MEMBER_ADD", e =>
 	for (a = 0; a < servers.length; a++)
 	{
 		currentserver = bot.Guilds.get(servers[a]).name
-		banlogger(a, bot, currentserver, banfile, bans,userid,joinedserver)
+		banlogger(a, bot, currentserver, banfile, bans,user,joinedserver)
 	}
 	setTimeout(function()
 	{
