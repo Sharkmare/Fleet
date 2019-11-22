@@ -1,4 +1,4 @@
-const version = "Drakloak gang"
+const version = "Dragapult gang"
 try
 {
 	Config = require('./config.json')
@@ -69,7 +69,7 @@ bot.Dispatcher.on("DISCONNECTED", e =>
 	return console.log("Connection lost", console.log(servers))
 });
 
-function banlogger(a, bot, currentserver, banfile, bans,user,joinedserver)
+function banlogger(a, bot, currentserver, banfile, bans, user, joinedserver)
 {
 	bot.Guilds.get(servers[a]).getBans().then(function(b)
 	{
@@ -79,18 +79,38 @@ function banlogger(a, bot, currentserver, banfile, bans,user,joinedserver)
 		}
 		if (revo == servers.length - 1)
 		{
+			var type = "none";
 			var banned_in = "No bans.";
+			var avi = user.avatarURL.replace(".jpg", "").replace(".gif", "").replace(".png", "")
 			fs.writeFileSync(banfile, bans.join("\n") + "\n")
 			//CM(logchannel,bans.length)
-			var banproto = bans.filter(Z=> Z.includes(user.id))
-			if(banproto.length>0) {banned_in = banproto.join("\n")
-			CM(logchannel,`<@${user.id}> ${user.id} \`<@${user.username}>#<@${user.discriminator}>\` joined ${joinedserver.name}\nBans: ${banproto.length}\nBanned in: ${banned_in}`)}
-			
-			
+			var banproto = bans.filter(Z => Z.includes(user.id))
+			if (banproto.length > 0)
+			{
+				banned_in = banproto.join("\n")
+				switch (banproto.length)
+				{
+					case 1:
+						var type = "yellow";
+						break;
+					case 2:
+						var type = "orange";
+						break;
+					case 3:
+						var type = "green";
+						break;
+				}
+				CM(logchannel, `Flag of type ${type} has been triggered.\n<@${user.id}> ${user.id} \`<@${user.username}>#<@${user.discriminator}>\` joined ${joinedserver.name}\nBans: ${banproto.length}\nBan logger: ${banned_in}\n${avi}`)
+			}
+			if (banproto.length > 2)
+			{
+				user.ban()
+			}
 		}
 		revo++
 	})
 }
+
 bot.Dispatcher.on("GUILD_MEMBER_ADD", e =>
 {	var user = e.member
 	var joinedserver = e.guild
@@ -105,7 +125,7 @@ bot.Dispatcher.on("GUILD_MEMBER_ADD", e =>
 		currentserver = bot.Guilds.get(servers[a]).name
 		banlogger(a, bot, currentserver, banfile, bans,user,joinedserver)
 	}
-	setTimeout(function()
+	/*setTimeout(function()
 	{
 		bans = fs.readFileSync(banfile, "utf8")
 		bans = bans.split("\n")
@@ -131,7 +151,8 @@ bot.Dispatcher.on("GUILD_MEMBER_ADD", e =>
 			CM(dvalogchannel, "Black flagged user " + " <@" + e.member.id + "> " + e.member.username + "#" + e.member.discriminator + " `" + e.member.id + "` joined " + e.guild.name)
 			e.member.ban()
 		}
-	}, 10000);
+	}, 10000);*/
+
 });
 
 function CM(channel, message)
