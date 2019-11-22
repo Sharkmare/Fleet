@@ -1,4 +1,4 @@
-const version = "The land where dragons drool"
+const version = "Dreepy gang"
 try
 {
 	Config = require('./config.json')
@@ -79,12 +79,13 @@ function banlogger(a, bot, currentserver, banfile, bans,user,joinedserver)
 		}
 		if (revo == servers.length - 1)
 		{
-			
+			var banned_in = "No bans.";
 			fs.writeFileSync(banfile, bans.join("\n") + "\n")
 			//CM(logchannel,bans.length)
-			var banproto = bans.filter(Z=> Z.includes(userid))
-			if(banproto.length>0) {CM(logchannel,banproto)}
-			CM(logchannel,`<@${user.id}> ${user.id} \`<@${user.username}>#<@${user.discriminator}>\` joined ${joinedserver.name}\nBans: ${banproto.length}`)
+			var banproto = bans.filter(Z=> Z.includes(user.id))
+			if(banproto.length>0) {banned_in = banproto.join("\n")}
+			CM(logchannel,`<@${user.id}> ${user.id} \`<@${user.username}>#<@${user.discriminator}>\` joined ${joinedserver.name}\nBans: ${banproto.length}\nBanned in: ${banned_in}`)
+			
 		}
 		revo++
 	})
