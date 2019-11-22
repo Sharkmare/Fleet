@@ -1,4 +1,4 @@
-const version = "Dreepy gang"
+const version = "Drakloak gang"
 try
 {
 	Config = require('./config.json')
@@ -83,8 +83,9 @@ function banlogger(a, bot, currentserver, banfile, bans,user,joinedserver)
 			fs.writeFileSync(banfile, bans.join("\n") + "\n")
 			//CM(logchannel,bans.length)
 			var banproto = bans.filter(Z=> Z.includes(user.id))
-			if(banproto.length>0) {banned_in = banproto.join("\n")}
-			CM(logchannel,`<@${user.id}> ${user.id} \`<@${user.username}>#<@${user.discriminator}>\` joined ${joinedserver.name}\nBans: ${banproto.length}\nBanned in: ${banned_in}`)
+			if(banproto.length>0) {banned_in = banproto.join("\n")
+			CM(logchannel,`<@${user.id}> ${user.id} \`<@${user.username}>#<@${user.discriminator}>\` joined ${joinedserver.name}\nBans: ${banproto.length}\nBanned in: ${banned_in}`)}
+			
 			
 		}
 		revo++
