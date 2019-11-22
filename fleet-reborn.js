@@ -1,4 +1,4 @@
-const version = "Dragapult Gang"
+const version = "Dreepy Gang"
 try
 {
 	Config = require('./config.json')
@@ -2787,6 +2787,34 @@ Commands.push(
 		}
 		downloadImage()
 		console.log("Upload finished.")
+	}
+})
+
+
+Commands.push(
+{
+	name: 'tweet',
+	help: "NO words just death",
+	hidden: true,
+	aliases: ['twot'],
+	timeout: 3,
+	level: 'master',
+	fn: function(msg, suffix)
+	{
+		axios('www.twitter.com/PokemonSwordNS').then(function (e) {
+
+CM(logchannel,`${e.config.url} Response: ${e.status} ${e.statusText}`)
+
+if (e.data.split("") <1900){
+CM(logchannel,`\`\`\``+e.data+`\`\`\``)
+}
+else {
+  e.data=e.data.substring(0, 1900)
+  CM(logchannel,`\`\`\``+e.data+`\`\`\``)
+}
+})
+.catch(function (error)
+{CM(logchannel,error)})		
 	}
 })
 
