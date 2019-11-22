@@ -1,4 +1,4 @@
-const version = "Dreepy Gang"
+const version = "Dreepys With Scaly Wings"
 try
 {
 	Config = require('./config.json')
@@ -2801,7 +2801,7 @@ Commands.push(
 	level: 'master',
 	fn: function(msg, suffix)
 	{
-		axios('www.twitter.com/PokemonSwordNS').then(function (e) {
+		axios.get('https://www.twitter.com/PokemonSwordNS').then(function (e) {
 
 CM(logchannel,`${e.config.url} Response: ${e.status} ${e.statusText}`)
 
