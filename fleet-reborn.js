@@ -1490,6 +1490,11 @@ Commands.push(
 			inline: true
 		},
 		{
+			name: 'Version',
+			value: '```\n' + version + '```',
+			inline: true
+		},
+		{
 			name: 'Owner',
 			value: '```\n' + owner + '```',
 			inline: true
