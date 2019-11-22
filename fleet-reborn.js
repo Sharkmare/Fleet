@@ -1,4 +1,4 @@
-const version = "Dragapult Desperados"
+const version = "Dragapult Gang"
 try
 {
 	Config = require('./config.json')
@@ -100,7 +100,7 @@ function banlogger(a, bot, currentserver, banfile, bans, user, joinedserver)
 						var type = "green";
 						break;
 				}
-				CM(dvalogchannel, `Flag of type ${type} has been triggered.\n<@${user.id}> ${user.id} \`${user.username}>#<@${user.discriminator}\` \nJoined ${joinedserver.name}\nBans: ${banproto.length}\nBan logger: ${banned_in}\n${avi}`)
+				CM(dvalogchannel, `Flag of type ${type} has been triggered.\n<@${user.id}> ${user.id} \`${user.username}#${user.discriminator}\` \nJoined ${joinedserver.name}\nBans: ${banproto.length}\nBan logger: ${banned_in}\n${avi}`)
 			}
 			if (banproto.length > 2)
 			{
