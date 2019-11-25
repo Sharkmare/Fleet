@@ -1,4 +1,4 @@
-const version = "Snomposting!"
+const version = "Snomposting."
 try
 {
 	Config = require('./config.json')
@@ -2900,7 +2900,7 @@ Commands.push(
 	level: 'master',
 	fn: function(msg, suffix, bot)
 	{
-		msg.channel.sendMessage(bot.Guilds.get(msg.channel.guild.id).roles)
+		msg.channel.sendMessage( JSON.stringify(bot.Guilds.get(msg.channel.guild.id).roles) )
 	}
 })
 
