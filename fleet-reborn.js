@@ -1,4 +1,4 @@
-const version = "Table2."
+const version = "Table3."
 try
 {
 	Config = require('./config.json')
@@ -2857,7 +2857,7 @@ Commands.push(
 	{
 		var data = [];
 		var entries = bot.Users.toArray()
-		CM(logchannel,entries[0])
+		CM(logchannel, JSON.stringify(entries[0]) )
 		for (i = 0; i < entries.length; i++)
 		{
 			
