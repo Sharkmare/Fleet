@@ -1,4 +1,4 @@
-const version = "Snomposting."
+const version = "Dual kick."
 try
 {
 	Config = require('./config.json')
@@ -36,6 +36,10 @@ var fs = require("fs"),
 		name: "with your soul~",
 		url: "http://discordvore.info"
 	};
+
+const protocord = require('discord.js');
+const client = new protocord.Client();
+
 strg = fs.readFileSync(drive+":/resources/variables/storage");
 var strg = JSON.parse(strg),
 	potion = strg.potion.effects,
@@ -51,10 +55,19 @@ bot = new botmain(
 	messageCacheLimit: 9999,
 	autoReconnect: true,
 });
+client.connect(
+{
+	token: Config.bot.token
+})
 bot.connect(
 {
 	token: Config.bot.token
 })
+
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag}!`);
+});
+
 bot.Dispatcher.on("GATEWAY_READY", e =>
 {
 	console.log("Connected as: " + bot.User.username);
