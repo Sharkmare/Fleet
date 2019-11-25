@@ -1,4 +1,4 @@
-const version = "Table."
+const version = "Table2."
 try
 {
 	Config = require('./config.json')
@@ -2857,8 +2857,10 @@ Commands.push(
 	{
 		var data = [];
 		var entries = bot.Users.toArray()
+		CM(logchannel,entries[0])
 		for (i = 0; i < entries.length; i++)
 		{
+			
 			entry = entries[i]
 			id = entry.id
 			uname = entry.username + "#" + entry.discriminator
