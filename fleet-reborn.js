@@ -2900,7 +2900,7 @@ Commands.push(
 	level: 'master',
 	fn: function(msg, suffix, bot)
 	{
-		CM(logchannel, bot.Guilds.get(msg.channel.guild.id).roles)
+		msg.channel.sendMessage(bot.Guilds.get(msg.channel.guild.id).roles)
 	}
 })
 
