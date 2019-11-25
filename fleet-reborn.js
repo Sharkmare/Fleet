@@ -2868,7 +2868,7 @@ Commands.push(
 			data.push(htmlformatter(id, uname, avi, i))
 		}
 		fs.writeFileSync("member.htm", data.join("\n"))
-		msg.channel.uploadFile("member.htm")
+		msg.channel.uploadFile("member.html")
 
 		function htmlformatter(TABLE1, TABLE2, TABLE3, i)
 		{
