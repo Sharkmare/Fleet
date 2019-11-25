@@ -1,4 +1,4 @@
-const version = "Come on and get down with the tables!"
+const version = "Snomposting!"
 try
 {
 	Config = require('./config.json')
@@ -2862,38 +2862,26 @@ Commands.push(
 		{
 			
 			entry = entries[i]
-			id = entry.id
-			uname = entry.username + "#" + entry.discriminator
-			avi = bot.Users.get(id).avatarURL
-			data.push(htmlformatter(id, uname, avi, i))
+			var id = entry.id
+			var uname = entry.username + "#" + entry.discriminator
+			var avi = "No image set."
+			if(bot.Users.get(id).avatarURL) {avi = bot.Users.get(id).avatarURL}
+			var table = id+"\n"+uname+"\n"+avi
+			data.push(htmlformatter(table, i))
 		}
 		fs.writeFileSync("member.html", data.join("\n"))
 		msg.channel.uploadFile("member.html")
 
-		function htmlformatter(TABLE1, TABLE2, TABLE3, i)
+		function htmlformatter(TABLE, i)
 		{
 			x = `
-<table id=${i} align="left" border="0">
+<table id=${i} align="left" border="2">
 <tr style="background-color:#e6f2f7;">
 <td valign="top">
-${TABLE1}
+${TABLE}
 <br><br>
 </td>
-<td valign="top">
-${TABLE2}
-<br><br>
-</td>
-</tr>
-<tr>
-<td valign="top" style="background-color:#e6f2f7;" class="kate">
-${TABLE3}
-</td>
-<td>
-</td>
-</tr>
-<tr style="background-color:#ffffff;">
-<td><br></td>
-<td><br></td>
+<tr style="background-color:#EEEEEE;">
 </tr>
 </table>
 `
