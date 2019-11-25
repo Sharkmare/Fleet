@@ -20,7 +20,6 @@ const botmain = require("discordie"),
 	dvalogchannel = "226952415797051394",
 	botowner = "201983882625548299",
 	hungermaster = ["148914844190507018", botowner];
-const pokeRand = require('pokemon-randomizer'); //Generates random pokemon teams.
 const axios = require('axios'); //better HTML request.
 const sharp = require('sharp'); //Image processing.
 const Path = require('path')
@@ -45,7 +44,7 @@ var strg = JSON.parse(strg),
 	nom2 = strg.voreroulette.noms2,
 	actionsing = strg.voreroulette.actions,
 	animal = strg.voreroulette.animals;
-asTable = require ('as-table')
+//asTable = require ('as-table')
 console.log(started)
 bot = new botmain(
 {
