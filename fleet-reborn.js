@@ -1,4 +1,4 @@
-const version = "Dreepys With Scaly Wings"
+const version = "Hatterene hears you scream."
 try
 {
 	Config = require('./config.json')
