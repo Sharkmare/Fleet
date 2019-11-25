@@ -1861,7 +1861,8 @@ Commands.push(
 		return msg.channel.sendMessage(`${uptime} Minutes`)
 	}
 })
-pokelist = require(Config.pokemon.list)
+if(Config.pokemon.list) {pokelist = require(Config.pokemon.list)}
+
 showdowndex = require(Config.pokemon.showdowndex) //mirror of https://raw.githubusercontent.com/smogon/pokemon-showdown/master/data/pokedex.js
 Commands.push(
 {
@@ -1895,7 +1896,8 @@ Commands.push(
 			}
 			else if (Math.trunc(Math.random() * 50) == 25 || suffix == "pokemon")
 			{
-				pokemon = randomizer(pokelist).Pokemon
+				if(Config.pokemon.list) {pokemon = randomizer(pokelist).Pokemon}
+				else {pokemon = "Ditto"}
 				msg.channel.sendMessage('' + msg.author.mention + '`You suddenly turn into a ' + pokemon + '`')
 			}
 			else
