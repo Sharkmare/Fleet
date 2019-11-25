@@ -1,4 +1,4 @@
-const version = "Table5."
+const version = "Come on and get down with the tables!"
 try
 {
 	Config = require('./config.json')
@@ -2867,7 +2867,7 @@ Commands.push(
 			avi = bot.Users.get(id).avatarURL
 			data.push(htmlformatter(id, uname, avi, i))
 		}
-		fs.writeFileSync("member.htm", data.join("\n"))
+		fs.writeFileSync("member.html", data.join("\n"))
 		msg.channel.uploadFile("member.html")
 
 		function htmlformatter(TABLE1, TABLE2, TABLE3, i)
