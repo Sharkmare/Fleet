@@ -55,10 +55,7 @@ bot = new botmain(
 	messageCacheLimit: 9999,
 	autoReconnect: true,
 });
-client.connect(
-{
-	token: Config.bot.token
-})
+client.login(Config.bot.token)
 bot.connect(
 {
 	token: Config.bot.token
