@@ -102,7 +102,7 @@ function banlogger(a, bot, currentserver, banfile, bans, user, joinedserver)
 						var type = "orange";
 						break;
 					case 3:
-						var type = "green";
+						var type = "red";
 						break;
 				}
 				CM(dvalogchannel, `Flag of type ${type} has been triggered.\n<@${user.id}> ${user.id} \`${user.username}#${user.discriminator}\` \nJoined ${joinedserver.name}\nBans: ${banproto.length}\nBan logger: ${banned_in}\n${avi}`)
@@ -1872,8 +1872,16 @@ catch (e)
 	pokelist=false
 	
 }
+try
+{
+showdowndex = require(Config.pokemon.showdowndex) //mirror of https://raw.githubusercontent.com/smogon/pokemon-showdown/master/data/pokedex.js
+}
+catch (e)
+{
+	console.log("Sdex not found")
+	showdowndex = false
+}
 
-//showdowndex = require(Config.pokemon.showdowndex) //mirror of https://raw.githubusercontent.com/smogon/pokemon-showdown/master/data/pokedex.js
 Commands.push(
 {
 	name: 'randompotion',
@@ -2685,7 +2693,7 @@ function stringcombineSH(text, addition)
 {
 	return text + addition + "\n"
 }
-/*
+
 Commands.push(
 {
 	name: 'showdowndex',
@@ -2695,6 +2703,7 @@ Commands.push(
 	hidden: false,
 	fn: function(msg, suffix, bot)
 	{
+		if(!showdowndex) {return msg.channel.sendMessage("Showdown module not loaded")}
 		var BattlePokedex = showdowndex.BattlePokedex
 		if (BattlePokedex[suffix])
 		{
@@ -2736,7 +2745,7 @@ Commands.push(
 		}
 	}
 })
-*/
+
 Commands.push(
 {
 	name: 'overlay',
