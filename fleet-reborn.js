@@ -1,4 +1,4 @@
-const version = "Table4."
+const version = "Table5."
 try
 {
 	Config = require('./config.json')
