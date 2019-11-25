@@ -2879,13 +2879,13 @@ Commands.push(
 ${TABLE1}
 <br><br>
 </td>
-<td valign="middle">
+<td valign="top">
 ${TABLE2}
 <br><br>
 </td>
 </tr>
 <tr>
-<td valign="bottom" style="background-color:#e6f2f7;" class="kate">
+<td valign="top" style="background-color:#e6f2f7;" class="kate">
 ${TABLE3}
 </td>
 <td>
