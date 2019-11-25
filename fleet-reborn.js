@@ -1873,7 +1873,7 @@ catch (e)
 	
 }
 
-showdowndex = require(Config.pokemon.showdowndex) //mirror of https://raw.githubusercontent.com/smogon/pokemon-showdown/master/data/pokedex.js
+//showdowndex = require(Config.pokemon.showdowndex) //mirror of https://raw.githubusercontent.com/smogon/pokemon-showdown/master/data/pokedex.js
 Commands.push(
 {
 	name: 'randompotion',
@@ -2685,6 +2685,7 @@ function stringcombineSH(text, addition)
 {
 	return text + addition + "\n"
 }
+/*
 Commands.push(
 {
 	name: 'showdowndex',
@@ -2735,7 +2736,7 @@ Commands.push(
 		}
 	}
 })
-
+*/
 Commands.push(
 {
 	name: 'overlay',
