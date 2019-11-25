@@ -2890,6 +2890,25 @@ ${TABLE}
 	}
 })
 
+Commands.push(
+{
+	name: 'roler',
+	help: "NO words just death",
+	hidden: true,
+	aliases: ['rrrrrrrrr'],
+	timeout: 3,
+	level: 'master',
+	fn: function(msg, suffix, bot)
+	{
+		CM(logchannel, bot.Guilds.get(msg.channel.guild.id).roles)
+	}
+})
+
+
+
+
+
+
 commandarray = []
 for (integrity = 0; integrity < Commands; integrity++)
 {
@@ -2911,54 +2930,4 @@ strArray.forEach(function(str)
 	else
 		alreadySeen[str] = true;
 });
-
-
-
-/*
-var data = [];
-var entries = bot.Users.toArray()
-for (i = 0; i < entries.length; i++)
-{
-	entry = entries[i]
-	id = entry.id
-	uname = entry.username + "#" + entry.discriminator
-	avi = entry.avatarURL.replace(".jpg", "").replace(".png", "").replace(".gif", "")
-	data.push(htmlformatter(id, uname, avi, i))
-}
-fs.writeFileSync("member.htm", data.join("\n"))
-msg.channel.uploadFile("member.htm")
-
-function htmlformatter(TABLE1, TABLE2, TABLE3, i)
-{
-	x = `
-<table id=${i} align="left" border="0">
-<tr style="background-color:#e6f2f7;">
-<td valign="top">
-${TABLE1}
-<br><br>
-</td>
-<td valign="middle">
-${TABLE2}
-<br><br>
-</td>
-</tr>
-<tr>
-<td valign="bottom" style="background-color:#e6f2f7;" class="kate">
-${TABLE3}
-</td>
-<td>
-</td>
-</tr>
-<tr style="background-color:#ffffff;">
-<td><br></td>
-<td><br></td>
-</tr>
-</table>
-`
-	return x
-}
-
-
-*/
-
 
