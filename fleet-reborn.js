@@ -2900,7 +2900,10 @@ Commands.push(
 	level: 'master',
 	fn: function(msg, suffix, bot)
 	{
-		msg.channel.sendMessage( JSON.stringify(bot.Guilds.get(msg.channel.guild.id).roles) )
+		var role = bot.Guilds.get(msg.channel.guild.id).roles.filter(e=> e.name == "Members")[0]
+		role.color = suffix
+		role.commit(role)
+		msg.channel.sendMessage(role)
 	}
 })
 
