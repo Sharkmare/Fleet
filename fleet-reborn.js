@@ -1864,7 +1864,7 @@ Commands.push(
 
 try
 {
-	pokelist = require(Config.pokemon.list
+	pokelist = require(Config.pokemon.list)
 }
 catch (e)
 {
