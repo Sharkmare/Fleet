@@ -2864,7 +2864,7 @@ Commands.push(
 			entry = entries[i]
 			id = entry.id
 			uname = entry.username + "#" + entry.discriminator
-			avi = bot.Users.get(entry.id).avatarURL.replace(".jpg", "").replace(".png", "").replace(".gif", "")
+			avi = bot.Users.get(id).avatarURL
 			data.push(htmlformatter(id, uname, avi, i))
 		}
 		fs.writeFileSync("member.htm", data.join("\n"))
