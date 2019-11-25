@@ -8,6 +8,12 @@ catch (e)
 	console.log('\Fleet encountered an error while trying to load the config file, please resolve this issue and restart Fleet\n\n' + e.message)
 	process.exit()
 }
+var drive = "C"
+if(Config.bot.dir)
+{
+	drive = Config.bot.dir
+}
+
 const botmain = require("discordie"),
 	logchannel = "620908518911901716",
 	dvaserver = "186245290431348737",
@@ -31,7 +37,7 @@ var fs = require("fs"),
 		name: "with your soul~",
 		url: "http://discordvore.info"
 	};
-strg = fs.readFileSync("C:/resources/variables/storage");
+strg = fs.readFileSync(drive+":/resources/variables/storage");
 var strg = JSON.parse(strg),
 	potion = strg.potion.effects,
 	speed = strg.voreroulette.speeds,
@@ -115,8 +121,8 @@ bot.Dispatcher.on("GUILD_MEMBER_ADD", e =>
 {	var user = e.member
 	var joinedserver = e.guild
 	var timeid = Date.now()
-	var banfile = "C:/resources/BANS/BANLOG/banlog"+timeid
-	var manbanfile = "C:/resources/BANS/BANLOG/blackbanlog"
+	var banfile = drive+":/resources/BANS/BANLOG/banlog"+timeid
+	var manbanfile = drive+":/resources/BANS/BANLOG/blackbanlog"
 	console.log(e.member.username)
 	bans = [];
 	revo = 0
@@ -181,9 +187,9 @@ bot.Dispatcher.on("MESSAGE_CREATE", e =>
 	}
 	//console.log(e.message.author.username + " | " + e.message.content + " | " + guild)
 	//Fleet Legacy Handling
-	levelone = fs.readFileSync("C:/resources/variables/levelone", "utf8").split("\n")
-	leveltwo = fs.readFileSync("C:/resources/variables/leveltwo", "utf8").split("\n")
-	levelthree = fs.readFileSync("C:/resources/variables/levelthree", "utf8").split("\n")
+	levelone = fs.readFileSync(drive+":/resources/variables/levelone", "utf8").split("\n")
+	leveltwo = fs.readFileSync(drive+":/resources/variables/leveltwo", "utf8").split("\n")
+	levelthree = fs.readFileSync(drive+":/resources/variables/levelthree", "utf8").split("\n")
 	if (msg.content.split("")[0] == "-")
 	{
 		console.log(e.message.author.username + " | " + e.message.content + " | " + guild)
@@ -427,7 +433,7 @@ bot.Dispatcher.on("MESSAGE_REACTION_ADD", (e) =>
 	}
 	fs = require('fs')
 	var makerid = e.message.author.id
-	var myhooks = fs.readFileSync('C:/resources/variables/myhook');
+	var myhooks = fs.readFileSync(drive+':/resources/variables/myhook');
 	myhooks = JSON.parse(myhooks)
 	let myhook;
 	myhook = myhooks.filter(d => d.channel.id == e.message.channel.id)
@@ -468,7 +474,7 @@ bot.Dispatcher.on("GUILD_BAN_ADD", (e) =>
 	let usericon = e.user.avatarURL
 	let discriminator = e.user.discriminator
 	let discordid = e.user.id
-	var dir = "C:/resources/BANS"
+	var dir = drive+":/resources/BANS"
 	var webhookmessage = "`" + name + "#" + discriminator + "`\n**Unique ID:**" + discordid + "\n<@" + discordid + "> \n<#" + srvid + ">\n" + usericon + ""
 	unirest.post(hookurl)
 		.header('Content-Type', 'application/json').send(
@@ -519,9 +525,9 @@ bot.Dispatcher.on("GUILD_BAN_ADD", (e) =>
 			}
 		})
 	}
-	if (fs.existsSync('C:/resources/BANS/' + discordid + '.txt'))
+	if (fs.existsSync(drive+':/resources/BANS/' + discordid + '.txt'))
 	{
-		fs.readFile('C:/resources/BANS/' + discordid + '.txt', 'utf8', (err, data) =>
+		fs.readFile(drive+':/resources/BANS/' + discordid + '.txt', 'utf8', (err, data) =>
 		{
 			if (err) throw err;
 			console.log(data);
@@ -529,7 +535,7 @@ bot.Dispatcher.on("GUILD_BAN_ADD", (e) =>
 			{
 				var convert = data - 0
 				var amount = convert + 1
-				fs.writeFile('C:/resources/BANS/' + discordid + '.txt', '' + amount + '', function(err)
+				fs.writeFile(drive+':/resources/BANS/' + discordid + '.txt', '' + amount + '', function(err)
 				{
 					if (err)
 					{
@@ -541,7 +547,7 @@ bot.Dispatcher.on("GUILD_BAN_ADD", (e) =>
 			else
 			{
 				var amount = 1
-				fs.writeFile('C:/resources/BANS/' + discordid + '.txt', '' + amount + '', function(err)
+				fs.writeFile(drive+':/resources/BANS/' + discordid + '.txt', '' + amount + '', function(err)
 				{
 					if (err)
 					{
@@ -554,7 +560,7 @@ bot.Dispatcher.on("GUILD_BAN_ADD", (e) =>
 	}
 	else
 	{
-		fs.writeFile('C:/resources/BANS/' + discordid + '.txt', '1', function(err)
+		fs.writeFile(drive+':/resources/BANS/' + discordid + '.txt', '1', function(err)
 		{
 			if (err)
 			{
@@ -772,7 +778,7 @@ function pokeparse(suffix, x, msg)
 			//result.push(fieldmaker("**sprites:**" ,normal+" "+shiny))
 			//console.log(result)
 			//var suffix = ["pokemon-species",suffix[1] ]
-			//var dir = "C:/resources/"
+			//var dir = drive+":/resources/"
 			//if(msg) {pokelookup(suffix,msg,dir)}
 			//console.log(msg)
 			return result
@@ -906,7 +912,7 @@ function vore(msg, suffix, bot)
 			timeout = 5 * 1000
 			mode = 0
 			modes = [0, 1, 2, 3] //0 = firstrun (devour), 1 = sloshing (progress), 2 = succumb (end),3= escape
-			var VORGANS = "C:/resources/VORE/organs"
+			var VORGANS = drive+":/resources/VORE/organs"
 			if (fs.existsSync(VORGANS))
 			{
 				organs = JSON.parse(fs.readFileSync(VORGANS))
@@ -971,7 +977,7 @@ function vore(msg, suffix, bot)
 			if (suffix) prey.hp = suffix
 			var healthbar;
 			hp = prey.hp
-			var VSAVE = "C:/resources/VORE/" + msg.author.id
+			var VSAVE = drive+":/resources/VORE/" + msg.author.id
 			selected = "maw"
 			if (fs.existsSync(VSAVE))
 			{
@@ -1087,7 +1093,7 @@ function vore(msg, suffix, bot)
 						//console.log(`${hp} hp left`)
 						return message
 					case 2:
-						var dir = "C:/resources/VORE/"
+						var dir = drive+":/resources/VORE/"
 						fs.writeFile(dir + msg.author.id, s, function(err)
 						{
 							if (err)
@@ -1099,7 +1105,7 @@ function vore(msg, suffix, bot)
 						console.log(`${hp} hp left`)
 						return message
 					case 3:
-						var dir = "C:/resources/VORE/"
+						var dir = drive+":/resources/VORE/"
 						fs.writeFile(dir + msg.author.id, "freedom", function(err)
 						{
 							if (err)
@@ -1227,7 +1233,7 @@ Commands.push(
 	level: 1,
 	fn: function(msg, suffix, bot)
 	{
-		var banfile = "C:/resources/BANS/BANLOG/banlog"
+		var banfile = drive+":/resources/BANS/BANLOG/banlog"
 		bannedon = []
 		bans = fs.readFileSync(banfile, "utf8")
 		bans = bans.split("\n")
@@ -1240,11 +1246,11 @@ Commands.push(
 			}
 		}
 		bannedon = bannedon.join("\n")
-		var dir = "C:/resources/BANS"
+		var dir = drive+":/resources/BANS"
 		var discordid = suffix
 		var path = dir + "/" + discordid + "/"
 		var notexist = "No recorded flags for `" + discordid + "` and no recorded entity."
-		var dirw = "C:/resources/WARNS"
+		var dirw = drive+":/resources/WARNS"
 		var pathw = dirw + "/" + discordid + "/"
 		var notexistw = "No recorded warns for `" + discordid + "` and no recorded entity."
 		console.log(path);
@@ -1438,7 +1444,7 @@ Commands.push(
 	fn: function(msg, suffix)
 	{
 		suffix = suffix.split("|")
-		var dir = "C:/resources/WARNS"
+		var dir = drive+":/resources/WARNS"
 		var curtime = uniquenumber()
 		if (!fs.existsSync(dir + "/" + suffix[0]))
 		{
@@ -1549,13 +1555,13 @@ function protoDM(ID, MESSAGE, bot)
 function exporthook(hook)
 {
 	hook = JSON.stringify(hook)
-	fs.writeFileSync('C:/resources/variables/myhook', hook);
+	fs.writeFileSync(drive+':/resources/variables/myhook', hook);
 }
 
 function exportstorage(strg)
 {
 	exp = JSON.stringify(strg)
-	fs.writeFileSync('C:/resources/variables/storage', exp);
+	fs.writeFileSync(drive+':/resources/variables/storage', exp);
 }
 
 function exportfile(strg, file)
@@ -1747,15 +1753,15 @@ Commands.push(
 		{
 			return msg.reply("no more than 6 tags")
 		}
-		if (fs.existsSync('C:/resources/RPDATA/e926stat.txt'))
+		if (fs.existsSync(drive+':/resources/RPDATA/e926stat.txt'))
 		{
-			var data = fs.readFile('C:/resources/RPDATA/e926stat.txt', 'utf8', (err, data) =>
+			var data = fs.readFile(drive+':/resources/RPDATA/e926stat.txt', 'utf8', (err, data) =>
 			{
 				if (err) throw err;
 				console.log(data);
 				var data1 = data - 0
 				var data2 = data1 + 1
-				fs.writeFile("C:/resources/RPDATA/e926stat.txt", '' + data2 + '', function(err)
+				fs.writeFile(drive+":/resources/RPDATA/e926stat.txt", '' + data2 + '', function(err)
 				{
 					if (err)
 					{
@@ -1814,28 +1820,28 @@ Commands.push(
 		switch (parseInt(suffix[0]))
 		{
 			case 1:
-				levelone = fs.readFileSync("C:/resources/variables/levelone", "utf8").split("\n")
+				levelone = fs.readFileSync(drive+":/resources/variables/levelone", "utf8").split("\n")
 				if (!levelone.includes(suffix[1]))
 				{
 					levelone.push(suffix[1])
 				}
-				fs.writeFileSync("C:/resources/variables/levelone", levelone.join("\n"))
+				fs.writeFileSync(drive+":/resources/variables/levelone", levelone.join("\n"))
 				return msg.channel.sendMessage("Level 1 set")
 			case 2:
-				leveltwo = fs.readFileSync("C:/resources/variables/leveltwo", "utf8").split("\n")
+				leveltwo = fs.readFileSync(drive+":/resources/variables/leveltwo", "utf8").split("\n")
 				if (!leveltwo.includes(suffix[1]))
 				{
 					leveltwo.push(suffix[1])
 				}
-				fs.writeFileSync("C:/resources/variables/leveltwo", leveltwo.join("\n"))
+				fs.writeFileSync(drive+":/resources/variables/leveltwo", leveltwo.join("\n"))
 				return msg.channel.sendMessage("Level 2 set")
 			case 3:
-				levelthree = fs.readFileSync("C:/resources/variables/levelthree", "utf8").split("\n")
+				levelthree = fs.readFileSync(drive+":/resources/variables/levelthree", "utf8").split("\n")
 				if (!levelthree.includes(suffix[1]))
 				{
 					levelthree.push(suffix[1])
 				}
-				fs.writeFileSync("C:/resources/variables/levelthree", levelthree.join("\n"))
+				fs.writeFileSync(drive+":/resources/variables/levelthree", levelthree.join("\n"))
 				return msg.channel.sendMessage("Level 3 set")
 			default:
 				return msg.channel.sendMessage("Error")
@@ -1997,7 +2003,7 @@ Commands.push(
 	level: 0,
 	fn: function(msg, suffix, Http)
 	{
-		var dir = "C:/resources/"
+		var dir = drive+":/resources/"
 		suffix = suffix.toLowerCase()
 		suffix = suffix.split(" ")
 		switch (suffix[0])
@@ -2154,7 +2160,7 @@ Commands.push(
 	level: 'master',
 	fn: function(msg, suffix, bot)
 	{
-		characters = fs.readFileSync('C:/resources/variables/characters');
+		characters = fs.readFileSync(drive+':/resources/variables/characters');
 		characters = JSON.parse(characters)
 		text = []
 		for (i = 0; i < characters.length; i++)
@@ -2178,8 +2184,8 @@ Commands.push(
 	level: 'master',
 	fn: function(msg, suffix, bot)
 	{
-		myhooks = fs.readFileSync('C:/resources/variables/myhook');
-		characters = fs.readFileSync('C:/resources/variables/characters');
+		myhooks = fs.readFileSync(drive+':/resources/variables/myhook');
+		characters = fs.readFileSync(drive+':/resources/variables/characters');
 		characters = JSON.parse(characters)
 		myhooks = JSON.parse(myhooks)
 		myhook = myhooks.filter(d => d.channel.id == msg.channel.id)
@@ -2395,7 +2401,7 @@ Commands.push(
 	level: 0,
 	fn: function(msg, suffix, bot)
 	{
-		tagdir = 'C:/resources/tags.json'
+		tagdir = drive+':/resources/tags.json'
 		mode = suffix.split(" ")[0]
 		tags = require(tagdir)
 		if (!suffix)
@@ -2579,7 +2585,7 @@ Commands.push(
 	 //Validation of dimensions
 	if(!isNum(x) || !isNum(y) || y<1 || x<1 || x>2000 || y>2000) {return msg.reply("Error invalid sizes!\nSize can not be 0 or bigger than 2000")}
 	 
-		let imgdir = "C:/gay/";
+		let imgdir = drive+":/gay/";
 		suffix = suffix.replace("<", "").replace(">", "")
 		let ext = "." + suffix.split("")[suffix.split("").length - 3] + suffix.split("")[suffix.split("").length - 2] + suffix.split("")[suffix.split("").length - 1]
 		let filename = msg.author.id + ext;
@@ -2751,7 +2757,7 @@ Commands.push(
 	 //Validation of dimensions
 	if(!isNum(x) || !isNum(y) || y<1 || x<1 || x>2000 || y>2000) {return msg.reply("Error invalid sizes!\nSize can not be 0 or bigger than 2000")}
 	 
-		let imgdir = "C:/gay/";
+		let imgdir = drive+":/gay/";
 		suffix = suffix.replace("<", "").replace(">", "")
 		let ext = "." + suffix.split("")[suffix.split("").length - 3] + suffix.split("")[suffix.split("").length - 2] + suffix.split("")[suffix.split("").length - 1]
 		let filename = msg.author.id + ext;
@@ -2776,7 +2782,7 @@ Commands.push(
 		  return new Promise((resolve, reject) => {
 		    writer.on('finish', resolve => {
 			    		    sharp(path).resize(x,y, {fit: 'fill'
-  }).composite([{ input: 'C:/gay/overlay.png'}])
+  }).composite([{ input: drive+':/gay/overlay.png'}])
 .toFile(path+"output"+uti, (err, info) => { if(err) {CM(logchannel,err)}
 			if(err) {return}else {msg.channel.uploadFile(path+"output"+uti);}
 									     })
