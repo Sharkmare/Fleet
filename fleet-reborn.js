@@ -1,4 +1,4 @@
-const version = "Table3."
+const version = "Table4."
 try
 {
 	Config = require('./config.json')
@@ -2864,7 +2864,7 @@ Commands.push(
 			entry = entries[i]
 			id = entry.id
 			uname = entry.username + "#" + entry.discriminator
-			avi = entry.avatarURL.replace(".jpg", "").replace(".png", "").replace(".gif", "")
+			avi = bot.Users.get(entry.id).avatarURL.replace(".jpg", "").replace(".png", "").replace(".gif", "")
 			data.push(htmlformatter(id, uname, avi, i))
 		}
 		fs.writeFileSync("member.htm", data.join("\n"))
