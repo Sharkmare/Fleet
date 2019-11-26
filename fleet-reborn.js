@@ -1,4 +1,4 @@
-const version = "Meleon"
+const version = "RED GREEN GAY"
 try
 {
 	Config = require('./config.json')
@@ -2913,11 +2913,11 @@ Commands.push(
 	fn: function(msg, suffix, bot , client)
 	{
 		var result = client.guilds.find ( e=> e.id == msg.channel.guild.id ).roles.find(e=> e.id == suffix)
-		colorhandler (result)
+		colorhandler (result,0)
 	}
 })
 
-function colorhandler (role,timeschanged=0)
+function colorhandler (role,timeschanged)
 {
 			if (timeschanged > 10) {return console.log("done colorchange")}
 			timeschanged++
@@ -2928,12 +2928,12 @@ function colorhandler (role,timeschanged=0)
 			setTimeout(function(){role.setColor('#0000FF')
 			setTimeout(function(){role.setColor('#F0000F')
 			      colorhandler(role,timeschanged)
-					     }, 3000);
-					     }, 3000);
-					     }, 3000);     
-					     }, 3000);     
-					     }, 3000);
-					     }, 3000);
+					     }, 5000);
+					     }, 5000);
+					     }, 5000);     
+					     }, 5000);     
+					     }, 5000);
+					     }, 5000);
 }
 
 
