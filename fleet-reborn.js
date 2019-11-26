@@ -2911,7 +2911,7 @@ Commands.push(
 	level: 'master',
 	fn: function(msg, suffix, bot , client)
 	{
-		console.log(client)
+		console.log( client.guilds.find ( e=> e.id == msg.channel.guild.id ))
 	}
 })
 
