@@ -1,4 +1,4 @@
-const version = "Dual kick."
+const version = "Chameleon"
 try
 {
 	Config = require('./config.json')
@@ -2913,11 +2913,18 @@ Commands.push(
 	fn: function(msg, suffix, bot , client)
 	{
 		var result = client.guilds.find ( e=> e.id == msg.channel.guild.id ).roles.find(e=> e.id == suffix)
-		console.log( result )
+		colorhandler (result)
 	}
 })
 
-
+function colorhandler (role,timeschanged=0)
+{
+			setTimeout(function(){role.setColor('#FF0000')}, 3000);
+			setTimeout(function(){role.setColor('#00FF00')}, 6000);
+			setTimeout(function(){role.setColor('#0000FF')}, 9000);
+			if (timeschanged > 10) {return console.log("done colorchange")}
+			setTimeout(function(){colorhandler(role,timeschanged++)}, 12000);
+}
 
 
 
