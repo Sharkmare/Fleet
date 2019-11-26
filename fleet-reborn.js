@@ -225,7 +225,7 @@ bot.Dispatcher.on("MESSAGE_CREATE", e =>
 			{flags = hasPerm(msg.guild.id, msg.author.id)
 				if(flags[0]) {}
 			 	else if(flags[execute[0].permFlag])
-				{}else {return msg.reply("Necesary Flag not present, Glag needed: " +execute[0].permFlag+ "\nFor reference of Flag ids use _hasPerms")}
+				{}else {return msg.reply("Necesary Flag not present, Flag needed: " +execute[0].permFlag+ "\nFor reference of Flag ids use _hasPerms")}
 			}
 			if (execute[0].noDM && !msg.guild)
 			{
@@ -2718,7 +2718,6 @@ Commands.push(
 	aliases: ['sdex'],
 	help: 'Showdown dex mirror. -sdex name',
 	level: 0,
-	permFlag: 3,
 	hidden: false,
 	fn: function(msg, suffix, bot)
 	{
