@@ -67,6 +67,7 @@ client.on('ready', () => {
 
 bot.Dispatcher.on("GATEWAY_READY", e =>
 {
+	CM(logchannel,commandarray)
 	console.log("Connected as: " + bot.User.username);
 	{
 		bot.User.setStatus("online", game)
@@ -2900,13 +2901,4 @@ for (integrity = 0; integrity < Commands; integrity++)
 		}
 	}
 }
-var strArray = commandarray
-var alreadySeen = [];
-strArray.forEach(function(str)
-{
-	if (alreadySeen[str])
-		CM(logchannel, str);
-	else
-		alreadySeen[str] = true;
-});
 
