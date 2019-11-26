@@ -1,4 +1,4 @@
-const version = "Chameleon"
+const version = "Meleon"
 try
 {
 	Config = require('./config.json')
@@ -2919,11 +2919,21 @@ Commands.push(
 
 function colorhandler (role,timeschanged=0)
 {
-			setTimeout(function(){role.setColor('#FF0000')}, 3000);
-			setTimeout(function(){role.setColor('#00FF00')}, 6000);
-			setTimeout(function(){role.setColor('#0000FF')}, 9000);
 			if (timeschanged > 10) {return console.log("done colorchange")}
-			setTimeout(function(){colorhandler(role,timeschanged++)}, 12000);
+			timeschanged++
+			setTimeout(function(){role.setColor('#FF0000')
+			setTimeout(function(){role.setColor('#0FF000')
+			setTimeout(function(){role.setColor('#00FF00')
+			setTimeout(function(){role.setColor('#000FF0')
+			setTimeout(function(){role.setColor('#0000FF')
+			setTimeout(function(){role.setColor('#F0000F')
+			      colorhandler(role,timeschanged)
+					     }, 3000);
+					     }, 3000);
+					     }, 3000);     
+					     }, 3000);     
+					     }, 3000);
+					     }, 3000);
 }
 
 
