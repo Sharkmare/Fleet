@@ -2936,7 +2936,7 @@ client.on('message', msg => {
   }
 });
 
-const permflags=["ADMINISTRATOR","KICK_MEMBERS","KICK_MEMBERS","MANAGE_MESSAGES","MANAGE_NICKNAMES"]
+const permflags=["ADMINISTRATOR","BAN_MEMBERS","KICK_MEMBERS","MANAGE_MESSAGES","MANAGE_NICKNAMES"]
 function hasPerm(guild,user)
 {
 	var flagstates = []
