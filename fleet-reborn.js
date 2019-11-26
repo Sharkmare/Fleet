@@ -1518,7 +1518,7 @@ Commands.push(
 		},
 		{
 			Name: "Permissions:",
-			value: '```\n' +permflags[0] +' : '+ result[0] +"\n" +permflags[1] +' : '+ result[1] +'\n' +permflags[2] +' : '+ result[2] +'2\n' +permflags[3] +' : '+ result[3] +"\n' +permflags[4] +' : '+ result[4] +'\n' + '```'
+			value: '```\n' +permflags[0] +' : '+ result[0] +"\n" +permflags[1] +' : '+ result[1] +'\n' +permflags[2] +' : '+ result[2] +'2\n' +permflags[3] +' : '+ result[3] +'\n' +permflags[4] +' : '+ result[4] +'\n' + '```'
 		},
 		{
 			name: 'Owner',
