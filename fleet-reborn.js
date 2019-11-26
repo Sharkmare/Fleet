@@ -2924,11 +2924,27 @@ Commands.push({
 
 client.on('message', msg => {
   if(!msg || !msg.guild) {return}
-	if (msg.content.split("")[0] == "_" && msg.author.id == botowner) {
-	result = client.guilds.find(e=> e.id == msg.guild.id).member(msg.author).hasPermission("ADMINISTRATOR")
-		msg.channel.send(result)
+	if (msg.content == "_hasPerms") {
+	var user = msg.author.id; var guild = msg.guild.id
+	result = hasPerm(guild,user)
+	JSON.stringify(result).split(",").join("\n")
+	msg.channel.send(result)
   }
 });
+
+const permflags=["ADMINISTRATOR","KICK_MEMBERS","KICK_MEMBERS","MANAGE_MESSAGES","MANAGE_NICKNAMES"]
+function hasPerm(guild,user)
+{
+	var flagstates = []
+	for (i=0; i<permflags.length; i++)
+	{
+		let torf = client.guilds.find(e=> e.id == guild).member(user).hasPermission(permflags[i])
+		let currentflag = permflags[i]
+		flagstates.push( {currentflag:torf} )
+	}
+	return flagstates
+}
+
 
 commandarray = []
 for (integrity = 0; integrity < Commands; integrity++)
