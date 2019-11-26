@@ -2926,8 +2926,12 @@ client.on('message', msg => {
   if(!msg || !msg.guild) {return}
 	if (msg.content == "_hasPerms") {
 	var user = msg.author.id; var guild = msg.guild.id
-	result = hasPerm(guild,user)
-	JSON.stringify(result).split(",").join("\n")
+	result = hasPerm(guild,user);
+	result = 	permflags[0] +" : "+ result[0] +" : ID in array is 0\n" +
+				permflags[1] +" : "+ result[1] +" : ID in array is 1\n" +
+				permflags[2] +" : "+ result[2] +" : ID in array is 2\n" +
+				permflags[3] +" : "+ result[3] +" : ID in array is 3\n" +
+				permflags[4] +" : "+ result[4] +" : ID in array is 4\n" 
 	msg.channel.send(result)
   }
 });
@@ -2940,7 +2944,7 @@ function hasPerm(guild,user)
 	{
 		let torf = client.guilds.find(e=> e.id == guild).member(user).hasPermission(permflags[i])
 		let currentflag = permflags[i]
-		flagstates.push( {currentflag:torf} )
+		flagstates.push(torf)
 	}
 	return flagstates
 }
