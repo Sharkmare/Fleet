@@ -224,7 +224,7 @@ bot.Dispatcher.on("MESSAGE_CREATE", e =>
 			if (execute[0].permFlag)
 			{flags = hasPerm(msg.guild.id, msg.author.id)
 				if(flags[0]) {}
-			 	else if(execute[0].permFlag >=flags[0])
+			 	else if(flags[execute[0].permFlag])
 				{}else {return msg.reply("error")}
 			}
 			if (execute[0].noDM && !msg.guild)
