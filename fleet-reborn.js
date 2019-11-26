@@ -2487,9 +2487,10 @@ Commands.push(
 	noDM: false,
 	hidden: true,
 	level: 'master',
-	fn: function(msg, suffix, bot)
+	fn: function(msg, suffix, bot, client)
 	{
 		bot.disconnect()
+		client.destroy()
 	}
 })
 Commands.push(
