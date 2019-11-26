@@ -1518,12 +1518,7 @@ Commands.push(
 		},
 		{
 			Name: "Permissions:",
-			value: '```\n' +permflags[0] +" : "+ result[0] +" : ID in array is 0\n" +
-				permflags[1] +" : "+ result[1] +" : ID in array is 1\n" +
-				permflags[2] +" : "+ result[2] +" : ID in array is 2\n" +
-				permflags[3] +" : "+ result[3] +" : ID in array is 3\n" +
-				permflags[4] +" : "+ result[4] +" : ID in array is 4\n" + '```',
-			inline: true
+			value: '```\n' +permflags[0] +' : '+ result[0] +"\n" +permflags[1] +' : '+ result[1] +'\n' +permflags[2] +' : '+ result[2] +'2\n' +permflags[3] +' : '+ result[3] +"\n' +permflags[4] +' : '+ result[4] +'\n' + '```'
 		},
 		{
 			name: 'Owner',
