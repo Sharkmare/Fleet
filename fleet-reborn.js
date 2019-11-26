@@ -2323,6 +2323,27 @@ Commands.push(
 })
 Commands.push(
 {
+	name: 'edit',
+	help: 'edit a thing',
+	usage: '<online / idle / dnd / invisible / twitch url> [playing status]',
+	hidden: true,
+	level: 'master',
+	fn: function(msg, suffix, bot)
+	{
+	var replaceid = suffix.split(" ")[0]
+	suffix=suffix.join(" ").replace(replaceid+"","")
+	var ourmessages = bot.Messages.forChannel(msg.channel.id);
+	ourmessages = ourmessages.filter(e => e.id == replaceid);
+		message=ourmessages[0]
+		message.edit(suffix)
+		if (!suffix.includes("nodel"))
+		{
+			msg.delete()
+		}
+	}
+})
+Commands.push(
+{
 	name: 'ban',
 	help: 'ban a thing',
 	usage: '',
