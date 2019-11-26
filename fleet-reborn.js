@@ -225,7 +225,7 @@ bot.Dispatcher.on("MESSAGE_CREATE", e =>
 			{flags = hasPerm(msg.guild.id, msg.author.id)
 				if(flags[0]) {}
 			 	else if(flags[execute[0].permFlag])
-				{}else {return msg.reply("error")}
+				{}else {return msg.reply("Necesary Flag not present, Glag needed: " +execute[0].permFlag+ "\nFor reference of Flag ids use _hasPerms")}
 			}
 			if (execute[0].noDM && !msg.guild)
 			{
@@ -235,7 +235,7 @@ bot.Dispatcher.on("MESSAGE_CREATE", e =>
 			{
 				return
 			}
-			else if (execute[0].level > 0 && msg.author.id != botowner)
+			else if (execute[0].level > 0 && msg.author.id != botowner || execute[0].permFlag)
 			{
 				switch (execute[0].level)
 				{
