@@ -221,6 +221,12 @@ bot.Dispatcher.on("MESSAGE_CREATE", e =>
 		}
 		if (execute.length > 0)
 		{
+			if (execute[0].permFlag)
+			{flags = hasPerm(msg.guild.id, msg.author.id)
+				if(flags[0]) {}
+			 	else if(execute[0].permFlag >=flags[0])
+				{}else {return msg.reply("error")}
+			}
 			if (execute[0].noDM && !msg.guild)
 			{
 				return msg.reply("This Command can not be executed in DMs")
@@ -2712,6 +2718,7 @@ Commands.push(
 	aliases: ['sdex'],
 	help: 'Showdown dex mirror. -sdex name',
 	level: 0,
+	permFlag: 3,
 	hidden: false,
 	fn: function(msg, suffix, bot)
 	{
