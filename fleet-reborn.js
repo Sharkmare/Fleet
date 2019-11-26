@@ -1,4 +1,4 @@
-const version = "Angles with scaly paws."
+const version = "Angles with scaly paws!"
 try
 {
 	Config = require('./config.json')
@@ -2912,8 +2912,7 @@ Commands.push(
 	level: 'master',
 	fn: function(msg, suffix, bot , client)
 	{
-	 	var roleID = suffix
-		var result = client.guilds.find ( e=> e.id == msg.channel.guild.id ).roles.find(e=> e.id == roleID)
+		var result = client.guilds.find ( e=> e.id == msg.channel.guild.id ).roles.find(e=> e.id == suffix)
 		colorhandler (result,0,50)
 	}
 })
@@ -2928,7 +2927,7 @@ function colorhandler (role,timeschanged,limiter)
 			setTimeout(function(){role.setColor('#00A0F0')
 			setTimeout(function(){role.setColor('#0000FA')
 			setTimeout(function(){role.setColor('#A000F0')
-			      colorhandler(role,timeschanged)
+			      colorhandler(role,timeschanged,limiter)
 					     }, 1000);
 					     }, 2000);
 					     }, 1000);     
