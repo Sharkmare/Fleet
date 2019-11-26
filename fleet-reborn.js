@@ -2489,8 +2489,9 @@ Commands.push(
 	level: 'master',
 	fn: function(msg, suffix, bot, client)
 	{
-		bot.disconnect()
 		client.destroy()
+		bot.disconnect()
+		process.exit()
 	}
 })
 Commands.push(
