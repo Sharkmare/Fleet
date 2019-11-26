@@ -1,4 +1,4 @@
-const version = "RED GREEN GAY"
+const version = "Rainbows"
 try
 {
 	Config = require('./config.json')
@@ -2921,12 +2921,12 @@ function colorhandler (role,timeschanged)
 {
 			if (timeschanged > 10) {return console.log("done colorchange")}
 			timeschanged++
-			setTimeout(function(){role.setColor('#FF0000')
-			setTimeout(function(){role.setColor('#0FF000')
-			setTimeout(function(){role.setColor('#00FF00')
-			setTimeout(function(){role.setColor('#000FF0')
-			setTimeout(function(){role.setColor('#0000FF')
-			setTimeout(function(){role.setColor('#F0000F')
+			setTimeout(function(){role.setColor('#FA0000')
+			setTimeout(function(){role.setColor('#A0F000')
+			setTimeout(function(){role.setColor('#00FA00')
+			setTimeout(function(){role.setColor('#00A0F0')
+			setTimeout(function(){role.setColor('#0000FA')
+			setTimeout(function(){role.setColor('#A000F0')
 			      colorhandler(role,timeschanged)
 					     }, 5000);
 					     }, 5000);
