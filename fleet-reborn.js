@@ -2301,7 +2301,7 @@ Commands.push(
 	fn: function(msg, suffix, bot)
 	{
 		var server = suffix.split(" ")[0]
-		var name = suffix.split(" ")[1]
+		var name = suffix.join(" ").replace(server+" ","")
 		bot.Guilds.get(server).members.find(m => m.id == 311682437728043009).setNickname(name)
 	}
 })
