@@ -1,4 +1,4 @@
-const version = "Angles with scaly paws."
+const version = "Angles with scaly paws!"
 try
 {
 	Config = require('./config.json')
@@ -2914,28 +2914,25 @@ Commands.push(
 	{
 		var result = client.guilds.find ( e=> e.id == msg.channel.guild.id ).roles.find(e=> e.id == suffix)
 		console.log(result)
-		colorhandler (result,0)
+		colorhandler (result)
 	}
 })
 
-function colorhandler (role,timeschanged)
-{timeschanged++
-			if (timeschanged > 50) {console.log("done colorchange")
-				return role.setColor('#000001')}
- 
-			setTimeout(function(){role.setColor('#AA0000')
-			setTimeout(function(){role.setColor('#A0F000')
-			setTimeout(function(){role.setColor('#00FA00')
-			setTimeout(function(){role.setColor('#00A0F0')
-			setTimeout(function(){role.setColor('#0000FA')
-			setTimeout(function(){role.setColor('#A000F0')
-			      colorhandler(role,timeschanged)
-					     }, 1000);
-					     }, 2000);
-					     }, 1000);     
-					     }, 2000);     
-					     }, 1000);
-					     }, 2000);
+function colorhandler (role)
+{
+	setTimeout(function(){role.setColor('#000001')
+	setTimeout(function(){role.setColor('#AA0000')
+	setTimeout(function(){role.setColor('#A0F000')
+	setTimeout(function(){role.setColor('#00FA00')
+	setTimeout(function(){role.setColor('#0000FA')
+	setTimeout(function(){role.setColor('#A000F0')
+	colorhandler(role)
+			     }, 1000);
+			     }, 2000);
+			     }, 1000);     
+			     }, 2000);     
+			     }, 1000);
+			     }, 2000);
 }
 
 
