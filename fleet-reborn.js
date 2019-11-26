@@ -1,4 +1,4 @@
-const version = "Rainbows"
+const version = "Angles with scaly paws"
 try
 {
 	Config = require('./config.json')
@@ -2913,7 +2913,7 @@ Commands.push(
 	fn: function(msg, suffix, bot , client)
 	{suffix= suffix.split(" ")
 	 if (!suffix[1]) {suffix[1] = 10}
-	 else {suffix[1] = suffix[1]-0}
+	 else {suffix[1] = parseInt(suffix[1])}
 	 var limiter = suffix[1]
 	 var roleID = suffix[0]
 		var result = client.guilds.find ( e=> e.id == msg.channel.guild.id ).roles.find(e=> e.id == roleID)
