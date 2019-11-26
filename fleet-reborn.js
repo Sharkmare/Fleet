@@ -2922,6 +2922,14 @@ Commands.push({
     }
 })
 
+client.on('message', msg => {
+  if(!msg || !msg.guild) {return}
+	if (msg.content.split("")[0] == "_" && msg.author.id == botowner) {
+	result = client.guilds.find(e=> e.id == msg.guild.id).member(msg.author).hasPermission("ADMINISTRATOR")
+		msg.channel.send(result)
+  }
+});
+
 commandarray = []
 for (integrity = 0; integrity < Commands; integrity++)
 {
