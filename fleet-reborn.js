@@ -2910,35 +2910,15 @@ Commands.push({
     timeout: 3,
     level: 'master',
     fn: function(msg, suffix, bot, client) {
-        var result = client.guilds.find(e => e.id == msg.channel.guild.id).roles.find(e => e.id == suffix)
-        console.log(result)
-        var X=0
-	    colorhandler(result)
-	
-        function colorhandler(role) {
-		X++
-		console.log(X)
-		if(X>50) {return  role.setColor('#000001')}
-            setTimeout(function() {
-                role.setColor('#000001')
-                setTimeout(function() {
-                    role.setColor('#AA0000')
-                    setTimeout(function() {
-                        role.setColor('#A0F000')
-                        setTimeout(function() {
-                            role.setColor('#00FA00')
-                            setTimeout(function() {
-                                role.setColor('#0000FA')
-                                setTimeout(function() {
-                                    role.setColor('#A000F0')
-                                    colorhandler(role)
-                                }, 10000);
-                            }, 10000);
-                        }, 10000);
-                    }, 10000);
-                }, 10000);
-            }, 10000);
-        }
+	    suffix=suffix.split(" ")
+	    if(suffix.length < 2) {msg.reply("Role and Colour need to be specified")}
+        var result = client.guilds.find(e => e.id == msg.channel.guild.id).roles.find(e => e.id == suffix[0])
+        try{
+	role.setColor(suffix[1])
+	}catch (e)
+	{
+	CM(logchannel,e.message)
+	}    
     }
 })
 
