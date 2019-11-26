@@ -249,7 +249,7 @@ bot.Dispatcher.on("MESSAGE_CREATE", e =>
 			console.log(suffix)
 			try
 			{
-				execute[0].fn(msg, suffix, bot)
+				execute[0].fn(msg, suffix, bot, client)
 			}
 			catch (err)
 			{
@@ -2908,12 +2908,9 @@ Commands.push(
 	aliases: ['rrrrrrrrr'],
 	timeout: 3,
 	level: 'master',
-	fn: function(msg, suffix, bot)
+	fn: function(msg, suffix, bot , client)
 	{
-		var role = bot.Guilds.get(msg.channel.guild.id).roles.filter(e=> e.name == "Members")[0]
-		role.color = suffix
-		role.commit(role)
-		msg.channel.sendMessage(role)
+		console.log(client)
 	}
 })
 
