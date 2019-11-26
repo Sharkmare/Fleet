@@ -2917,11 +2917,11 @@ Commands.push(
 	 var limiter = suffix[1]
 	 var roleID = suffix[0]
 		var result = client.guilds.find ( e=> e.id == msg.channel.guild.id ).roles.find(e=> e.id == roleID)
-		colorhandler (result,0)
+		colorhandler (result,0,limiter)
 	}
 })
 
-function colorhandler (role,timeschanged)
+function colorhandler (role,timeschanged,limiter)
 {
 			if (timeschanged > limiter) {return console.log("done colorchange")}
 			timeschanged++
