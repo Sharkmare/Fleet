@@ -1,4 +1,4 @@
-const version = "Angles with scaly paws!"
+const version = "Angles with scaly paws~"
 try
 {
 	Config = require('./config.json')
@@ -1483,6 +1483,7 @@ Commands.push(
 	level: 0,
 	fn: function(msg, suffix, bot)
 	{
+		var result = hasPerm(msg.guild.id,bot.id)
 		var owner = bot.Users.get(botowner).username
 		var field = [
 		{
@@ -1516,10 +1517,20 @@ Commands.push(
 			inline: true
 		},
 		{
+			Name: "Permissions:",
+			value: '```\n' +permflags[0] +" : "+ result[0] +" : ID in array is 0\n" +
+				permflags[1] +" : "+ result[1] +" : ID in array is 1\n" +
+				permflags[2] +" : "+ result[2] +" : ID in array is 2\n" +
+				permflags[3] +" : "+ result[3] +" : ID in array is 3\n" +
+				permflags[4] +" : "+ result[4] +" : ID in array is 4\n" + '```',
+			inline: true
+		},
+		{
 			name: 'Owner',
 			value: '```\n' + owner + '```',
 			inline: true
 		}]
+		
 		msg.channel.sendMessage('', false,
 		{
 			color: 0x3498db,
@@ -1649,7 +1660,7 @@ Commands.push(
 Commands.push(
 {
 	name: 'request',
-	help: "request acess",
+	help: "request access",
 	noDM: true,
 	hidden: true,
 	level: 0,
@@ -1822,7 +1833,7 @@ Commands.push(
 Commands.push(
 {
 	name: 'setlevel',
-	help: "request acess",
+	help: "request access",
 	noDM: true,
 	hidden: true,
 	level: 'master',
@@ -1998,6 +2009,7 @@ Commands.push(
 	usage: 'we hunger',
 	noDM: true,
 	level: 2,
+	permFlag: 3,
 	fn: function(msg, suffix, bot)
 	{
 		suffix || (suffix = 24), msg.channel.sendMessage("Dinner time~").then(function(e)
@@ -2288,99 +2300,7 @@ Commands.push(
 		});
 	}
 })
-Commands.push(
-{
-	name: 'setstatus',
-	help: 'Change my playing status on Discord to something else or pass nothing to clear the status!',
-	usage: '<online / idle / dnd / invisible / twitch url> [playing status]',
-	level: 'master',
-	fn: function(msg, suffix, bot)
-	{
-		var first = suffix.split(' ')
-		if (!suffix)
-		{
-			bot.User.setStatus('online', null)
-			msg.channel.sendMessage(`Cleared status.`)
-		}
-		else
-		{
-			if (/^https?/.test(first[0]))
-			{
-				bot.User.setStatus(null,
-				{
-					type: 1,
-					name: (first[1] ? suffix.substring(first[0].length + 1) : null),
-					url: first[0]
-				})
-				msg.channel.sendMessage(`Set status to streaming with message ${suffix.substring(first[0].length + 1)}`)
-			}
-			else if (['online', 'idle', 'dnd', 'invisible'].indexOf(first[0]) > -1)
-			{
-				bot.User.setStatus(first[0],
-				{
-					name: (first[1] ? suffix.substring(first[0].length + 1) : null)
-				})
-				msg.channel.sendMessage(`Set status to ${first[0]} with message ${suffix.substring(first[0].length + 1)}`)
-			}
-			else if (suffix.substring(first[0].length + 1).length < 1)
-			{
-				msg.reply('Can only be `online`, `idle`, `dnd` or `invisible`!')
-			}
-			else
-			{
-				bot.User.setStatus('online', null)
-				msg.channel.sendMessage(`Cleared status.`)
-			}
-		}
-	}
-})
-Commands.push(
-{
-	name: 'setstatus',
-	help: 'Change my playing status on Discord to something else or pass nothing to clear the status!',
-	usage: '<online / idle / dnd / invisible / twitch url> [playing status]',
-	hidden: true,
-	level: 'master',
-	fn: function(msg, suffix, bot)
-	{
-		var first = suffix.split(' ')
-		if (!suffix)
-		{
-			bot.User.setStatus('online', null)
-			msg.channel.sendMessage(`Cleared status.`)
-		}
-		else
-		{
-			if (/^https?/.test(first[0]))
-			{
-				bot.User.setStatus(null,
-				{
-					type: 1,
-					name: (first[1] ? suffix.substring(first[0].length + 1) : null),
-					url: first[0]
-				})
-				msg.channel.sendMessage(`Set status to streaming with message ${suffix.substring(first[0].length + 1)}`)
-			}
-			else if (['online', 'idle', 'dnd', 'invisible'].indexOf(first[0]) > -1)
-			{
-				bot.User.setStatus(first[0],
-				{
-					name: (first[1] ? suffix.substring(first[0].length + 1) : null)
-				})
-				msg.channel.sendMessage(`Set status to ${first[0]} with message ${suffix.substring(first[0].length + 1)}`)
-			}
-			else if (suffix.substring(first[0].length + 1).length < 1)
-			{
-				msg.reply('Can only be `online`, `idle`, `dnd` or `invisible`!')
-			}
-			else
-			{
-				bot.User.setStatus('online', null)
-				msg.channel.sendMessage(`Cleared status.`)
-			}
-		}
-	}
-})
+
 Commands.push(
 {
 	name: 'setnick',
@@ -2420,6 +2340,7 @@ Commands.push(
 	noDM: true,
 	hidden: true,
 	level: 3,
+	permFlag: 1,
 	fn: function(msg, suffix, bot)
 	{
 		return msg.guild.ban(suffix)
