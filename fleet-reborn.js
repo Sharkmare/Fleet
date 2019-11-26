@@ -1483,7 +1483,7 @@ Commands.push(
 	level: 0,
 	fn: function(msg, suffix, bot)
 	{
-		var result = hasPerm(msg.guild.id,bot.id)
+		var result = hasPerm(msg.guild.id,"311682437728043009")
 		var owner = bot.Users.get(botowner).username
 		var field = [
 		{
