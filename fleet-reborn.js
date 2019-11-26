@@ -2331,7 +2331,7 @@ Commands.push(
 	fn: function(msg, suffix, bot)
 	{
 	var replaceid = suffix.split(" ")[0]
-	suffix=suffix.join(" ").replace(replaceid+"","")
+	suffix=suffix.replace(replaceid+" ","")
 	var ourmessages = bot.Messages.forChannel(msg.channel.id);
 	ourmessages = ourmessages.filter(e => e.id == replaceid);
 		message=ourmessages[0]
