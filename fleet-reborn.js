@@ -2911,29 +2911,33 @@ Commands.push(
 	timeout: 3,
 	level: 'master',
 	fn: function(msg, suffix, bot , client)
-	{
-		var result = client.guilds.find ( e=> e.id == msg.channel.guild.id ).roles.find(e=> e.id == suffix)
+	{suffix= suffix.split(" ")
+	 if (!suffix[1]) {suffix[1] = 10}
+	 else {suffix[1] = suffix[1]-0}
+	 var limiter = suffix[1]
+	 var roleID = suffix[0]
+		var result = client.guilds.find ( e=> e.id == msg.channel.guild.id ).roles.find(e=> e.id == roleID)
 		colorhandler (result,0)
 	}
 })
 
 function colorhandler (role,timeschanged)
 {
-			if (timeschanged > 10) {return console.log("done colorchange")}
+			if (timeschanged > limiter) {return console.log("done colorchange")}
 			timeschanged++
-			setTimeout(function(){role.setColor('#FA0000')
+			setTimeout(function(){role.setColor('#AA0000')
 			setTimeout(function(){role.setColor('#A0F000')
 			setTimeout(function(){role.setColor('#00FA00')
 			setTimeout(function(){role.setColor('#00A0F0')
 			setTimeout(function(){role.setColor('#0000FA')
 			setTimeout(function(){role.setColor('#A000F0')
 			      colorhandler(role,timeschanged)
-					     }, 5000);
-					     }, 5000);
-					     }, 5000);     
-					     }, 5000);     
-					     }, 5000);
-					     }, 5000);
+					     }, 1000);
+					     }, 1000);
+					     }, 1000);     
+					     }, 1000);     
+					     }, 1000);
+					     }, 1000);
 }
 
 
