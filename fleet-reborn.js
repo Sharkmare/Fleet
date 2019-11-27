@@ -1,4 +1,4 @@
-const version = "Snomposting~"
+const version = "SNOM WORLD ORDER!"
 try
 {
 	Config = require('./config.json')
@@ -220,6 +220,7 @@ bot.Dispatcher.on("MESSAGE_CREATE", e =>
 			CommandsWithAliases = Commands.filter(e => e.aliases) //Ignore commands without aliases
 			execute = CommandsWithAliases.filter(e => e.aliases.includes(trigger.toLowerCase()))
 		}
+		if (execute.length > 1) {CM(logchannel,"Duplicate commands found:\n"+msg.content)}
 		if (execute.length > 0)
 		{
 			if (execute[0].permFlag)
@@ -2808,37 +2809,38 @@ else {
 Commands.push(
 {
 	name: 'snomposts',
-	help: "NO words just death",
-	hidden: true,
+	help: "Displays snoms latest exploits",
+	hidden: false,
 	aliases: ['snom'],
 	timeout: 3,
-	level: 'master',
+	level: 0,
 	fn: function(msg, suffix)
 	{
 		var searchindex = "/snomposting/status/"
-		suffix="https://twitter.com/snomposting"
-		axios.get(suffix).then(function (e) {
-
-CM(logchannel,`${e.config.url} Response: ${e.status} ${e.statusText}`)
-e.data = e.data.split("\"").filter(a=> a.includes(searchindex)).filter(b=> !b.includes(suffix))
-var antidupe=[];var antidupetrue=[];
-for (i =0 ; i<e.data.length;i++)
-{
-	if(antidupetrue.includes(e.data[i])){continue;}
-	antidupetrue.push(e.data[i])
-	antidupe.push("https://twitter.com"+e.data[i])
-}
-e.data=antidupe.join("\n")
-if (e.data.split("") <1900){
-CM(logchannel,`\`\`\``+e.data+`\`\`\``)
-}
-else {
-  e.data=e.data.substring(0, 1900)
-  CM(logchannel,`\`\`\``+e.data+`\`\`\``)
-}
-})
-.catch(function (error)
-{CM(logchannel,error)})		
+		suffix = "https://twitter.com/snomposting"
+		axios.get(suffix).then(function(e)
+			{
+				CM(logchannel, `${e.config.url} Response: ${e.status} ${e.statusText}`)
+				e.data = e.data.split("\"").filter(a => a.includes(searchindex)).filter(b => !b.includes(suffix))
+				var antidupe = [];
+				var antidupetrue = [];
+				for (i = 0; i < e.data.length; i++)
+				{
+					if (antidupetrue.includes(e.data[i]))
+					{
+						continue;
+					}
+					antidupetrue.push(e.data[i])
+					antidupe.push("https://twitter.com" + e.data[i])
+				}
+				e.data = antidupe
+			msg.channel.sendMessage(e.data[0])
+				
+			})
+			.catch(function(error)
+			{
+				CM(logchannel, error)
+			})
 	}
 })
 
