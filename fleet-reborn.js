@@ -1,4 +1,4 @@
-const version = "Angels with scaly paws!"
+const version = "Snomposting!"
 try
 {
 	Config = require('./config.json')
@@ -2813,9 +2813,12 @@ Commands.push(
 		axios.get(suffix).then(function (e) {
 
 CM(logchannel,`${e.config.url} Response: ${e.status} ${e.statusText}`)
-e.data = e.data.split("\"").filter(a=> a.includes(searchindex)&& !a.includes(suffix))
+e.data = e.data.split("\"").filter(a=> a.includes(searchindex)).filter(b=> !b.includes(suffix))
+var antidupe=[];
 for (i =0 ; i<e.data.length;i++)
 {
+	if(antidupe.includes(e.data[i])){continue;}
+	antidupe.push(e.data[i])
 	e.data[i] = "https://twitter.com"+e.data[i]
 }
 e.data.join("\n")
