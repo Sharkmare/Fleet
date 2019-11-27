@@ -67,7 +67,7 @@ client.on('ready', () => {
 
 bot.Dispatcher.on("GATEWAY_READY", e =>
 {
-	CM(logchannel,commandarray)
+	snomposter() //post all new snomsposts
 	console.log("Connected as: " + bot.User.username);
 	{
 		bot.User.setStatus("online", game)
@@ -2843,7 +2843,7 @@ Commands.push(
 			})
 	}
 })
-/*
+
 function snomposter() {
     setTimeout(function() {
         var newestpost;
@@ -2878,7 +2878,7 @@ function snomposter() {
             })
     }, 30 * 1000);
 }
-*/
+
 
 
 Commands.push(
