@@ -1,4 +1,4 @@
-const version = "Snomposting!"
+const version = "Snomposting~!"
 try
 {
 	Config = require('./config.json')
@@ -2825,10 +2825,9 @@ var antidupe=[];
 for (i =0 ; i<e.data.length;i++)
 {
 	if(antidupe.includes(e.data[i])){continue;}
-	antidupe.push(e.data[i])
-	e.data[i] = "https://twitter.com"+e.data[i]
+	antidupe.push("https://twitter.com"+e.data[i])
 }
-e.data=e.data.join("\n")
+e.data=antidupe.join("\n")
 if (e.data.split("") <1900){
 CM(logchannel,`\`\`\``+e.data+`\`\`\``)
 }
