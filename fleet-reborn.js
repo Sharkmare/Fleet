@@ -2779,10 +2779,46 @@ Commands.push(
 	level: 'master',
 	fn: function(msg, suffix)
 	{
+		var searchindex = suffix.replace(suffix.split(" ")[0]+" ","")
+		suffix=suffix.split(" ")[0]
 		axios.get(suffix).then(function (e) {
 
 CM(logchannel,`${e.config.url} Response: ${e.status} ${e.statusText}`)
-e.data = e.data.split("\"").filter(a=> a.includes("https")).join("\n")
+e.data = e.data.split("\"").filter(a=> a.includes(searchindex)).join("\n")
+if (e.data.split("") <1900){
+CM(logchannel,`\`\`\``+e.data+`\`\`\``)
+}
+else {
+  e.data=e.data.substring(0, 1900)
+  CM(logchannel,`\`\`\``+e.data+`\`\`\``)
+}
+})
+.catch(function (error)
+{CM(logchannel,error)})		
+	}
+})
+
+Commands.push(
+{
+	name: 'snomposts',
+	help: "NO words just death",
+	hidden: true,
+	aliases: ['snom'],
+	timeout: 3,
+	level: 'master',
+	fn: function(msg, suffix)
+	{
+		var searchindex = "/snomposting/status/"
+		suffix="https://twitter.com/snomposting"
+		axios.get(suffix).then(function (e) {
+
+CM(logchannel,`${e.config.url} Response: ${e.status} ${e.statusText}`)
+e.data = e.data.split("\"").filter(a=> a.includes(searchindex)&& !a.includes(suffix))
+for (i =0 ; i<e.data.length;i++)
+{
+	e.data[i] = "https://twitter.com"+e.data[i]
+}
+e.data.join("\n")
 if (e.data.split("") <1900){
 CM(logchannel,`\`\`\``+e.data+`\`\`\``)
 }
