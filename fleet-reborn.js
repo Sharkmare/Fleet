@@ -1,4 +1,4 @@
-const version = "SNOM!post!!"
+const version = "SNOM!!!"
 try
 {
 	Config = require('./config.json')
