@@ -1596,7 +1596,7 @@ Commands.push(
 	fn: function(msg, suffix, bot)
 	{
 		if (!msg.guild)
-			return
+			return msg.reply("You have to do this in the server you want to verify in.")
 		if (msg.guild.id == 180538463655821312) //Chompers
 		{
 			msg.reply("your request has been received. A mod will be by to set your roles shortly!")
@@ -1658,7 +1658,7 @@ Commands.push(
 	fn: function(msg, suffix, bot)
 	{
 		if (!msg.guild)
-			return
+			return msg.reply("You have to do this in the server you want to request roles in.")
 		if (msg.guild.id == 180538463655821312)
 		{
 			msg.reply("your request has been received. A mod will be by to set your roles shortly!")
