@@ -2784,7 +2784,14 @@ Commands.push(
 		axios.get(suffix).then(function (e) {
 
 CM(logchannel,`${e.config.url} Response: ${e.status} ${e.statusText}`)
-e.data = e.data.split("\"").filter(a=> a.includes(searchindex)).join("\n")
+var antidupe=[];e.data = e.data.split("\"").filter(a=> a.includes(searchindex))
+for (i =0 ; i<e.data.length;i++)
+{
+	if(antidupe.includes(e.data[i])){continue;}
+	antidupe.push(e.data[i])
+	
+}
+e.data = antidupe.join("\n")
 if (e.data.split("") <1900){
 CM(logchannel,`\`\`\``+e.data+`\`\`\``)
 }
@@ -2821,7 +2828,7 @@ for (i =0 ; i<e.data.length;i++)
 	antidupe.push(e.data[i])
 	e.data[i] = "https://twitter.com"+e.data[i]
 }
-e.data.join("\n")
+e.data=e.data.join("\n")
 if (e.data.split("") <1900){
 CM(logchannel,`\`\`\``+e.data+`\`\`\``)
 }
