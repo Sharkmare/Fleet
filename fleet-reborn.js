@@ -1,4 +1,4 @@
-const version = "SNOM!!!"
+const version = "SNOM!post!!"
 try
 {
 	Config = require('./config.json')
@@ -2874,7 +2874,7 @@ function snomposter() {
 
             })
             .catch(function(error) {
-                CM(logchannel, error)
+               console.log(error)
             })
     }, 30 * 1000);
 }
