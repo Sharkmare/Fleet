@@ -2843,7 +2843,7 @@ Commands.push(
 			})
 	}
 })
-
+/*
 function snomposter() {
     setTimeout(function() {
         var newestpost;
@@ -2878,7 +2878,7 @@ function snomposter() {
             })
     }, 30 * 1000);
 }
-
+*/
 
 
 Commands.push(
