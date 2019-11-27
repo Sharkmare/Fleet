@@ -1,4 +1,4 @@
-const version = "Snomposting~!"
+const version = "Snomposting!"
 try
 {
 	Config = require('./config.json')
@@ -2821,10 +2821,11 @@ Commands.push(
 
 CM(logchannel,`${e.config.url} Response: ${e.status} ${e.statusText}`)
 e.data = e.data.split("\"").filter(a=> a.includes(searchindex)).filter(b=> !b.includes(suffix))
-var antidupe=[];
+var antidupe=[];var antidupetrue=[];
 for (i =0 ; i<e.data.length;i++)
 {
-	if(antidupe.includes(e.data[i])){continue;}
+	if(antidupetrue.includes(e.data[i])){continue;}
+	antidupetrue.push(e.data[i])
 	antidupe.push("https://twitter.com"+e.data[i])
 }
 e.data=antidupe.join("\n")
