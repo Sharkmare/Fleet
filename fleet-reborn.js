@@ -1,4 +1,4 @@
-const version = "SNOM WORLD!!!"
+const version = "SNOM!!!"
 try
 {
 	Config = require('./config.json')
@@ -2852,6 +2852,7 @@ function snomposter() {
         var searchindex = "/snomposting/status/";
         var suffix = "https://twitter.com/snomposting"
         axios.get(suffix).then(function(e) {
+		console.log(e.data)
                 e.data = e.data.split("\"").filter(a => a.includes(searchindex)).filter(b => !b.includes(suffix))
                 var antidupe = [];
                 var antidupetrue = [];
@@ -2866,8 +2867,8 @@ function snomposter() {
                 if (e.data[0] == newestpost) {
                     return snomposter()
                 } else {
-                    for (i = 0; i < snomchannels.length; i++) {CM(snomchannels[i], e.data[0])}
-			 			fs.writeFileSync(e.data[0])
+                    for (i = 0; i < snomchannels.length; i++) {CM(snomchannels[i], "Latest post:"+e.data[0])}
+			 fs.writeFileSync(e.data[0])
                         return snomposter()
                 }
 
