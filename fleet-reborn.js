@@ -1,4 +1,4 @@
-const version = "Snompost Live!"
+const version = "Snom Storm!"
 try
 {
 	Config = require('./config.json')
@@ -2846,13 +2846,11 @@ Commands.push(
 
 function snomposter() {
     setTimeout(function() {
-        //var newestpost;
         var newestpost  = fs.readFileSync("lastsnompost","utf8")
-        var snomchannels = ["330777938226184192"];
+        var snomchannels = ["330777938226184192","407381049908264973"];
         var searchindex = "/snomposting/status/";
         var suffix = "https://twitter.com/snomposting"
         axios.get(suffix).then(function(e) {
-		//console.log(e.data)
                 e.data = e.data.split("\"").filter(a => a.includes(searchindex)).filter(b => !b.includes(suffix))
                 var antidupe = [];
                 var antidupetrue = [];
