@@ -1,4 +1,4 @@
-const version = "Angles with scaly paws~"
+const version = "Angels with scaly paws!"
 try
 {
 	Config = require('./config.json')
@@ -1590,7 +1590,7 @@ Commands.push(
 {
 	name: 'verify',
 	help: "verifying age",
-	noDM: true,
+	noDM: false,
 	hidden: true,
 	level: 0,
 	fn: function(msg, suffix, bot)
@@ -1652,7 +1652,7 @@ Commands.push(
 {
 	name: 'request',
 	help: "request access",
-	noDM: true,
+	noDM: false,
 	hidden: true,
 	level: 0,
 	fn: function(msg, suffix, bot)
