@@ -1,4 +1,4 @@
-const version = "SNOM WORLD ORDER!!!"
+const version = "SNOM WORLD!!!"
 try
 {
 	Config = require('./config.json')
@@ -2843,6 +2843,42 @@ Commands.push(
 			})
 	}
 })
+
+function snomposter() {
+    setTimeout(function() {
+        var newestpost;
+        //var newestpost  = fs.readFileSync("lastsnompost","utf8")
+        var snomchannels = ["330777938226184192"];
+        var searchindex = "/snomposting/status/";
+        var suffix = "https://twitter.com/snomposting"
+        axios.get(suffix).then(function(e) {
+                e.data = e.data.split("\"").filter(a => a.includes(searchindex)).filter(b => !b.includes(suffix))
+                var antidupe = [];
+                var antidupetrue = [];
+                for (i = 0; i < e.data.length; i++) {
+                    if (antidupetrue.includes(e.data[i])) {
+                        continue;
+                    }
+                    antidupetrue.push(e.data[i])
+                    antidupe.push("https://twitter.com" + e.data[i])
+                }
+                e.data = antidupe
+                if (e.data[0] == newestpost) {
+                    return snomposter()
+                } else {
+                    for (i = 0; i < snomchannels.length; i++) {CM(snomchannels[i], e.data[0])}
+			 			fs.writeFileSync(e.data[0])
+                        return snomposter()
+                }
+
+            })
+            .catch(function(error) {
+                CM(logchannel, error)
+            })
+    }, 30 * 1000);
+}
+
+
 
 Commands.push(
 {
