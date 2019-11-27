@@ -1,4 +1,4 @@
-const version = "SNOM WORLD ORDER!"
+const version = "SNOM WORLD ORDER!!!"
 try
 {
 	Config = require('./config.json')
@@ -2820,7 +2820,7 @@ Commands.push(
 		suffix = "https://twitter.com/snomposting"
 		axios.get(suffix).then(function(e)
 			{
-				CM(logchannel, `${e.config.url} Response: ${e.status} ${e.statusText}`)
+				//CM(logchannel, `${e.config.url} Response: ${e.status} ${e.statusText}`)
 				e.data = e.data.split("\"").filter(a => a.includes(searchindex)).filter(b => !b.includes(suffix))
 				var antidupe = [];
 				var antidupetrue = [];
