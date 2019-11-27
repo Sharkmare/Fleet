@@ -2771,18 +2771,18 @@ Commands.push(
 
 Commands.push(
 {
-	name: 'tweet',
+	name: 'linkscrape',
 	help: "NO words just death",
 	hidden: true,
-	aliases: ['twot'],
+	aliases: ['linker'],
 	timeout: 3,
 	level: 'master',
 	fn: function(msg, suffix)
 	{
-		axios.get('https://www.twitter.com/PokemonSwordNS').then(function (e) {
+		axios.get(suffix).then(function (e) {
 
 CM(logchannel,`${e.config.url} Response: ${e.status} ${e.statusText}`)
-
+e.data = e.data.split("\"").filter(a=> a.includes("https")).join("\n")
 if (e.data.split("") <1900){
 CM(logchannel,`\`\`\``+e.data+`\`\`\``)
 }
