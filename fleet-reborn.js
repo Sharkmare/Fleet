@@ -1,4 +1,4 @@
-const version = "Angels with scaly pawbs~"
+const version = "Angels with scaly pawbs~!"
 try
 {
 	Config = require('./config.json')
@@ -22,7 +22,8 @@ const botmain = require("discordie"),
 	hungermaster = ["148914844190507018", botowner];
 const axios = require('axios'); //better HTML request.
 const sharp = require('sharp'); //Image processing.
-const Path = require('path')
+const Path = require('path');
+const isUp = require('is-up');
 var fs = require("fs"),
 	servers = [],
 	started = Date.now(),
@@ -3039,6 +3040,18 @@ Commands.push({
 	}
 })
 
+Commands.push({
+    name: 'byondup',
+    help: "is byond up?",
+    hidden: false,
+    aliases: ['byond?'],
+    timeout: 3,
+    level: 0,
+    fn: function(msg, suffix, bot, client)
+	{
+		msg.channel.sendMessage("Byond is up?\n"+ isUp('https://byond.com'))
+	}
+})
 
 //values are as follows: (snomchannels,searchindex,suffix,file,posttxt,delay)
 function startscrapers()
