@@ -1,4 +1,4 @@
-const version = "Node me!"
+const version = "Angels with scaly pawbs!"
 try
 {
 	Config = require('./config.json')
@@ -2987,7 +2987,7 @@ Commands.push({
 	{
 		fs.writeFileSync("tempjs.js",suffix)
 		var child_process = require('child_process');
-		child_process.exec("tempjs.js", function(error, stdout, stderr)
+		child_process.exec("node tempjs.js", function(error, stdout, stderr)
 		{
 			if (error)
 			{
