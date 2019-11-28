@@ -2883,8 +2883,8 @@ function snomposter(snomchannels,searchindex,suffix,file,posttxt,delay) {
     }, delay * 1000);
 }
 
-function sfwfaposter(snomchannels,searchindex,suffix,file,posttxt,delay) {
-	suffix="https://sfw.furaffinity.net/gallery/"+suffix+"/"
+function faposter(snomchannels,searchindex,suffix,file,posttxt,delay) {
+	suffix="https://www.furaffinity.net/gallery/"+suffix+"/"
     setTimeout(function() {
         try{
 	    var newestpost  = fs.readFileSync(file,"utf8")
@@ -2903,15 +2903,15 @@ function sfwfaposter(snomchannels,searchindex,suffix,file,posttxt,delay) {
                         continue;
                     }
                     antidupetrue.push(e.data[i])
-                    antidupe.push("https://sfw.furaffinity.net" + e.data[i])
+                    antidupe.push("https://www.furaffinity.net" + e.data[i])
                 }
                 e.data = antidupe
                 if (e.data[0] == newestpost) {
-                    return sfwfaposter(snomchannels,searchindex,suffix,file,posttxt,delay) 
+                    return faposter(snomchannels,searchindex,suffix,file,posttxt,delay) 
                 } else {
                     for (i = 0; i < snomchannels.length; i++) {CM(snomchannels[i], posttxt+e.data[0])}
 			 fs.writeFileSync(file,e.data[0])
-                        return sfwfaposter(snomchannels,searchindex,suffix,file,posttxt,delay) 
+                        return faposter(snomchannels,searchindex,suffix,file,posttxt,delay) 
                 }
 
             })
@@ -3047,6 +3047,6 @@ function startscrapers()
 			   "/snomposting/status/", "https://twitter.com/snomposting","lastsnompost","New Snompost!\n",30)
 		snomposter(["446847460468457473"],
 			   "/_Pokedex_Facts/status/", "https://twitter.com/_Pokedex_Facts","lastpokedexfact","Pokedex Update!\n",1200)
-		//sfwfaposter(["logchannel"],
+		//faposter(["logchannel"],
 		//	   "/view/", "user","user","New post by User!\n",1200)
 }
