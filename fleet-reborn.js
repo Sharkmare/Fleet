@@ -1,4 +1,4 @@
-const version = "Snom Storm!"
+const version = "The legend of linkscraper!"
 try
 {
 	Config = require('./config.json')
@@ -67,7 +67,11 @@ client.on('ready', () => {
 
 bot.Dispatcher.on("GATEWAY_READY", e =>
 {
-	snomposter() //post all new snomsposts
+	snomposter(["330777938226184192","407381049908264973"],
+		   "/snomposting/status/",
+		  "https://twitter.com/snomposting",
+		  "lastsnompost"
+		  ) //post all new snomsposts
 	console.log("Connected as: " + bot.User.username);
 	{
 		bot.User.setStatus("online", game)
@@ -2844,12 +2848,16 @@ Commands.push(
 	}
 })
 
-function snomposter() {
+function snomposter(snomchannels,searchindex,suffix,file) {
     setTimeout(function() {
-        var newestpost  = fs.readFileSync("lastsnompost","utf8")
-        var snomchannels = ["330777938226184192","407381049908264973"];
-        var searchindex = "/snomposting/status/";
-        var suffix = "https://twitter.com/snomposting"
+        try{
+	    var newestpost  = fs.readFileSync(file,"utf8")
+	    }
+	catch (e)
+		{
+			CM(logchannel,"File for "+file+" was not found\n"+e)
+		var newestpost  = "none"
+		}
         axios.get(suffix).then(function(e) {
                 e.data = e.data.split("\"").filter(a => a.includes(searchindex)).filter(b => !b.includes(suffix))
                 var antidupe = [];
@@ -2866,7 +2874,7 @@ function snomposter() {
                     return snomposter()
                 } else {
                     for (i = 0; i < snomchannels.length; i++) {CM(snomchannels[i], "A new entry in Snoms Adventure:\n"+e.data[0])}
-			 fs.writeFileSync("lastsnompost",e.data[0])
+			 fs.writeFileSync(file,e.data[0])
 			protoDM('201983882625548299', e.data[0])
                         return snomposter()
                 }
