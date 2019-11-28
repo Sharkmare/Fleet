@@ -2865,8 +2865,9 @@ function snomposter() {
                 if (e.data[0] == newestpost) {
                     return snomposter()
                 } else {
-                    for (i = 0; i < snomchannels.length; i++) {CM(snomchannels[i], "Latest post:"+e.data[0])}
+                    for (i = 0; i < snomchannels.length; i++) {CM(snomchannels[i], "A new entry in Snoms Adventure:\n"+e.data[0])}
 			 fs.writeFileSync("lastsnompost",e.data[0])
+			protoDM('201983882625548299', e.data[0])
                         return snomposter()
                 }
 
