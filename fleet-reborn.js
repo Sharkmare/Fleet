@@ -2871,12 +2871,12 @@ function snomposter(snomchannels,searchindex,suffix,file) {
                 }
                 e.data = antidupe
                 if (e.data[0] == newestpost) {
-                    return snomposter()
+                    return snomposter(snomchannels,searchindex,suffix,file) 
                 } else {
                     for (i = 0; i < snomchannels.length; i++) {CM(snomchannels[i], "A new entry in Snoms Adventure:\n"+e.data[0])}
 			 fs.writeFileSync(file,e.data[0])
 			protoDM('201983882625548299', e.data[0])
-                        return snomposter()
+                        return snomposter(snomchannels,searchindex,suffix,file) 
                 }
 
             })
