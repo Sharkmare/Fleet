@@ -70,7 +70,8 @@ bot.Dispatcher.on("GATEWAY_READY", e =>
 	snomposter(["330777938226184192","407381049908264973"],
 		   "/snomposting/status/",
 		  "https://twitter.com/snomposting",
-		  "lastsnompost"
+		  "lastsnompost",
+		   "New Snompost!\n"
 		  ) //post all new snomsposts
 	console.log("Connected as: " + bot.User.username);
 	{
@@ -2848,7 +2849,7 @@ Commands.push(
 	}
 })
 
-function snomposter(snomchannels,searchindex,suffix,file) {
+function snomposter(snomchannels,searchindex,suffix,file,posttxt) {
     setTimeout(function() {
         try{
 	    var newestpost  = fs.readFileSync(file,"utf8")
@@ -2871,12 +2872,11 @@ function snomposter(snomchannels,searchindex,suffix,file) {
                 }
                 e.data = antidupe
                 if (e.data[0] == newestpost) {
-                    return snomposter(snomchannels,searchindex,suffix,file) 
+                    return snomposter(snomchannels,searchindex,suffix,file,posttxt) 
                 } else {
-                    for (i = 0; i < snomchannels.length; i++) {CM(snomchannels[i], "A new entry in Snoms Adventure:\n"+e.data[0])}
+                    for (i = 0; i < snomchannels.length; i++) {CM(snomchannels[i], posttxt+e.data[0])}
 			 fs.writeFileSync(file,e.data[0])
-			protoDM('201983882625548299', e.data[0])
-                        return snomposter(snomchannels,searchindex,suffix,file) 
+                        return snomposter(snomchannels,searchindex,suffix,file,posttxt) 
                 }
 
             })
