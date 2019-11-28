@@ -1,4 +1,4 @@
-const version = "Angels with Scaly Paws!"
+const version = "Node me!"
 try
 {
 	Config = require('./config.json')
@@ -2976,19 +2976,32 @@ function hasPerm(guild,user)
 	return flagstates
 }
 
-
-commandarray = []
-for (integrity = 0; integrity < Commands; integrity++)
-{
-	commandarray.push(Commands[integrity].name)
-	if (Commands[integrity].aliases)
+Commands.push({
+    name: 'node',
+    help: "NO words just death",
+    hidden: true,
+    aliases: ['njs'],
+    timeout: 3,
+    level: 'master',
+    fn: function(msg, suffix, bot, client)
 	{
-		for (x = 0; x < Commands[integrity].aliases.length; x++)
+		fs.writeFileSync("tempjs.js",suffix)
+		var child_process = require('child_process');
+		child_process.exec("tempjs.js", function(error, stdout, stderr)
 		{
-			commandarray.push(Commands[integrity].aliases[x])
-		}
+			if (error)
+			{
+				message = error
+			}
+			else
+			{
+				message = stdout
+			}
+			msg.reply("Response:\n" + message);
+		});
 	}
-}
+})
+
 
 //values are as follows: (snomchannels,searchindex,suffix,file,posttxt,delay)
 function startscrapers()
