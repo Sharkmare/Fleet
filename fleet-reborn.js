@@ -1,4 +1,4 @@
-const version = "The legend of linkscraper!"
+const version = "Angels with Scaly Paws!"
 try
 {
 	Config = require('./config.json')
