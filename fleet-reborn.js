@@ -34,7 +34,7 @@ var fs = require("fs"),
 	unirest = require("unirest"),
 	game = {
 		type: 1,
-		name: "with your soul~",
+		name: "https://www.youtube.com/watch?v=xtKHy1FUySk",
 		url: "http://discordvore.info"
 	};
 
