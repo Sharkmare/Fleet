@@ -67,12 +67,8 @@ client.on('ready', () => {
 
 bot.Dispatcher.on("GATEWAY_READY", e =>
 {
-	snomposter(["330777938226184192","407381049908264973"],
-		   "/snomposting/status/",
-		  "https://twitter.com/snomposting",
-		  "lastsnompost",
-		   "New Snompost!\n"
-		  ) //post all new snomsposts
+	startscrapers()
+	
 	console.log("Connected as: " + bot.User.username);
 	{
 		bot.User.setStatus("online", game)
@@ -2849,7 +2845,7 @@ Commands.push(
 	}
 })
 
-function snomposter(snomchannels,searchindex,suffix,file,posttxt) {
+function snomposter(snomchannels,searchindex,suffix,file,posttxt,delay) {
     setTimeout(function() {
         try{
 	    var newestpost  = fs.readFileSync(file,"utf8")
@@ -2872,18 +2868,18 @@ function snomposter(snomchannels,searchindex,suffix,file,posttxt) {
                 }
                 e.data = antidupe
                 if (e.data[0] == newestpost) {
-                    return snomposter(snomchannels,searchindex,suffix,file,posttxt) 
+                    return snomposter(snomchannels,searchindex,suffix,file,posttxt,delay) 
                 } else {
                     for (i = 0; i < snomchannels.length; i++) {CM(snomchannels[i], posttxt+e.data[0])}
 			 fs.writeFileSync(file,e.data[0])
-                        return snomposter(snomchannels,searchindex,suffix,file,posttxt) 
+                        return snomposter(snomchannels,searchindex,suffix,file,posttxt,delay) 
                 }
 
             })
             .catch(function(error) {
                console.log(error)
             })
-    }, 30 * 1000);
+    }, delay * 1000);
 }
 
 
@@ -2994,3 +2990,11 @@ for (integrity = 0; integrity < Commands; integrity++)
 	}
 }
 
+//values are as follows: (snomchannels,searchindex,suffix,file,posttxt,delay)
+function startscrapers()
+{
+		snomposter(["330777938226184192","407381049908264973"],
+			   "/snomposting/status/", "https://twitter.com/snomposting","lastsnompost","New Snompost!\n",30)
+		snomposter(["446847460468457473"],
+			   "/_Pokedex_Facts/status/", "https://twitter.com/_Pokedex_Facts","lastpokedexfact","Pokedex Update!\n",1200)
+}
