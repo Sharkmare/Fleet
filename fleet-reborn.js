@@ -1,4 +1,4 @@
-const version = "Angels with scaly pawbs~!"
+const version = "Angels with scaly pawbs~"
 try
 {
 	Config = require('./config.json')
@@ -3049,7 +3049,9 @@ Commands.push({
     level: 0,
     fn: function(msg, suffix, bot, client)
 	{
-		msg.channel.sendMessage("Byond is up?\n"+ isUp('https://byond.com'))
+		(async () => {
+		msg.channel.sendMessage("Byond is up?\n"+ await(isUp('https://byond.com')))
+		})();
 	}
 })
 
