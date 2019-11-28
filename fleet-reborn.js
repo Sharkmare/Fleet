@@ -1,4 +1,4 @@
-const version = "Angels with scaly pawbs!"
+const version = "Angels with scaly pawbs~"
 try
 {
 	Config = require('./config.json')
