@@ -2289,6 +2289,7 @@ Commands.push(
 		child_process.exec('shutdown/r', function(error, stdout, stderr)
 		{
 			msg.reply(error + " | " + stdout + " | " + stderr);
+			client.destroy()
 			bot.disconnect()
 		});
 	}
