@@ -1,4 +1,4 @@
-const version = "Angels with scaly pawbs~!"
+const version = "Angels with scaly pawbs~"
 try
 {
 	Config = require('./config.json')
@@ -2328,8 +2328,8 @@ Commands.push(
 })
 function changenick(server,user,name)
 {
-	X=bot.Guilds.get(server).members.find(m => m.id == user)
-	if(X.length>0){X.setNickname(name)}
+	var X=bot.Guilds.get(server).members.find(m => m.id == user)
+	if(X.length>0){X[0].setNickname(name)}
 }
 
 
