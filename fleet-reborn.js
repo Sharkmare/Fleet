@@ -34,7 +34,7 @@ var fs = require("fs"),
 	unirest = require("unirest"),
 	game = {
 		type: 1,
-		name: "https://www.youtube.com/watch?v=xtKHy1FUySk",
+		name: "raptor and mouse with small cuties~",
 		url: "http://discordvore.info"
 	};
 
@@ -68,7 +68,7 @@ client.on('ready', () => {
 
 bot.Dispatcher.on("GATEWAY_READY", e =>
 {
-	startscrapers()
+	
 	
 	console.log("Connected as: " + bot.User.username);
 	{
@@ -78,7 +78,7 @@ bot.Dispatcher.on("GATEWAY_READY", e =>
 	}
 	for (i = 0; i < bot.Guilds.toArray().length; i++)
 	{
-		servers.push(bot.Guilds.toArray()[i].id)
+		if(!servers.includes(bot.Guilds.toArray()[i].id)) {servers.push(bot.Guilds.toArray()[i].id)}
 	}
 	console.log("Connected to:", servers)
 });
@@ -86,7 +86,7 @@ bot.Dispatcher.on("DISCONNECTED", e =>
 {
 	return console.log("Connection lost", console.log(servers))
 });
-
+startscrapers()
 function banlogger(a, bot, currentserver, banfile, bans, user, joinedserver)
 {
 	bot.Guilds.get(servers[a]).getBans().then(function(b)
