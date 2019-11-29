@@ -3078,6 +3078,21 @@ Commands.push({
 	}
 })
 
+Commands.push({
+    name: 'isup',
+    help: "is website up?",
+    hidden: false,
+    aliases: ['up?'],
+    timeout: 3,
+    level: 0,
+    fn: function(msg, suffix, bot, client)
+	{
+		(async () => {
+		msg.channel.sendMessage(`<${suffix}> is up?\n`+ await(isUp(suffix)))
+		})();
+	}
+})
+
 //values are as follows: (snomchannels,searchindex,suffix,file,posttxt,delay)
 function startscrapers()
 {
