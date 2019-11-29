@@ -1,4 +1,4 @@
-const version = "Angels with scaly pawbs~"
+const version = "Angels with scaly pawbs~!"
 try
 {
 	Config = require('./config.json')
@@ -663,7 +663,8 @@ bot.Dispatcher.on(Event.GUILD_MEMBER_ADD, (e) =>
 		var message = `Welcome to ${srv}! \nPlease take a moment to read the rules!\nWe hope you have a great time.`
 		if (srvuid == '180538463655821312') //Chompers
 		{
-			message = `Welcome to ${srv}! \nPlease bring your attention to <#575623788977455104> to learn how to access the rest of the server.\nWe hope you have a great time.`
+			message = `Hello, ${joineduser}! Welcome to ${srv}! \nPlease bring your attention to <#575623788977455104> to learn how to access the rest of the server.\nWe hope you have a great time.`
+			return CM("180538463655821312",message)
 		}
 		protoDM(discordid, message, bot)
 	}
@@ -2307,9 +2308,31 @@ Commands.push(
 	{
 		var server = suffix.split(" ")[0]
 		var name = suffix.join(" ").replace(server+" ","")
-		bot.Guilds.get(server).members.find(m => m.id == 311682437728043009).setNickname(name)
+		changenick(server,"311682437728043009",name)
 	}
 })
+
+Commands.push(
+{
+	name: 'gnick',
+	help: 'Change your Nickname',
+	usage: '<online / idle / dnd / invisible / twitch url> [playing status]',
+	hidden: true,
+	level: 0,
+	fn: function(msg, suffix, bot)
+	{
+		for(i=0;i<servers.length;i++) {
+		changenick(servers[i],msg.author.id,suffix)
+		}
+	}
+})
+function changenick(server,user,name)
+{
+	X=bot.Guilds.get(server).members.find(m => m.id == user)
+	if(X.length>0){X.setNickname(name)}
+}
+
+
 Commands.push(
 {
 	name: 'say',
