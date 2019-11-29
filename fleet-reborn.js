@@ -1,4 +1,4 @@
-const version = "Angels with scaly pawbs!"
+const version = "Angels with scaly pawbs~!"
 try
 {
 	Config = require('./config.json')
@@ -1275,7 +1275,7 @@ Commands.push(
 		var notexistw = "No recorded warns for `" + discordid + "` and no recorded entity."
 		console.log(path);
 		if (!fs.existsSync(dir + "/" + discordid + "/"))
-		{
+		{/*
 			msg.channel.sendMessage("", false,
 			{
 				color: 0x00FF00,
@@ -1284,7 +1284,7 @@ Commands.push(
 					name: "Flags:",
 					value: notexist
 				}]
-			})
+			})*/
 		}
 		else
 		{
@@ -1307,7 +1307,7 @@ Commands.push(
 				if (!x)
 				{
 					var x = "In: " + bannedon
-				};
+				};/*
 				msg.channel.sendMessage("", false,
 				{
 					color: colour,
@@ -1316,7 +1316,7 @@ Commands.push(
 						name: "Flags:",
 						value: "In: " + bannedon
 					}]
-				});
+				});*/
 				for (var i = 0; i < items.length; i++)
 				{
 					console.log(items[i]);
