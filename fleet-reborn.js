@@ -204,7 +204,7 @@ bot.Dispatcher.on("MESSAGE_CREATE", e =>
 	levelthree = fs.readFileSync(drive+":/resources/variables/levelthree", "utf8").split("\n")
 	if (msg.content.split("")[0] == "-")
 	{
-		console.log(e.message.author.username + " | " + e.message.content + " | " + guild)
+		//console.log(e.message.author.username + " | " + e.message.content + " | " + guild)
 		suffix = msg.content.split(" ")
 		trigger = suffix[0].replace("-", "")
 		suffix = suffix.join(" ")
@@ -256,7 +256,7 @@ bot.Dispatcher.on("MESSAGE_CREATE", e =>
 						return msg.reply("You do not have the needed level " + execute[0].level);
 				}
 			}
-			console.log(suffix)
+			//console.log(suffix)
 			try
 			{
 				execute[0].fn(msg, suffix, bot, client)
@@ -271,7 +271,7 @@ bot.Dispatcher.on("MESSAGE_CREATE", e =>
 	//Fleet core -
 	if (msg.content.split("")[0] == "-" && !antiecho)
 	{
-		console.log(e.message.author.username + " | " + e.message.content + " | " + guild)
+		//console.log(e.message.author.username + " | " + e.message.content + " | " + guild)
 		suffix = msg.content.split(" ")
 		trigger = suffix[0].replace("-", "")
 		suffix = suffix.join(" ").replace("-" + trigger + " ", "")
@@ -282,7 +282,7 @@ bot.Dispatcher.on("MESSAGE_CREATE", e =>
 	{
 		if (msg.content.includes("-hunger2 "))
 		{
-			console.log(e.message.author.username + " | " + e.message.content + " | " + guild)
+			//console.log(e.message.author.username + " | " + e.message.content + " | " + guild)
 			var suffix = msg.content.replace("-hunger2 ", "")
 			var t0 = Date.now()
 			suffix || (suffix = 24), msg.channel.sendMessage("Dinner time~").then(function(e)
@@ -312,7 +312,7 @@ bot.Dispatcher.on("MESSAGE_CREATE", e =>
 	//fleet core
 	if (msg.content.includes("fleet") && !antiecho)
 	{
-		console.log(e.message.author.username + " | " + e.message.content + " | " + guild)
+		//console.log(e.message.author.username + " | " + e.message.content + " | " + guild)
 		//bot owner commands
 		if (msg.author.id == botowner)
 		{
