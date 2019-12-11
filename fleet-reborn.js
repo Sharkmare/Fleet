@@ -1,4 +1,4 @@
-const version = "Angels with scaly pawbs~!"
+const version = "EGG"
 try
 {
 	Config = require('./config.json')
@@ -182,8 +182,23 @@ bot.log = CM;bot.dm = protoDM;
 
 bot.Dispatcher.on("MESSAGE_CREATE", e =>
 {
+	var guild;
+	var msg;
+	var attached;
+	if (e.message.guild) {guild = e.message.guild.name}
+	if(!guild) {return}
+	if (e.message){msg = e.message}
+	if(msg.channel.id != "570281392471015425"){return}
+	if (e.message.attachments[0]){attached = e.message.attachments[0]}
+	if (msg.author == "311682437728043009"){return}
+	if(msg.content.toLowerCase().includes("egg") || attached){return}
+	else {msg.delete()}
+})
+
+bot.Dispatcher.on("MESSAGE_CREATE", e =>
+{
 	var antiecho;
-	var guild;;
+	var guild;
 	var msg;
 	if (e.message.guild)
 	{
