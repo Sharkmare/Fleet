@@ -99,7 +99,8 @@ function banlogger(a, bot, currentserver, banfile, bans, user, joinedserver)
 		{
 			var type = "none";
 			var banned_in = "No bans.";
-			var avi = user.avatarURL.replace(".jpg", "").replace(".gif", "").replace(".png", "")
+			var avi; 
+			if(user.avatarURL) {avi = user.avatarURL.replace(".jpg", "").replace(".gif", "").replace(".png", "")}
 			fs.writeFileSync(banfile, bans.join("\n") + "\n")
 			//CM(logchannel,bans.length)
 			var banproto = bans.filter(Z => Z.includes(user.id))
