@@ -1,4 +1,4 @@
-const version = "VX20:  The wave Killer"
+const version = "Teriyaki"
 try
 {
 	Config = require('./config.json')
@@ -280,14 +280,14 @@ bot.Dispatcher.on("MESSAGE_CREATE", e =>
 		}
 	}
 	//Fleet core -
-	/*if (msg.content.split("")[0] == "-" && !antiecho)
+	if (msg.content.split("")[0] == "-" && !antiecho)
 	{
 		//console.log(e.message.author.username + " | " + e.message.content + " | " + guild)
 		suffix = msg.content.split(" ")
 		trigger = suffix[0].replace("-", "")
 		suffix = suffix.join(" ").replace("-" + trigger + " ", "")
 		commands(msg, suffix, trigger)
-	}*/
+	}
 	//hungergame core
 	if (hungermaster.includes(msg.author.id && !antiecho))
 	{
