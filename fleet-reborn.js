@@ -1,4 +1,4 @@
-const version = "<:vx20:653493469440114719> The wave Killer"
+const version = "VX20:  The wave Killer"
 try
 {
 	Config = require('./config.json')
