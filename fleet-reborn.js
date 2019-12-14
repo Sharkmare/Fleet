@@ -675,6 +675,7 @@ bot.Dispatcher.on(Event.GUILD_MEMBER_ADD, (e) =>
 		if (srvuid == '180538463655821312') //Chompers
 		{
 			message = `Hello, ${joineduser}! Welcome to ${srv}! \nPlease bring your attention to <#575623788977455104> to learn how to access the rest of the server.\nWe hope you have a great time.`
+			protoDM(discordid, message, bot)
 			return CM("180538463655821312",message)
 		}
 		protoDM(discordid, message, bot)
