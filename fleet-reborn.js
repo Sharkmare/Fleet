@@ -1,4 +1,4 @@
-const version = "EGG"
+const version = "VX20:The wave Killer"
 try
 {
 	Config = require('./config.json')
@@ -224,14 +224,9 @@ bot.Dispatcher.on("MESSAGE_CREATE", e =>
 		suffix = msg.content.split(" ")
 		trigger = suffix[0].replace("-", "")
 		suffix = suffix.join(" ")
-		if (suffix.split(trigger)[1].split("")[0] == " ")
-		{
-			suffix = suffix.replace("-" + trigger + " ", "")
-		}
-		else
-		{
-			suffix = suffix.replace("-" + trigger, "")
-		}
+		suffix = suffix.replace("-" + trigger, "")
+		if(suffix.split("")[0] == " "){suffix.replace(" ","")}
+		
 		execute = Commands.filter(e => e.name == trigger.toLowerCase())
 		if (execute.length < 1)
 		{
@@ -285,14 +280,14 @@ bot.Dispatcher.on("MESSAGE_CREATE", e =>
 		}
 	}
 	//Fleet core -
-	if (msg.content.split("")[0] == "-" && !antiecho)
+	/*if (msg.content.split("")[0] == "-" && !antiecho)
 	{
 		//console.log(e.message.author.username + " | " + e.message.content + " | " + guild)
 		suffix = msg.content.split(" ")
 		trigger = suffix[0].replace("-", "")
 		suffix = suffix.join(" ").replace("-" + trigger + " ", "")
 		commands(msg, suffix, trigger)
-	}
+	}*/
 	//hungergame core
 	if (hungermaster.includes(msg.author.id && !antiecho))
 	{
