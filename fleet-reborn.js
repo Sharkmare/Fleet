@@ -224,7 +224,7 @@ bot.Dispatcher.on("MESSAGE_CREATE", e =>
 		suffix = msg.content.split(" ")
 		trigger = suffix[0].replace("-", "")
 		suffix = suffix.join(" ")
-		suffix = suffix.replace(trigger, "").replace(" ","")
+		suffix = suffix.replace("-"+trigger, "").replace(" ","")
 		console.log("Suffix: "+suffix)
 		execute = Commands.filter(e => e.name == trigger.toLowerCase())
 		if (execute.length < 1)
