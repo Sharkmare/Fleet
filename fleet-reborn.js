@@ -2058,7 +2058,7 @@ Commands.push(
 	fn: function(msg, suffix, Http)
 	{
 		var dir = drive+":/resources/"
-		suffix = suffix.toLowerCase()
+		suffix = suffix.toLowerCase().replace(" ","")
 		suffix = suffix.split(" ")
 		console.log("POKELOOKUP ARRAY:\n"+suffix)
 		switch (suffix[0])
