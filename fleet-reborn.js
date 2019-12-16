@@ -1,4 +1,4 @@
-const version = "Teriyaki"
+const version = "Teriyaki~"
 try
 {
 	Config = require('./config.json')
@@ -225,7 +225,7 @@ bot.Dispatcher.on("MESSAGE_CREATE", e =>
 		trigger = suffix[0].replace("-", "")
 		suffix = suffix.join(" ")
 		suffix = suffix.replace("-" + trigger, "")
-		if(suffix.split("")[0] == " "){suffix.replace(" ","")}
+		if(suffix[0] == " "){suffix.replace(" ","")}
 		console.log("Suffix: "+suffix)
 		execute = Commands.filter(e => e.name == trigger.toLowerCase())
 		if (execute.length < 1)
