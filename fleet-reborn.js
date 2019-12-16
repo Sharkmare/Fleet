@@ -220,12 +220,11 @@ bot.Dispatcher.on("MESSAGE_CREATE", e =>
 	levelthree = fs.readFileSync(drive+":/resources/variables/levelthree", "utf8").split("\n")
 	if (msg.content.split("")[0] == "-")
 	{
-		//console.log("Before Manipulation"+e.message.author.username + " | " + e.message.content + " | " + guild)
+		console.log("Before Manipulation"+e.message.author.username + " | " + e.message.content + " | " + guild)
 		suffix = msg.content.split(" ")
 		trigger = suffix[0].replace("-", "")
 		suffix = suffix.join(" ")
-		suffix = suffix.replace("-" + trigger, "")
-		if(suffix[0] == " "){suffix.replace(" ","")}
+		suffix = suffix.replace(trigger, "").replace(" ","")
 		console.log("Suffix: "+suffix)
 		execute = Commands.filter(e => e.name == trigger.toLowerCase())
 		if (execute.length < 1)
@@ -2058,7 +2057,7 @@ Commands.push(
 	fn: function(msg, suffix, Http)
 	{
 		var dir = drive+":/resources/"
-		suffix = suffix.toLowerCase().replace(" ","")
+		suffix = suffix.toLowerCase()
 		suffix = suffix.split(" ")
 		console.log("POKELOOKUP ARRAY:\n"+suffix)
 		switch (suffix[0])
