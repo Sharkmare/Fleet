@@ -1,5 +1,5 @@
 const version = "Teriyaki~"
-var isFirstConnect = "1";
+
 try
 {
 	Config = require('./config.json')
@@ -66,7 +66,7 @@ bot.connect(
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
-
+bot.isFirstConnect = 1
 bot.Dispatcher.on("GATEWAY_READY", e =>
 {
 	
@@ -74,14 +74,14 @@ bot.Dispatcher.on("GATEWAY_READY", e =>
 	console.log("Connected as: " + bot.User.username);
 	bot.User.setStatus("online", game)
 	console.log(bot.User)
-	bot.Channels.get(logchannel).sendMessage("Systems online. Version: " + version+"\nBoot Code: "+isFirstConnect)
+	bot.Channels.get(logchannel).sendMessage("Systems online. Version: " + version+"\nBoot Code: "+bot.isFirstConnect)
 	
 	for (i = 0; i < bot.Guilds.toArray().length; i++)
 	{
 		if(!servers.includes(bot.Guilds.toArray()[i].id)) {servers.push(bot.Guilds.toArray()[i].id)}
 	}
 	console.log("Connected to:", servers)
-	var isFirstConnect = 0
+	bot.isFirstConnect = 0
 });
 bot.Dispatcher.on("DISCONNECTED", e =>
 {
