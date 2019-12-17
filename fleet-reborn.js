@@ -1,4 +1,5 @@
 const version = "Teriyaki~"
+var isFirstConnect = 1;
 try
 {
 	Config = require('./config.json')
@@ -74,13 +75,14 @@ bot.Dispatcher.on("GATEWAY_READY", e =>
 	{
 		bot.User.setStatus("online", game)
 		console.log(bot.User)
-		bot.Channels.get(logchannel).sendMessage("Systems online. Version: " + version)
+		bot.Channels.get(logchannel).sendMessage("Systems online. Version: " + version+"\nBoot Code: "+isFirstConnect)
 	}
 	for (i = 0; i < bot.Guilds.toArray().length; i++)
 	{
 		if(!servers.includes(bot.Guilds.toArray()[i].id)) {servers.push(bot.Guilds.toArray()[i].id)}
 	}
 	console.log("Connected to:", servers)
+	var isFirstConnect = 0
 });
 bot.Dispatcher.on("DISCONNECTED", e =>
 {
