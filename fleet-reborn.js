@@ -1,4 +1,4 @@
-const version = "Teriyaki~"
+const version = "Validation Nation~"
 
 try
 {
@@ -1615,6 +1615,8 @@ Commands.push(
 			return msg.reply("You have to do this in the server you want to verify in.")
 		if (msg.guild.id == 180538463655821312) //Chompers
 		{
+			var matureneeded="";
+			if (suffix.toLowerCase().includes("ss13")) { matureneeded="Keep in mind that SS13 Requires the mature tag!" }
 			msg.reply("your request has been received. A mod will be by to set your roles shortly!")
 			var CID = "180860061998907392"
 			let embed = {
@@ -1651,7 +1653,7 @@ Commands.push(
 				fields: [
 				{
 					name: msg.author.id,
-					value: suffix
+					value: suffix+"\nNotice: "+matureneeded
 				}],
 				footer:
 				{
@@ -1675,6 +1677,7 @@ Commands.push(
 	{
 		if (!msg.guild)
 			return msg.reply("You have to do this in the server you want to request roles in.")
+		if (!suffix || suffix == " ") {return msg.reply("You have to actually fill in the roles you want otherwise staff wont know what you want.")}
 		if (msg.guild.id == 180538463655821312)
 		{
 			msg.reply("your request has been received. A mod will be by to set your roles shortly!")
@@ -1699,6 +1702,7 @@ Commands.push(
 			};
 			bot.Channels.get(CID).sendMessage("<@" + msg.author.id + ">", false, embed)
 		}
+		else {msg.reply("This Server currently does not support this command.")}
 		msg.delete()
 	}
 })
