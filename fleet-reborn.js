@@ -3,7 +3,7 @@ const version = "Validation Nation~"
 try
 {
 	Config = require('./config.json')
-}
+} 
 catch (e)
 {
 	console.log('\Fleet encountered an error while trying to load the config file, please resolve this issue and restart Fleet\n\n' + e.message)
