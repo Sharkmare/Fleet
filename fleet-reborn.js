@@ -1629,7 +1629,7 @@ Commands.push(
 				fields: [
 				{
 					name: msg.author.id,
-					value: suffix
+					value: suffix"\nNotice: "+matureneeded
 				}],
 				footer:
 				{
@@ -1653,7 +1653,7 @@ Commands.push(
 				fields: [
 				{
 					name: msg.author.id,
-					value: suffix+"\nNotice: "+matureneeded
+					value: suffix
 				}],
 				footer:
 				{
