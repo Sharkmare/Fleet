@@ -2469,7 +2469,7 @@ Commands.push(
 	usage: '',
 	noDM: false,
 	hidden: true,
-	level: 'master',
+	level: 3,
 	fn: function(msg, suffix, bot, client)
 	{
 		client.destroy()
