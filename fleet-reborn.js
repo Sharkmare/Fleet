@@ -1702,6 +1702,31 @@ Commands.push(
 				}
 			};
 			bot.Channels.get(CID).sendMessage("<@" + msg.author.id + ">", false, embed)
+		} else if (msg.guild.id == "300130710671458304") // Pokenoms
+		{
+			if (suffix.toLowerCase().includes("lurker ")||suffix.toLowerCase().includes(" lurker") )
+			{return msg.reply("Lurker can not be combined with one of the pref roles. Request denied.")}
+			msg.reply("your request has been received. A mod will be by to set your roles shortly!")
+			var CID = "300130710671458304" //Pokenoms
+			let embed = {
+				author:
+				{
+					name: msg.author.username + "#" + msg.author.discriminator
+				},
+				timestamp: new Date(),
+				color: 0x3498db,
+				fields: [
+				{
+					name: msg.author.id,
+					value: suffix
+				}],
+				footer:
+				{
+					text: "Access Request",
+					icon_url: msg.author.avatarURL
+				}
+			};
+			bot.Channels.get(CID).sendMessage("<@" + msg.author.id + ">", false, embed)
 		}
 		else {msg.reply("This Server currently does not support this command.")}
 		msg.delete()
