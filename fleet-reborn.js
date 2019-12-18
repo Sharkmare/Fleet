@@ -1702,12 +1702,12 @@ Commands.push(
 				}
 			};
 			bot.Channels.get(CID).sendMessage("<@" + msg.author.id + ">", false, embed)
-		} else if (msg.guild.id == "300130710671458304") // Pokenoms
+		} else if (msg.guild.id == "407311323412824065") // Pokenoms
 		{
 			if (suffix.toLowerCase().includes("lurker ")||suffix.toLowerCase().includes(" lurker") )
 			{return msg.reply("Lurker can not be combined with one of the pref roles. Request denied.")}
 			msg.reply("your request has been received. A mod will be by to set your roles shortly!")
-			var CID = "300130710671458304" //Pokenoms
+			var CID = "407329969916608523" //Pokenoms
 			let embed = {
 				author:
 				{
