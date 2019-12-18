@@ -1615,8 +1615,8 @@ Commands.push(
 			return msg.reply("You have to do this in the server you want to verify in.")
 		if (msg.guild.id == 180538463655821312) //Chompers
 		{
-			var matureneeded="";
-			if (suffix.toLowerCase().includes("ss13")) { matureneeded="Keep in mind that SS13 Requires the mature tag!" }
+			var matureneeded="❗";
+			if (suffix.toLowerCase().includes("ss13")) { matureneeded=" \`[Keep in mind that SS13 Requires the mature tag!]\`" }
 			msg.reply("your request has been received. A mod will be by to set your roles shortly!")
 			var CID = "180860061998907392"
 			let embed = {
@@ -1629,7 +1629,7 @@ Commands.push(
 				fields: [
 				{
 					name: msg.author.id,
-					value: suffix+"\nNotice: "+matureneeded
+					value: suffix+matureneeded
 				}],
 				footer:
 				{
