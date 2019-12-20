@@ -2474,7 +2474,7 @@ Commands.push(
 				break;
 			case 'delete':
 				if (tags.filter(e => e.name == name).length > 0)
-				{	tag=tags.filter(e => e.name == name)
+				{	tag=tags.filter(e => e.name == name)[0]
 				 	if(tag.owner == owner || owner == botowner)
 					{
 						tags = tags.filter(e => e.name != name)
