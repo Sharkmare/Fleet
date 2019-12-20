@@ -2441,7 +2441,10 @@ Commands.push(
 	{
 		tagdir = drive+':/resources/tags.json'
 		mode = suffix.split(" ")[0]
-		tags = require(tagdir)
+		//tags = require(tagdir)
+		var tags = JSON.parse(fs.readFileSync(tagdir,"utf8"))
+		
+		
 		if (!suffix)
 		{
 			tag = tags.filter(e => e.name == "help")[0]
