@@ -1,4 +1,4 @@
-const version = "Validation Nation~"
+const version = "Tag me~"
 
 try
 {
@@ -2473,6 +2473,29 @@ Commands.push(
 				}
 				break;
 			case 'delete':
+				if (tags.filter(e => e.name == name).length > 0)
+				{	tag=tags.filter(e => e.name == name)
+				 	if(tag.owner == owner || owner == botowner)
+					{
+						tags = tags.filter(e => e.name != name)
+						console.log(name, value, owner, "Deleting")
+						msg.addReaction('☑')
+						return fs.writeFileSync(tagdir, JSON.stringify(tags))
+					}
+				 	else
+					{
+						return msg.channel.sendMessage("Tag is not yours to edit.")
+					}
+					
+				}
+				else
+				{
+					return msg.channel.sendMessage("Tag doesnt exist.")
+				}
+					
+					
+					
+					
 				break;
 			default:
 				if (tags.filter(e => e.name == name)[0])
