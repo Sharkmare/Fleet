@@ -2503,10 +2503,17 @@ Commands.push(
 				{
 					return msg.channel.sendMessage("Tag doesnt exist.")
 				}
-					
-					
-					
-					
+				break;
+			case 'owner':
+				if (tags.filter(e => e.name == name).length > 0)
+				{	
+					tag=tags.filter(e => e.name == name)[0]
+				 	return msg.reply("This tag is owned by "+tag.owner)
+				}				
+				else
+				{
+					return msg.channel.sendMessage("Tag doesnt exist.")
+				}
 				break;
 			default:
 				if (tags.filter(e => e.name == name)[0])
