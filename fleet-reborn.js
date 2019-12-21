@@ -2508,7 +2508,8 @@ Commands.push(
 				if (tags.filter(e => e.name == name).length > 0)
 				{	
 					tag=tags.filter(e => e.name == name)[0]
-				 	return msg.reply("This tag is owned by "+tag.owner)
+					var tagowner = client.users.find(e => e.id == tag.owner).tag
+				 	return msg.reply("This tag is owned by "+tagowner)
 				}				
 				else
 				{
