@@ -506,6 +506,12 @@ bot.Dispatcher.on("GUILD_BAN_ADD", (e) =>
 	let discordid = e.user.id
 	var dir = drive+":/resources/BANS"
 	var webhookmessage = "`" + name + "#" + discriminator + "`\n**Unique ID:**" + discordid + "\n<@" + discordid + "> \n<#" + srvid + ">\n" + usericon + ""
+	
+	//server reporting
+	CM("321260472735367168",hookname+"\n"+webhookmessage) //VS
+	
+	//Webhook
+	
 	unirest.post(hookurl)
 		.header('Content-Type', 'application/json').send(
 		{
