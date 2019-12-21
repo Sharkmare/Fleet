@@ -2447,7 +2447,7 @@ Commands.push(
 		
 		if (!suffix)
 		{var rand = tags[Math.floor(Math.random() * tags.length)];
-			return msg.channel.sendMessage(rand.value)
+			return msg.channel.sendMessage("\`"+ rand.name +"\` "+rand.value)
 		}
 		suffix = suffix.replace(suffix.split(" ")[0] + " ", "")
 		name = suffix.split(" ")[0]
