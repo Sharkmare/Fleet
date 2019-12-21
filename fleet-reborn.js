@@ -2460,6 +2460,14 @@ Commands.push(
 			case 'create':
 				if (tags.filter(e => e.name == name).length > 0)
 				{
+					if(tags.filter(e => e.name == name)[0].owner == owner)
+					{	tag=tags.filter(e => e.name == name)[0]
+					 	tags = tags.filter(e => e.name != name)
+						console.log(name, value, owner, "Editing")
+					 	msg.addReaction('☑')
+					 	tags.push({name: name,value: value,owner: owner})
+					 	return fs.writeFileSync(tagdir, JSON.stringify(tags))
+					}
 					return msg.channel.sendMessage("Tag already exists")
 				}
 				else
