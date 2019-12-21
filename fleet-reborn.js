@@ -2446,9 +2446,8 @@ Commands.push(
 		
 		
 		if (!suffix)
-		{
-			tag = tags.filter(e => e.name == "help")[0]
-			return msg.channel.sendMessage(`${tag.owner} : ${tag.value}`)
+		{var rand = tags[Math.floor(Math.random() * tags.length)];
+			return msg.channel.sendMessage(rand.value)
 		}
 		suffix = suffix.replace(suffix.split(" ")[0] + " ", "")
 		name = suffix.split(" ")[0]
