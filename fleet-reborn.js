@@ -1,4 +1,4 @@
-const version = "Tag me~"
+const version = "Big gut laying on you~"
 
 try
 {
@@ -361,6 +361,7 @@ function commands(msg, suffix, trigger)
 			}
 			return msg.channel.sendMessage(release())
 		case "vore":
+			if(!msg.guild) {return msg.reply("*With no one around to save you the bot simply pins you beneath its gut, getting comfy as it saves you for later~*")}
 			return vore(msg, suffix, bot)
 		default:
 			break;
