@@ -1,4 +1,4 @@
-const version = "Big gut laying on you~"
+const version = "Vore Station13"
 
 try
 {
@@ -509,7 +509,9 @@ bot.Dispatcher.on("GUILD_BAN_ADD", (e) =>
 	var webhookmessage = "`" + name + "#" + discriminator + "`\n**Unique ID:**" + discordid + "\n<@" + discordid + "> \n<#" + srvid + ">\n" + usericon + ""
 	
 	//server reporting
-	CM("321260472735367168",hookname+"\n"+webhookmessage) //VS
+	CM("321260472735367168",hookname+"\n"+webhookmessage) //VoreSphere
+	CM("407329969916608523",hookname+"\n"+webhookmessage) //PokeNoms
+	CM("323951163752054785",hookname+"\n"+webhookmessage) //Chompers
 	
 	//Webhook
 	
@@ -2063,6 +2065,7 @@ Commands.push(
 			{
 				! function e(s, t, n = [], r = [], a = 0)
 				{
+					if(!msg.channel) {return CM(logchannel,"Some fucking channel info was just lost what the fuck?")}
 					ourmessages = bot.Messages.forChannel(msg.channel.id);
 					var o = ourmessages.filter(e => e.id > t);
 					o = o.filter(e => e.author.id == msg.author.id);
