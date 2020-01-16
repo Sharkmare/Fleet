@@ -1,4 +1,4 @@
-const version = "sudden realization"
+const version = "sudden realization v2"
 
 try
 {
@@ -459,11 +459,16 @@ function relaymedaddy(message)
 
 bot.Dispatcher.on("MESSAGE_REACTION_ADD", (e) =>
 {
-console.log(e)
-if(!e.data) {return}
-console.log(e.message)
-console.log(e.emoji)
-console.log(e.data.roles)
+if(e.data.guild_id != "407311323412824065") {return}
+if(e.emoji.id != "667255069544284160") {return}
+if(!e.data.member.roles) {return}
+console.log(e.data.member.roles)
+var messagestore = bot.Messages.forChannel(e.data.channel_id);
+message = messagestore.filter(m => m.id == e.data.message_id)[0];
+
+
+//console.log(e.emoji)
+//console.log(e.data.roles)
 //if(!e.message.guild) {return}
 //if(e.message.guild == "407311323412824065") {}
 
