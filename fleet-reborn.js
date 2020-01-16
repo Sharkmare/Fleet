@@ -1,4 +1,4 @@
-const version = "Ribbon Ribbon"
+const version = "Ribbon Ribbon Ribbon"
 
 try
 {
@@ -465,8 +465,9 @@ if(!e.mesage.guild) {return}
 if(e.message.guild.id != '407311323412824065') {return}
 //var ribbon = e.message.guild.emojis[cry(e.message.guild.emojis, "ribbon")]
 //console.log(ribbon)
-if (e.emoji.id=="667255069544284160" /*&& e.data.roles*/)
+if (/*e.emoji.id=="667255069544284160"*/ /*&& e.data.roles*/true)
 	console.log(e.data.roles)
+	console.log(e.emoji)
 })
 
 bot.Dispatcher.on("MESSAGE_REACTION_ADD", (e) =>
