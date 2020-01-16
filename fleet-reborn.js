@@ -1,4 +1,4 @@
-const version = "sudden realization v2"
+const version = "sudden realization v3"
 
 try
 {
