@@ -1,4 +1,4 @@
-const version = "sudden realization v4"
+const version = "Ribbons but they work now"
 
 try
 {
@@ -466,7 +466,16 @@ var userroles = e.data.member.roles
 if (!userroles.includes("652990131757907978")) {return}
 var messagestore = bot.Messages.forChannel(e.data.channel_id);
 message = messagestore.filter(m => m.id == e.data.message_id)[0];
-CM("667248303158591489",message.content)
+	if(!message) {return}
+var unirest = require('unirest')
+var hookurl = Config.webhooks.ribbonroom
+    unirest.post(hookurl)
+        .header('Content-Type', 'application/json').send(
+        {
+            "avatar_url": "" + message.author.avatarURL + "",
+            "username": "" + message.author.username + "",
+            "content": message.content
+        }).end()
 })
 
 bot.Dispatcher.on("MESSAGE_REACTION_ADD", (e) =>
