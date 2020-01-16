@@ -1,4 +1,4 @@
-const version = "Ribbons but they work now2"
+const version = "Ribbons over hook"
 
 try
 {
@@ -459,16 +459,17 @@ function relaymedaddy(message)
 
 bot.Dispatcher.on("MESSAGE_REACTION_ADD", (e) =>
 {
-console.log(e)
 if(e.data.guild_id != "407311323412824065") {return}
 if(e.emoji.id != "667255069544284160") {return}
+console.log(e)
 var userroles = e.data.member.roles
 if (!userroles.includes("652990131757907978")) {return}
 var messagestore = bot.Messages.forChannel(e.data.channel_id);
+console.log(messagestore)
 var message = messagestore.filter(m => m.id == e.data.message_id)[0];
 console.log(message)
+console.log(message.content)
 if(!message) {return}
-console.log(message)
 if(!message.author.avatarURL) {message.author.avatarURL = "https://cdn.discordapp.com/attachments/300130710671458304/667285437479518208/ribbon.png"}
 var unirest = require('unirest')
 var hookurl = Config.webhooks.ribbonroom
