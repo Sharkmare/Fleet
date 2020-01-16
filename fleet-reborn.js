@@ -1,4 +1,4 @@
-const version = "Ribbonades"
+const version = "sudden realization"
 
 try
 {
@@ -459,8 +459,8 @@ function relaymedaddy(message)
 
 bot.Dispatcher.on("MESSAGE_REACTION_ADD", (e) =>
 {
-//console.log(e)
-if(!e.mesage) {return}
+console.log(e)
+if(!e.data) {return}
 console.log(e.message)
 console.log(e.emoji)
 console.log(e.data.roles)
