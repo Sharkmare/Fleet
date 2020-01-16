@@ -1,4 +1,4 @@
-const version = "sudden realization v3"
+const version = "sudden realization v4"
 
 try
 {
@@ -461,12 +461,12 @@ bot.Dispatcher.on("MESSAGE_REACTION_ADD", (e) =>
 {
 console.log(e)
 if(e.data.guild_id != "407311323412824065") {return}
-console.log("past check 1")
 if(e.emoji.id != "667255069544284160") {return}
-console.log("past check 2")
-console.log(e.data.member)
+var userroles = e.data.member.roles
+if (!userroles.includes("652990131757907978")) {return}
 var messagestore = bot.Messages.forChannel(e.data.channel_id);
 message = messagestore.filter(m => m.id == e.data.message_id)[0];
+CM("667248303158591489",message.content)
 })
 
 bot.Dispatcher.on("MESSAGE_REACTION_ADD", (e) =>
