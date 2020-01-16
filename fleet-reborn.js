@@ -1,4 +1,4 @@
-const version = "Vore Station13"
+const version = "PokeContest"
 
 try
 {
@@ -456,6 +456,17 @@ function relaymedaddy(message)
 			return x.close()
 		})
 }
+
+bot.Dispatcher.on("MESSAGE_REACTION_ADD", (e) =>
+{
+if(!e.mesage) {return}
+if(!e.mesage.guild) {return}
+if(e.message.guild.id != '407311323412824065') {return}
+var ribbon = msg.guild.emojis[cry(msg.guild.emojis, "ribbon")]
+e.message.fetchReactions(ribbon).then(function(b)
+    {CM('667248303158591489',b)})
+})
+
 bot.Dispatcher.on("MESSAGE_REACTION_ADD", (e) =>
 {
 	if (!e.message)
