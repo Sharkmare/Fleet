@@ -1,4 +1,4 @@
-const version = "PokeContest2"
+const version = "Ribbon Ribbon"
 
 try
 {
@@ -459,15 +459,14 @@ function relaymedaddy(message)
 
 bot.Dispatcher.on("MESSAGE_REACTION_ADD", (e) =>
 {
-console.log(e)
+//console.log(e)
 if(!e.mesage) {return}
 if(!e.mesage.guild) {return}
 if(e.message.guild.id != '407311323412824065') {return}
-var ribbon = e.message.guild.emojis[cry(e.message.guild.emojis, "ribbon")]
-console.log(ribbon)
-e.message.fetchReactions(ribbon).then(function(b)
-    {console.log(b)
-	CM('667248303158591489',b)})
+//var ribbon = e.message.guild.emojis[cry(e.message.guild.emojis, "ribbon")]
+//console.log(ribbon)
+if (e.emoji.id=="667255069544284160" /*&& e.data.roles*/)
+	console.log(e.data.roles)
 })
 
 bot.Dispatcher.on("MESSAGE_REACTION_ADD", (e) =>
