@@ -1,4 +1,4 @@
-const version = "PokeContest"
+const version = "PokeContest2"
 
 try
 {
