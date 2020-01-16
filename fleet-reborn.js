@@ -1,4 +1,4 @@
-const version = "Ribbons over xhook"
+const version = "Ribbons over hooks"
 
 try
 {
@@ -473,14 +473,13 @@ if(!message) {return}
 if(!message.author.avatarURL) {message.author.avatarURL = "https://cdn.discordapp.com/attachments/300130710671458304/667285437479518208/ribbon.png"}
 var unirest = require('unirest')
 var hookurl = Config.webhooks.ribbonroom
-CM("667248303158591489",message.author.avatarURL+"X\n"+message.author.username+"X\n"+message.content+"X\n"+hookurl)
-    /*unirest.post(hookurl)
+    unirest.post(hookurl)
         .header('Content-Type', 'application/json').send(
         {
             "avatar_url": message.author.avatarURL,
-            "username": "x",//"" + message.author.username + "",
+            "username": message.author.username,
             "content": message.content
-        }).end()*/
+        }).end()
 
 })
 
