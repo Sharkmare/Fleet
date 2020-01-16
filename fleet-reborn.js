@@ -1,4 +1,4 @@
-const version = "Ribbonade"
+const version = "Ribbonades"
 
 try
 {
@@ -461,12 +461,11 @@ bot.Dispatcher.on("MESSAGE_REACTION_ADD", (e) =>
 {
 //console.log(e)
 if(!e.mesage) {return}
-if(!e.message.guild) {return}
-if(e.message.guild == "407311323412824065")
-{
+console.log(e.message)
 console.log(e.emoji)
 console.log(e.data.roles)
-}
+//if(!e.message.guild) {return}
+//if(e.message.guild == "407311323412824065") {}
 
 })
 
