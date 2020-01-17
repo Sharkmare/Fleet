@@ -1,4 +1,4 @@
-const version = "Ribbons over hooks"
+const version = "Thank you Mr Fish"
 
 try
 {
@@ -35,7 +35,7 @@ var fs = require("fs"),
 	unirest = require("unirest"),
 	game = {
 		type: 1,
-		name: "raptor and mouse with small cuties~",
+		name: "Thank you Mr Fish",
 		url: "http://discordvore.info"
 	};
 
