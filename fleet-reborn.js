@@ -90,7 +90,7 @@ bot.Dispatcher.on("DISCONNECTED", e =>
 startscrapers()
 function banlogger(a, bot, currentserver, banfile, bans, user, joinedserver)
 {
-	bot.Guilds.get(servers[a]).getBans().then(function(b)
+	try{bot.Guilds.get(servers[a]).getBans().then(function(b)
 	{
 		for (i = 0; i < b.length; i++)
 		{
@@ -128,7 +128,8 @@ function banlogger(a, bot, currentserver, banfile, bans, user, joinedserver)
 			}
 		}
 		revo++
-	})
+	})}
+	catch(e){CM(logchannel,e)}
 }
 
 bot.Dispatcher.on("GUILD_MEMBER_ADD", e =>
