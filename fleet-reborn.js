@@ -141,11 +141,11 @@ bot.Dispatcher.on("GUILD_MEMBER_ADD", e =>
 	console.log(e.member.username)
 	bans = [];
 	revo = 0
-	/*for (a = 0; a < servers.length; a++)
+	for (a = 0; a < servers.length; a++)
 	{
 		currentserver = bot.Guilds.get(servers[a]).name
 		banlogger(a, bot, currentserver, banfile, bans,user,joinedserver)
-	}*/ //Commented out due to discord bug
+	} //Commented out due to discord bug
 	/*setTimeout(function()
 	{
 		bans = fs.readFileSync(banfile, "utf8")
