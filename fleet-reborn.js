@@ -1,4 +1,4 @@
-const version = `Linteleon++`
+const version = `Linteleon`
 
 try
 {
