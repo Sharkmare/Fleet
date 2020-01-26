@@ -1,4 +1,4 @@
-const version = `Linteleon+`
+const version = `Linteleon++`
 
 try
 {
@@ -66,7 +66,10 @@ bot.connect(
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
-client.on('channelUpdate', e =>{ if(e.guild.id == '180538463655821312') {CM(logchannel,e.user.tag+"\n"+e.name+"\n"+e.position)}})
+client.on('channelUpdate', e =>{ if(e.guild.id == '180538463655821312') {CM(logchannel,e.name+"\n"+e.position)
+									console.log(e)
+									}
+			       })
 bot.isFirstConnect = 1
 bot.Dispatcher.on("GATEWAY_READY", e =>
 {
