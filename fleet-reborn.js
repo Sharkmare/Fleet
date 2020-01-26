@@ -1,9 +1,4 @@
-const version = `It's my own desire
-It's my own remorse
-Help me to decide
-Help me make the most Of freedom and of pleasure
-Nothing ever lasts forever
-Everybody wants to burn the world`
+const version = `Linteleon`
 
 try
 {
@@ -71,6 +66,7 @@ bot.connect(
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
+client.on('channelUpdate', e =>{ if(e.guild.id == '180538463655821312') {CM(logchannel,e.name+"\n"+e.position)}})
 bot.isFirstConnect = 1
 bot.Dispatcher.on("GATEWAY_READY", e =>
 {
