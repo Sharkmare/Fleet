@@ -1,4 +1,4 @@
-const version = `China`
+const version = `7 HorseHorses of the Horsepocalypse`
 
 try
 {
@@ -3218,6 +3218,47 @@ Commands.push({
 		msg.channel.sendMessage(`<${suffix}> is up?\n`+ await(isUp(suffix)))
 		})();
 	}
+})
+
+Commands.push ({
+  name: 'server-info',
+  help: "I'll tell you some information about the server you're currently in.",
+  aliases: ['serverinfo'],
+  noDM: true,
+  timeout: 20,
+  level: 0,
+  fn: function (msg, suffix, bot) {
+    // if we're not in a PM, return some info about the channel
+    if (msg.guild) {
+      var field = [{name: 'Server name', value: `${msg.guild.name} [${msg.guild.acronym}] (${msg.guild.id})`},
+      {name: 'Owned by', value: '```\n' + `${msg.guild.owner.username}#${msg.guild.owner.discriminator} (${msg.guild.owner.id})` + '```', inline: true},
+      {name: 'Current Region', value: '```\n' + msg.guild.region + '```', inline: true},
+      {name: 'Members', value: '```\n' + msg.guild.members.length + '```', inline: true},
+      {name: 'Text Channels', value: '```\n' + msg.guild.textChannels.length + '```', inline: true},
+      {name: 'Voice Channels', value: '```\n' + msg.guild.voiceChannels.length + '```', inline: true},
+      {name: 'Total Roles', value: '```\n' + msg.guild.roles.length + '```', inline: true}]
+
+      if (msg.guild.afk_channel === null) {
+        field.push({name: 'AFK-Channel', value: '```\nNone```'})
+      } else {
+        field.push({name: 'AFK-channel', value: '```\n' + `${msg.guild.afk_channel.name} (${msg.guild.afk_channel.id})` + '```'})
+      }
+      var embed = {
+        author: {name: `Information requested by ${msg.author.username}`},
+        timestamp: new Date(),
+        color: 0x3498db,
+        fields: field,
+        footer: {text: `Online for ${getUptime()}`, icon_url: bot.User.avatarURL}
+      }
+      if (msg.guild.icon) {
+        embed.thumbnail = {url: msg.guild.iconURL}
+        embed.url = msg.guild.iconURL
+      }
+      msg.channel.sendMessage('', false, embed)
+    } else {
+      msg.channel.sendMessage("You can't do that in a DM, dummy!")
+    }
+  }
 })
 
 //values are as follows: (snomchannels,searchindex,suffix,file,posttxt,delay)
