@@ -35,7 +35,7 @@ var fs = require("fs"),
 	unirest = require("unirest"),
 	game = {
 		type: 1,
-		name: "Thank you Mr Fish",
+		name: "with your planets~",
 		url: "http://discordvore.info"
 	};
 
@@ -3248,7 +3248,7 @@ Commands.push ({
         timestamp: new Date(),
         color: 0x3498db,
         fields: field,
-        footer: {text: `Online for ${getUptime()}`, icon_url: bot.User.avatarURL}
+        footer: {text: `Online for ${started}`, icon_url: bot.User.avatarURL}
       }
       if (msg.guild.icon) {
         embed.thumbnail = {url: msg.guild.iconURL}
