@@ -1,4 +1,4 @@
-const version = `7 HorseHorses of the Horsepocalypse`
+const version = `A mew dawn`
 
 try
 {
@@ -711,7 +711,7 @@ bot.Dispatcher.on(Event.GUILD_MEMBER_ADD, (e) =>
 	let srv = e.guild.name
 	let srvuid = e.guild.id
 	console.log(joineduser + discordid + srv)
-	if (srvuid != '574956208645996547' && srvuid != '460676626083217409')
+	if (srvuid != '574956208645996547' && srvuid != '460676626083217409' && srvuid != '549467320922144788' )
 	{
 		var message = `Welcome to ${srv}! \nPlease take a moment to read the rules!\nWe hope you have a great time.`
 		if (srvuid == '180538463655821312') //Chompers
