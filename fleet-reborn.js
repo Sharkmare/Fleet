@@ -1,4 +1,4 @@
-const version = `A mew dawn`
+const version = `VAP VAP VAP`
 
 try
 {
@@ -2714,8 +2714,9 @@ Commands.push(
 		let ext = "." + suffix.split("")[suffix.split("").length - 3] + suffix.split("")[suffix.split("").length - 2] + suffix.split("")[suffix.split("").length - 1]
 		let filename = msg.author.id + ext;
 	 	//Validation of file ending. (Technically we dont need one but this is to try and make sure people give raw links)
-	 	if(ext==".jpg"||ext==".png") {}
+	 	if(ext==".jpg"||ext==".png"||ext==".peg") {}
 	 	else {return msg.reply("Only links and files ending in png or jpg are supported. Attempted file ext: "+ext)}
+	 	
 		//Start Stream/Axios Async
 	 	async function downloadImage()
 		{
