@@ -2164,7 +2164,7 @@ Commands.push(
 				}
 				if (x == "Not Found")
 				{
-					msg.reply(x)
+					return msg.reply(x)
 				}
 				x = JSON.parse(x)
 				if (typeof pokeparse(suffix, x) == 'object')
