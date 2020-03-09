@@ -1,4 +1,4 @@
-const version = `Thick thighs, end lives`
+const version = `Maw me~`
 
 try
 {
@@ -79,12 +79,13 @@ bot.Dispatcher.on("GATEWAY_READY", e =>
 	console.log("Connected as: " + bot.User.username);
 	bot.User.setStatus("online", game)
 	console.log(bot.User)
-	bot.Channels.get(logchannel).sendMessage("Systems online. Version: " + version+"\nBoot Code: "+bot.isFirstConnect)
-	
+	bot.Channels.get(logchannel).sendMessage("Systems online. Version: " + version+"\nBoot Code: "+bot.isFirstConnect+"\n"+"Connected to: "+ servers + " Servers")
+	var namedservers=[];
 	for (i = 0; i < bot.Guilds.toArray().length; i++)
 	{
-		if(!servers.includes(bot.Guilds.toArray()[i].id)) {servers.push(bot.Guilds.toArray()[i].id)}
+		if(!servers.includes(bot.Guilds.toArray()[i].id)) {servers.push(bot.Guilds.toArray()[i].id);namedservers.push(bot.Guilds.toArray()[i].name)}
 	}
+	bot.Channels.get(logchannel).sendMessage(namedservers.join(" | "))
 	console.log("Connected to:", servers)
 	bot.isFirstConnect = 0
 });
