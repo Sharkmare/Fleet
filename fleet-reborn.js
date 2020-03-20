@@ -3226,7 +3226,7 @@ Commands.push({
     name: 'boi',
     help: "bestboi integration",
     hidden: true,
-    aliases: ['bestboi],
+    aliases: ['bestboi'],
     timeout: 3,
     level: 3,
     fn: function(msg, suffix, bot, client)
