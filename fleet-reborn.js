@@ -1,4 +1,4 @@
-const version = `test v1`
+const version = `I lied`
 
 try
 {
@@ -3288,6 +3288,8 @@ function startscrapers()
 			   "/_Pokedex_Facts/status/", "https://twitter.com/_Pokedex_Facts","lastpokedexfact","Pokedex Update!\n",21600)
 		snomposter(["330777938226184192","407381049908264973"],
 			   "/AppletunPie/status/", "https://twitter.com/AppletunPie","AppletunPielast","Fresh Applepie!\n",120)
+			snomposter(["300130710671458304"],
+			   "/BlockmanThree/status/", "https://twitter.com/BlockmanThree","BlockmanThree","BlockmanThree!\n",10)
 		//faposter(["logchannel"],
 		//	   "/view/", "user","user","New post by User!\n",1200)
 }
