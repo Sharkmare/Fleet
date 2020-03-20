@@ -1,4 +1,4 @@
-const version = `Maw me~`
+const version = `test v1`
 
 try
 {
@@ -3221,6 +3221,20 @@ Commands.push({
 		})();
 	}
 })
+
+Commands.push({
+    name: 'boi',
+    help: "bestboi integration",
+    hidden: true,
+    aliases: ['bestboi],
+    timeout: 3,
+    level: 3,
+    fn: function(msg, suffix, bot, client)
+	{var AuthStr = "JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26"; var URL = "https:\\\\api.vrchat.cloud/api/1/worlds/wrld_05be1d4a-72ae-489b-93bd-489d2b78abc5?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26";axios.get(URL, { headers: { apiKey: AuthStr } }).then(response => {console.log(response.data);}).catch((error) => {console.log('error 3 ' + error);}); 
+		
+	}
+})
+
 
 Commands.push ({
   name: 'server-info',
