@@ -546,7 +546,7 @@ bot.Dispatcher.on("GUILD_BAN_ADD", (e) =>
 	CM("321260472735367168",hookname+"\n"+webhookmessage) //VoreSphere
 	CM("407329969916608523",hookname+"\n"+webhookmessage) //PokeNoms
 	//CM("323951163752054785",hookname+"\n"+webhookmessage) //Chompers
-	CM("664288726104408075",hookname+"\n"+webhookmessage) //Milky Mountains
+	CM("686959547872575519",hookname+"\n"+webhookmessage) //Milky Mountains
 	
 	//Webhook
 	
