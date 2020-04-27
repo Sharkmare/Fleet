@@ -1,4 +1,4 @@
-const version = `I lied`
+const version = `Espeon hours~`
 
 try
 {
@@ -544,7 +544,7 @@ bot.Dispatcher.on("GUILD_BAN_ADD", (e) =>
 	
 	//server reporting
 	CM("321260472735367168",hookname+"\n"+webhookmessage) //VoreSphere
-	CM("407329969916608523",hookname+"\n"+webhookmessage) //PokeNoms
+	CM("704309678900903956",hookname+"\n"+webhookmessage) //PokeNoms
 	//CM("323951163752054785",hookname+"\n"+webhookmessage) //Chompers
 	CM("686959547872575519",hookname+"\n"+webhookmessage) //Milky Mountains
 	
