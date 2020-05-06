@@ -1,4 +1,4 @@
-const version = `Espeon hours~`
+const version = `Void`
 
 try
 {
@@ -2382,6 +2382,20 @@ Commands.push(
 			client.destroy()
 			bot.disconnect()
 		});
+	}
+})
+
+Commands.push(
+{
+	name: 'systemreboot',
+	help: 'This will instantly terminate all running bot processes',
+	level: 'master',
+	hidden: true,
+	fn: function(msg, suffix, bot)
+	{
+		//Role checker proto
+		client.guilds.fetch("180538463655821312").roles().fetch('246665501369958402').then(function(e)
+		{console.log(e)});
 	}
 })
 
