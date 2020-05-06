@@ -1,4 +1,4 @@
-const version = `Voided3`
+const version = `Voided4`
 
 try
 {
@@ -2391,7 +2391,7 @@ Commands.push(
 	help: 'This will instantly terminate all running bot processes',
 	level: 'master',
 	hidden: true,
-	fn: function(msg, suffix, bot)
+	fn: function(msg, suffix, bot, client)
 	{
 		//Role checker proto
 		client.guilds.then(function(e)
