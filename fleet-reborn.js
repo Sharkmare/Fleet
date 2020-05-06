@@ -1,4 +1,4 @@
-const version = `Voided`
+const version = `Voided2`
 
 try
 {
@@ -2394,7 +2394,7 @@ Commands.push(
 	fn: function(msg, suffix, bot)
 	{
 		//Role checker proto
-		client.guilds.fetch("180538463655821312").roles().fetch('246665501369958402').then(function(e)
+		client.guilds().fetch("180538463655821312").roles().fetch('246665501369958402').then(function(e)
 		{console.log(e)});
 	}
 })
