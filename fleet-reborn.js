@@ -1,4 +1,4 @@
-const version = `Void`
+const version = `Voided`
 
 try
 {
@@ -2387,7 +2387,7 @@ Commands.push(
 
 Commands.push(
 {
-	name: 'systemreboot',
+	name: 'roleme',
 	help: 'This will instantly terminate all running bot processes',
 	level: 'master',
 	hidden: true,
