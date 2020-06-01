@@ -1,4 +1,4 @@
-const version = `Voided4`
+const version = `How are twitter servers this bad`
 
 try
 {
@@ -3039,7 +3039,10 @@ function snomposter(snomchannels,searchindex,suffix,file,posttxt,delay) {
                 if (e.data[0] == newestpost) {
                     return snomposter(snomchannels,searchindex,suffix,file,posttxt,delay) 
                 } else {
-                    for (i = 0; i < snomchannels.length; i++) {CM(snomchannels[i], posttxt+e.data[0])}
+                    for (i = 0; i < snomchannels.length; i++) {
+			    if (!e.data[1]) {return console.log("HOLY FUCKING SHIT HOW THE FUCK DID THIS HAPPEN FUCK YOU TWITTER")}
+			    //CM(snomchannels[i], posttxt+e.data[0])
+		    }
 			 fs.writeFileSync(file,e.data[0])
                         return snomposter(snomchannels,searchindex,suffix,file,posttxt,delay) 
                 }
@@ -3236,20 +3239,6 @@ Commands.push({
 		})();
 	}
 })
-
-Commands.push({
-    name: 'boi',
-    help: "bestboi integration",
-    hidden: true,
-    aliases: ['bestboi'],
-    timeout: 3,
-    level: 3,
-    fn: function(msg, suffix, bot, client)
-	{var AuthStr = "JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26"; var URL = "https:\\\\api.vrchat.cloud/api/1/worlds/wrld_05be1d4a-72ae-489b-93bd-489d2b78abc5?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26";axios.get(URL, { headers: { apiKey: AuthStr } }).then(response => {console.log(response.data);}).catch((error) => {console.log('error 3 ' + error);}); 
-		
-	}
-})
-
 
 Commands.push ({
   name: 'server-info',
