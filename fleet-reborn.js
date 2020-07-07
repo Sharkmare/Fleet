@@ -2314,21 +2314,25 @@ Commands.push(
 	level: 0,
 	fn: function(msg, suffix, bot)
 	{
+		var pknomrpchannels = ["490619245953155072","407329969916608523"] //pokenoms implementation
+		if  (!pknomrpchannels.contains(msg.channels.id) && msg,author.id != "201983882625548299")
+		{return}
 		
-		if(msg.author.id != "201983882625548299"){return}
 		myhooks = fs.readFileSync(drive+':/resources/variables/myhook');
-		characters = fs.readFileSync(drive+':/resources/variables/characters');
-		characters = JSON.parse(characters)
 		myhooks = JSON.parse(myhooks)
 		myhook = myhooks.filter(d => d.channel.id == msg.channel.id)
+		
+		characters = fs.readFileSync(drive+':/resources/variables/characters');
+		characters = JSON.parse(characters)
 		if (myhook.length >= 1)
 		{
 			hook = myhook[0].webhook
 			character = suffix.split(" ")
 			var message;
-			mychar = characters.filter(d => d.identifier == character[0])
+			mychar = characters.filter(d => d.identifier == character[0] && d.owner == msg.author.id)
 			if (mychar.length >= 1)
 			{
+				if (mychar.owner)
 				mychar = mychar[0]
 				character[0] = ""
 				suffix = character.join(" ")
@@ -2340,8 +2344,9 @@ Commands.push(
 			}
 			else
 			{
+				
 				message = {
-					content: suffix,
+					content: "Error: non-exitsant or incorrect character identifier.",
 					username: "Kuro-shi",
 					avatar_url: "https://cdn.discordapp.com/attachments/300130710671458304/619280347456339988/lugiablackholepfp.png",
 				}
