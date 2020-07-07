@@ -1,4 +1,4 @@
-const version = `Goooo~ Dra~~~`
+const version = `Thicc Goodra~`
 
 try
 {
@@ -2332,7 +2332,6 @@ Commands.push(
 			mychar = characters.filter(d => d.identifier == character[0] && d.owner == msg.author.id)
 			if (mychar.length >= 1)
 			{
-				if (mychar.owner)
 				mychar = mychar[0]
 				character[0] = ""
 				suffix = character.join(" ")
