@@ -1,4 +1,4 @@
-const version = `How are twitter servers this bad`
+const version = `Goooo~`
 
 try
 {
@@ -2315,7 +2315,7 @@ Commands.push(
 	fn: function(msg, suffix, bot)
 	{
 		
-		if(msg.author.id != ""){return}
+		if(msg.author.id != "201983882625548299"){return}
 		myhooks = fs.readFileSync(drive+':/resources/variables/myhook');
 		characters = fs.readFileSync(drive+':/resources/variables/characters');
 		characters = JSON.parse(characters)
