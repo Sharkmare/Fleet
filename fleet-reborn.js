@@ -2311,9 +2311,11 @@ Commands.push(
 	help: "",
 	aliases: ['hooksay'],
 	timeout: 3,
-	level: 'master',
+	level: 0,
 	fn: function(msg, suffix, bot)
 	{
+		
+		if(msg.author.id != ""){return}
 		myhooks = fs.readFileSync(drive+':/resources/variables/myhook');
 		characters = fs.readFileSync(drive+':/resources/variables/characters');
 		characters = JSON.parse(characters)
