@@ -1,4 +1,4 @@
-const version = `Goooo~`
+const version = `Goooo~ Dra~`
 
 try
 {
@@ -2315,7 +2315,7 @@ Commands.push(
 	fn: function(msg, suffix, bot)
 	{
 		var pknomrpchannels = ["490619245953155072","407329969916608523"] //pokenoms implementation
-		if  (!pknomrpchannels.contains(msg.channels.id) && msg,author.id != "201983882625548299")
+		if  (!pknomrpchannels.contains(msg.channel.id) && msg,author.id != "201983882625548299")
 		{return}
 		
 		myhooks = fs.readFileSync(drive+':/resources/variables/myhook');
