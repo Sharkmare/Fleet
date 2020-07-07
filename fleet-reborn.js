@@ -2304,6 +2304,37 @@ Commands.push(
 		msg.channel.sendMessage(text.join(""))
 	}
 })
+
+Commands.push(
+{
+	name: 'hlookup',
+	hidden: true,
+	help: "",
+	aliases: ['hl'],
+	timeout: 3,
+	level: 0,
+	fn: function(msg, suffix, bot)
+	{
+		characters = fs.readFileSync(drive+':/resources/variables/characters');
+		characters = JSON.parse(characters)
+		text = []
+		characters = characters.filter(d => d.owner == suffix)
+		if(characters.length == 0)
+		{
+			msg.reply("No chars found for user.")
+		}
+		for (i = 0; i < characters.length; i++)
+		{
+			character = characters[i]
+			text.push("Name: " + character.name + "\n")
+			text.push("Trigger: " + character.identifier + "\n")
+			text.push("Avatar: `" + character.avatar + "`\n")
+			text.push("\n")
+		}
+		msg.channel.sendMessage(text.join(""))
+	}
+})
+
 Commands.push(
 {
 	name: 'hsay',
