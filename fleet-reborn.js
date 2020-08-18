@@ -3061,6 +3061,7 @@ function snomposter(snomchannels,searchindex,suffix,file,posttxt,delay) {
 			CM(logchannel,"File for "+file+" was not found\n"+e)
 		var newestpost  = "none"
 		}
+	console.log(suffix);
         axios.get(suffix).then(function(e) {
                 e.data = e.data.split("\"").filter(a => a.includes(searchindex)).filter(b => !b.includes(suffix))
                 var antidupe = [];
