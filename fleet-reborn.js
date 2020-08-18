@@ -1,4 +1,4 @@
-const version = `Twitter testing 7`
+const version = `Twitter testing 8`
 
 try
 {
@@ -3064,7 +3064,7 @@ function snomposter(snomchannels,searchindex,suffix,file,posttxt,delay) {
 	console.log(suffix);
         axios.get(suffix).then(function(e) {
                 e.data = e.data.split("\"")
-		e.data = e.data.filter(a => a.toLowerCase().includes("status"))
+		e.data = e.data.filter(a => a.toLowerCase().includes("/status/"))
 		console.log(e.data);
 		e.data = e.data.filter(a => a.includes(searchindex))
 		//.filter(b => !b.includes(suffix))
