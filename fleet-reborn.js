@@ -1,4 +1,4 @@
-const version = `Twitter testing 8`
+const version = `Planetary Consumption`
 
 try
 {
