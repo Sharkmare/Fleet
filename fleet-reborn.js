@@ -1,4 +1,4 @@
-const version = `Twitter testing4`
+const version = `Twitter testing5`
 
 try
 {
@@ -3063,8 +3063,9 @@ function snomposter(snomchannels,searchindex,suffix,file,posttxt,delay) {
 		}
 	console.log(suffix);
         axios.get(suffix).then(function(e) {
-                e.data = e.data.split("\"").filter(a => a.includes(searchindex)) /*.filter(b => !b.includes(suffix) */ )
-                var antidupe = [];
+                e.data = e.data.split("\"").filter(a => a.includes(searchindex)).filter(b => !b.includes(suffix))
+                console.log(e.data);
+		var antidupe = [];
                 var antidupetrue = [];
                 for (i = 0; i < e.data.length; i++) {
                     if (antidupetrue.includes(e.data[i])) {
@@ -3073,14 +3074,17 @@ function snomposter(snomchannels,searchindex,suffix,file,posttxt,delay) {
                     antidupetrue.push(e.data[i])
                     antidupe.push("https://twitter.com" + e.data[i])
                 }
+		console.log(antidupe)
                 e.data = antidupe
+		if (!e.data[1]) {
+				console.log("HOLY FUCKING SHIT HOW THE FUCK DID THIS HAPPEN FUCK YOU TWITTER");
+				return snomposter(snomchannels,searchindex,suffix,file,posttxt,delay)
+				}
                 if (e.data[0] == newestpost) {
                     return snomposter(snomchannels,searchindex,suffix,file,posttxt,delay) 
                 } else {
                     for (i = 0; i < snomchannels.length; i++) {
-			    if (!e.data[1]) {console.log("HOLY FUCKING SHIT HOW THE FUCK DID THIS HAPPEN FUCK YOU TWITTER");
-					    return snomposter(snomchannels,searchindex,suffix,file,posttxt,delay)
-							      }
+			    
 			    CM(snomchannels[i], posttxt+e.data[0])
 		    }
 			 fs.writeFileSync(file,e.data[0])
@@ -3327,7 +3331,7 @@ function startscrapers()
 		//snomposter(["330777938226184192","407381049908264973"],
 		//	   "/snomposting/status/", "https://twitter.com/snomposting","lastsnompost","New Snompost!\n",30)
 		snomposter(["639935755594235924"],
-			   "/BulbaNewsNOW/status/", "https://twitter.com/BulbaNewsNOW","lastbulbanews","Breaking News!!\n",10)		
+			   "/BulbaNewsNOW/status/", "https://twitter.com/BulbaNewsNOW","lastbulbanews","Breaking News!!\n",30)
 		/*snomposter(["446847460468457473"],
 			   "/_Pokedex_Facts/status/", "https://twitter.com/_Pokedex_Facts","lastpokedexfact","Pokedex Update!\n",21600)
 		snomposter(["330777938226184192","407381049908264973"],
