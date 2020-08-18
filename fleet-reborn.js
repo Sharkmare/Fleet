@@ -1,4 +1,4 @@
-const version = `Planetary Consumption~`
+const version = `Planetary Consumption`
 
 try
 {
@@ -3061,7 +3061,8 @@ function snomposter(snomchannels,searchindex,suffix,file,posttxt,delay) {
 		var newestpost  = "none"
 		}
 	console.log(suffix);
-        axios.get(suffix).then(function(e) {
+        
+	axios.get(suffix, {headers: { "user-agent":"Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705;)" }} ).then(function(e) {
                 e.data = e.data.split("\"")
 		e.data = e.data.filter(a => a.toLowerCase().includes("/status/"))
 		console.log(e.data);
@@ -3335,8 +3336,8 @@ function startscrapers()
 {
 		//snomposter(["330777938226184192","407381049908264973"],
 		//	   "/snomposting/status/", "https://twitter.com/snomposting","lastsnompost","New Snompost!\n",30)
-		//snomposter(["639935755594235924"],
-		//	   "/BulbaNewsNOW/status/", "https://twitter.com/BulbaNewsNOW","lastbulbanews","Breaking News!!\n",30)
+		snomposter(["639935755594235924"],
+			   "/BulbaNewsNOW/status/", "https://twitter.com/BulbaNewsNOW","lastbulbanews","Breaking News!!\n",30)
 		/*snomposter(["446847460468457473"],
 			   "/_Pokedex_Facts/status/", "https://twitter.com/_Pokedex_Facts","lastpokedexfact","Pokedex Update!\n",21600)
 		snomposter(["330777938226184192","407381049908264973"],
