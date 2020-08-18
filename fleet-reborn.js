@@ -1,4 +1,4 @@
-const version = `Planetary Consumption`
+const version = `Planetary Consumption~`
 
 try
 {
@@ -2090,7 +2090,6 @@ Commands.push(
 	usage: 'we hunger',
 	noDM: true,
 	level: 2,
-	permFlag: 3,
 	fn: function(msg, suffix, bot)
 	{
 		suffix || (suffix = 24), msg.channel.sendMessage("Dinner time~").then(function(e)
