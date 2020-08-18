@@ -1,4 +1,4 @@
-const version = `Twitter testing5`
+const version = `Twitter testing 6`
 
 try
 {
@@ -3063,7 +3063,7 @@ function snomposter(snomchannels,searchindex,suffix,file,posttxt,delay) {
 		}
 	console.log(suffix);
         axios.get(suffix).then(function(e) {
-                e.data = e.data.split("\"").filter(a => a.includes(searchindex)).filter(b => !b.includes(suffix))
+                e.data = e.data.split("\"").filter(a => a.includes(searchindex)) //.filter(b => !b.includes(suffix))
                 console.log(e.data);
 		var antidupe = [];
                 var antidupetrue = [];
@@ -3072,7 +3072,9 @@ function snomposter(snomchannels,searchindex,suffix,file,posttxt,delay) {
                         continue;
                     }
                     antidupetrue.push(e.data[i])
-                    antidupe.push("https://twitter.com" + e.data[i])
+		    if(!e.data[i].includes("https"))
+		    {antidupe.push("https://twitter.com" + e.data[i])}
+			else {antidupe.push(e.data[i])}
                 }
 		console.log(antidupe)
                 e.data = antidupe
