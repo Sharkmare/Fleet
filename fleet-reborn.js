@@ -1,4 +1,4 @@
-const version = `Thicc Goodra~`
+const version = `Twitter testing`
 
 try
 {
@@ -3077,8 +3077,10 @@ function snomposter(snomchannels,searchindex,suffix,file,posttxt,delay) {
                     return snomposter(snomchannels,searchindex,suffix,file,posttxt,delay) 
                 } else {
                     for (i = 0; i < snomchannels.length; i++) {
-			    if (!e.data[1]) {return console.log("HOLY FUCKING SHIT HOW THE FUCK DID THIS HAPPEN FUCK YOU TWITTER")}
-			    //CM(snomchannels[i], posttxt+e.data[0])
+			    if (!e.data[1]) {console.log("HOLY FUCKING SHIT HOW THE FUCK DID THIS HAPPEN FUCK YOU TWITTER");
+					    return snomposter(snomchannels,searchindex,suffix,file,posttxt,delay)
+							      }
+			    CM(snomchannels[i], posttxt+e.data[0])
 		    }
 			 fs.writeFileSync(file,e.data[0])
                         return snomposter(snomchannels,searchindex,suffix,file,posttxt,delay) 
@@ -3321,16 +3323,16 @@ Commands.push ({
 //values are as follows: (snomchannels,searchindex,suffix,file,posttxt,delay)
 function startscrapers()
 {
-		snomposter(["330777938226184192","407381049908264973"],
-			   "/snomposting/status/", "https://twitter.com/snomposting","lastsnompost","New Snompost!\n",30)
+		//snomposter(["330777938226184192","407381049908264973"],
+		//	   "/snomposting/status/", "https://twitter.com/snomposting","lastsnompost","New Snompost!\n",30)
 		snomposter(["639935755594235924"],
 			   "/BulbaNewsNOW/status/", "https://twitter.com/BulbaNewsNOW","lastbulbanews","Breaking News!!\n",120)		
-		snomposter(["446847460468457473"],
+		/*snomposter(["446847460468457473"],
 			   "/_Pokedex_Facts/status/", "https://twitter.com/_Pokedex_Facts","lastpokedexfact","Pokedex Update!\n",21600)
 		snomposter(["330777938226184192","407381049908264973"],
 			   "/AppletunPie/status/", "https://twitter.com/AppletunPie","AppletunPielast","Fresh Applepie!\n",120)
 			snomposter(["300130710671458304"],
-			   "/BlockmanThree/status/", "https://twitter.com/BlockmanThree","BlockmanThree","BlockmanThree!\n",10)
+			   "/BlockmanThree/status/", "https://twitter.com/BlockmanThree","BlockmanThree","BlockmanThree!\n",10)*/
 		//faposter(["logchannel"],
 		//	   "/view/", "user","user","New post by User!\n",1200)
 }
