@@ -3336,8 +3336,8 @@ function startscrapers()
 {
 		//snomposter(["330777938226184192","407381049908264973"],
 		//	   "/snomposting/status/", "https://twitter.com/snomposting","lastsnompost","New Snompost!\n",30)
-		snomposter(["639935755594235924"],
-			   "/BulbaNewsNOW/status/", "https://twitter.com/BulbaNewsNOW","lastbulbanews","Breaking News!!\n",30)
+		//snomposter(["639935755594235924"],
+		//	   "/BulbaNewsNOW/status/", "https://twitter.com/BulbaNewsNOW","lastbulbanews","Breaking News!!\n",30)
 		/*snomposter(["446847460468457473"],
 			   "/_Pokedex_Facts/status/", "https://twitter.com/_Pokedex_Facts","lastpokedexfact","Pokedex Update!\n",21600)
 		snomposter(["330777938226184192","407381049908264973"],
