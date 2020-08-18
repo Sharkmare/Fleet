@@ -1,4 +1,4 @@
-const version = `Twitter testing2`
+const version = `Twitter testing4`
 
 try
 {
@@ -3063,7 +3063,7 @@ function snomposter(snomchannels,searchindex,suffix,file,posttxt,delay) {
 		}
 	console.log(suffix);
         axios.get(suffix).then(function(e) {
-                e.data = e.data.split("\"").filter(a => a.includes(searchindex)).filter(b => !b.includes(suffix))
+                e.data = e.data.split("\"").filter(a => a.includes(searchindex)) /*.filter(b => !b.includes(suffix) */ )
                 var antidupe = [];
                 var antidupetrue = [];
                 for (i = 0; i < e.data.length; i++) {
