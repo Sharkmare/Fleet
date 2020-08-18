@@ -1,4 +1,4 @@
-const version = `Twitter testing 6`
+const version = `Twitter testing 7`
 
 try
 {
