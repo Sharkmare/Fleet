@@ -1,4 +1,4 @@
-const version = `Planetary Consumption~`
+const version = `Spooky Scary Chompers~`
 
 try
 {
@@ -719,8 +719,12 @@ bot.Dispatcher.on(Event.GUILD_MEMBER_ADD, (e) =>
 		if (srvuid == '180538463655821312') //Chompers
 		{
 			message = `Hello, ${joineduser}! Welcome to ${srv}! \nPlease bring your attention to <#575623788977455104> to learn how to access the rest of the server.\nWe hope you have a great time.`
+			Console.log("Preparing DM message");
 			protoDM(discordid, message, bot)
-			return CM("180538463655821312",message)
+			Console.log("Preparing Server message");
+			CM("180538463655821312",message);
+			Console.log("message sent");
+			return 
 		}
 		protoDM(discordid, message, bot)
 	}
