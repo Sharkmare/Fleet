@@ -704,7 +704,7 @@ function cry(a, b)
 		x++
 	}
 }
-bot.Dispatcher.on(Event.GUILD_MEMBER_ADD, (e) =>
+bot.Dispatcher.on("GUILD_MEMBER_ADD", (e) =>
 {
 	var unirest = require('unirest')
 	let jmember = e.member
