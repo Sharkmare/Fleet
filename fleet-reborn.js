@@ -1,4 +1,4 @@
-const version = `Spooky Scary Chompers~`
+const version = `Spooky Scary~`
 
 try
 {
@@ -715,6 +715,8 @@ bot.Dispatcher.on(Event.GUILD_MEMBER_ADD, (e) =>
 	console.log(joineduser + discordid + srv)
 	if (srvuid != '664287690870489089' && srvuid != '574956208645996547' && srvuid != '460676626083217409' && srvuid != '549467320922144788' && srvuid != '170967912008515586')
 	{
+		Console.log(srv);
+		Console.log(srvuid);
 		var message = `Welcome to ${srv}! \nPlease take a moment to read the rules!\nWe hope you have a great time.`
 		if (srvuid == '180538463655821312') //Chompers
 		{
