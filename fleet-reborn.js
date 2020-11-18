@@ -1,4 +1,4 @@
-const version = `It's not christmas YET`
+const version = `Snomposter lives`
 
 try
 {
@@ -3030,7 +3030,7 @@ Commands.push(
 	{
 		var searchindex = "/snomposting/status/"
 		suffix = "https://twitter.com/snomposting"
-		axios.get(suffix).then(function(e)
+		axios.get(suffix, {headers: { "user-agent":"Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705;)" }} ).then(function(e)
 			{
 				//CM(logchannel, `${e.config.url} Response: ${e.status} ${e.statusText}`)
 				e.data = e.data.split("\"").filter(a => a.includes(searchindex)).filter(b => !b.includes(suffix))
