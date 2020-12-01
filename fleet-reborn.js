@@ -1,4 +1,4 @@
-const version = `Snomposter lives`
+const version = `Date check v1`
 
 try
 {
@@ -3335,6 +3335,32 @@ Commands.push ({
       msg.channel.sendMessage("You can't do that in a DM, dummy!")
     }
   }
+})
+
+Commands.push({
+    name: 'age',
+    help: "Checks a date against the current date.",
+    hidden: true,
+    aliases: ['agecheck'],
+    timeout: 3,
+    level: 0,
+    fn: function(msg, suffix, bot, client)
+	{
+	var x = new Date(Date.parse(suffix));
+	x =_calculateAge(x)
+	//MM DD YYYY
+	function _calculateAge(birthday) { // birthday is a date
+	    var ageDifMs = Date.now() - birthday.getTime();
+	    var ageDate = new Date(ageDifMs); // miliseconds from epoch
+	    return Math.abs(ageDate.getUTCFullYear() - 1970);
+	}
+	if(isNaN(x))
+	msg.channel.sendMessage("Errored")
+	else if(x >= 18)
+	msg.channel.sendMessage(/*"Allowed access " +*/ suffix + " | "+x)
+	else if(x <= 17)
+	msg.channel.sendMessage(/*"Denied access " +*/ suffix + " | "+x)
+	}
 })
 
 //values are as follows: (snomchannels,searchindex,suffix,file,posttxt,delay)
