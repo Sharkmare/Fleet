@@ -1,4 +1,4 @@
-const version = `Date check 1.3.1`
+const version = `Date check 1.3.2`
 
 try
 {
@@ -3354,6 +3354,7 @@ Commands.push({
 	if (guilduser.hasRole("793096457171107850") || guilduser.hasRole("772357444713185290")) //TEST ROLE CHANGE LATER
 	{
 		msg.reply("Request has already been made.")
+		msg.delete()
 		return;
 	}
 	msg.reply("\nYour request has been succesfully generated.\nThe verification Process may take a while to complete please be patient!");
@@ -3385,6 +3386,7 @@ Commands.push({
 		CM("790982325801975818","STATUS: **DENIED**\n" +msg.content + "\n" + "<@" + msg.author.id + ">" + " " + msg.author.id+ "\n"+x)
 		guilduser.assignRole("793096457171107850")
 	}
+	msg.delete()
 	}
 })
 
