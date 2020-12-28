@@ -1,4 +1,4 @@
-const version = `Date check v4`
+const version = `Date check test`
 
 try
 {
@@ -3347,8 +3347,9 @@ Commands.push({
     fn: function(msg, suffix, bot, client)
 	{
 	if (msg.channel.guild.id != "626337788857417748")
+		msg.reply(msg)
 		return;
-	msg.reply(bot.Guilds.find(msg.channel.guild.id).members.find(msg.author.id))	
+	msg.reply(msg.channel.guild).members.find(msg.author.id))	
 	return;
 	var guilduser = bot.Guilds.find(msg.channel.guild.id).members.find(msg.author.id)
 	
