@@ -3353,11 +3353,11 @@ Commands.push({
 	//Here we check if our requesting user was denied already or has the role, we could implement an autokick on trying this but lets not.
 	if (guilduser.hasRole("793096457171107850") || guilduser.hasRole("772357444713185290")) //TEST ROLE CHANGE LATER
 	{
-		msg.reply("Request has already been made.")
+		//msg.reply("Request has already been made.")
 		msg.delete()
 		return;
 	}
-	msg.reply("\nYour request has been succesfully generated.\nThe verification Process may take a while to complete please be patient!");
+	//msg.reply("\nYour request has been succesfully generated.\nThe verification Process may take a while to complete please be patient!");
 		
 	var x = new Date(Date.parse(suffix));
 	x =_calculateAge(x)
