@@ -1,4 +1,4 @@
-const version = `Date check 1.3`
+const version = `Date check 1.3.1`
 
 try
 {
@@ -3353,7 +3353,7 @@ Commands.push({
 	//Here we check if our requesting user was denied already or has the role, we could implement an autokick on trying this but lets not.
 	if (guilduser.hasRole("793096457171107850") || guilduser.hasRole("772357444713185290")) //TEST ROLE CHANGE LATER
 	{
-		msg.reply("Request has alwready been made.")
+		msg.reply("Request has already been made.")
 		return;
 	}
 	msg.reply("\nYour request has been succesfully generated.\nThe verification Process may take a while to complete please be patient!");
