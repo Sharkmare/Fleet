@@ -1,4 +1,4 @@
-const version = `Date check 1.0`
+const version = `Date check 1.1`
 
 try
 {
@@ -3346,12 +3346,16 @@ Commands.push({
     level: 0,
     fn: function(msg, suffix, bot, client)
 	{
+	/*
 	if (msg.channel.guild.id != "626337788857417748")
 		return;
 		//msg.reply(msg.channel.guild.members.find(e => e.id == msg.author.id))
+	*/
+
 	var guilduser = msg.channel.guild.members.find(e => e.id == msg.author.id)
-	
-	if (guilduser.hasRole("732823262567858246")) //TEST ROLE CHANGE LATER
+	guilduser.assignRole("442038924228034560")
+	return;
+		if (guilduser.hasRole("732823262567858246")) //TEST ROLE CHANGE LATER
 		return;
 	var x = new Date(Date.parse(suffix));
 	x =_calculateAge(x)
