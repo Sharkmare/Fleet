@@ -1,4 +1,4 @@
-const version = `Date check v3`
+const version = `Date check v4`
 
 try
 {
@@ -3348,7 +3348,10 @@ Commands.push({
 	{
 	if (msg.channel.guild.id != "626337788857417748")
 		return;
+	msg.reply(bot.Guilds.find(msg.channel.guild.id).members.find(msg.author.id))	
+	return;
 	var guilduser = bot.Guilds.find(msg.channel.guild.id).members.find(msg.author.id)
+	
 	if (guilduser.hasRole("732823262567858246")) //TEST ROLE CHANGE LATER
 		return;
 	var x = new Date(Date.parse(suffix));
