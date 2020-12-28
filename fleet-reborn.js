@@ -1,4 +1,4 @@
-const version = `Date check 1.4`
+const version = `Date check 1.4.1`
 
 try
 {
@@ -3371,7 +3371,7 @@ Commands.push({
 	//ERROR PARSING
 	{
 		CM("790982325801975818","STATUS: **PARSING ERROR NAN**\n" +msg.content + "\n" + "<@" + msg.author.id + ">" + " " + msg.author.id)
-		guilduser.assignRole("793197604115709983")
+		guilduser.assignRole("793197140980924436")
 	}
 	else if(x >= 18 && x <= 60)
 	{
@@ -3384,7 +3384,7 @@ Commands.push({
 	//DENIED
 	{
 		CM("790982325801975818","STATUS: **DENIED**\n" +msg.content + "\n" + "<@" + msg.author.id + ">" + " " + msg.author.id+ "\n"+x)
-		guilduser.assignRole("793197604115709983")
+		guilduser.assignRole("793197140980924436")
 	}
 	msg.delete()
 	}
