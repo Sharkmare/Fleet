@@ -1,4 +1,4 @@
-const version = `Date check 1.1`
+const version = `Date check 1.2.1`
 
 try
 {
@@ -3346,17 +3346,15 @@ Commands.push({
     level: 0,
     fn: function(msg, suffix, bot, client)
 	{
-	/*
 	if (msg.channel.guild.id != "626337788857417748")
 		return;
-		//msg.reply(msg.channel.guild.members.find(e => e.id == msg.author.id))
-	*/
-
 	var guilduser = msg.channel.guild.members.find(e => e.id == msg.author.id)
-	guilduser.assignRole("442038924228034560")
-	return;
-		if (guilduser.hasRole("732823262567858246")) //TEST ROLE CHANGE LATER
+	
+	//Here we check if our requesting user was denied already or has the role, we could implement an autokick on trying this but lets not.
+	if (guilduser.hasRole("732823262567858246") || guilduser.hasRole("732823262567858246")) //TEST ROLE CHANGE LATER
 		return;
+	msg.reply("Your request has been succesfully generated.\nThe verification Process may take a while to complete please be patient!");
+		
 	var x = new Date(Date.parse(suffix));
 	x =_calculateAge(x)
 	//MM DD YYYY
@@ -3366,17 +3364,19 @@ Commands.push({
 	    return Math.abs(ageDate.getUTCFullYear() - 1970);
 	}
 	if(isNaN(x))
-	//msg.channel.sendMessage("Errored")
-		CM("790982325801975818","STATUS: **PARSING ERROR NAN**\n" +msg.content + "\n" + "<@" + msg.author.id + ">" + msg.author.id)
+	//ERROR PARSING
+		CM("790982325801975818","STATUS: **PARSING ERROR NAN**\n" +msg.content + "\n" + "<@" + msg.author.id + ">" + " " + msg.author.id)
+	
 	else if(x >= 18)
 	{
-	//msg.channel.sendMessage(/*"Allowed access " +*/ suffix + " | "+x)
-		CM("780050771067797504","STATUS: **ACCEPTED**\n" +msg.content + "\n" + "<@" + msg.author.id + ">" + msg.author.id+ "\n"+x)
+	//ACCEPTED
+		CM("780050771067797504","STATUS: **ACCEPTED**\n" +msg.content + "\n" + "<@" + msg.author.id + ">" + " " + msg.author.id+ "\n"+x)
 		guilduser.assignRole("666890211590144012") //TEST ROLE CHANGE LATER
 	}
+	
 	else if(x <= 17)
-	//msg.channel.sendMessage(/*"Denied access " +*/ suffix + " | "+x)
-		CM("790982325801975818","STATUS: **DENIED**\n" +msg.content + "\n" + "<@" + msg.author.id + ">" + msg.author.id+ "\n"+x)
+	//DENIED
+		CM("790982325801975818","STATUS: **DENIED**\n" +msg.content + "\n" + "<@" + msg.author.id + ">" + " " + msg.author.id+ "\n"+x)
 	}
 })
 
