@@ -1,4 +1,4 @@
-const version = `Date check 1.2.1`
+const version = `Date check 1.3`
 
 try
 {
@@ -3351,9 +3351,12 @@ Commands.push({
 	var guilduser = msg.channel.guild.members.find(e => e.id == msg.author.id)
 	
 	//Here we check if our requesting user was denied already or has the role, we could implement an autokick on trying this but lets not.
-	if (guilduser.hasRole("732823262567858246") || guilduser.hasRole("732823262567858246")) //TEST ROLE CHANGE LATER
+	if (guilduser.hasRole("793096457171107850") || guilduser.hasRole("772357444713185290")) //TEST ROLE CHANGE LATER
+	{
+		msg.reply("Request has alwready been made.")
 		return;
-	msg.reply("Your request has been succesfully generated.\nThe verification Process may take a while to complete please be patient!");
+	}
+	msg.reply("\nYour request has been succesfully generated.\nThe verification Process may take a while to complete please be patient!");
 		
 	var x = new Date(Date.parse(suffix));
 	x =_calculateAge(x)
@@ -3365,18 +3368,23 @@ Commands.push({
 	}
 	if(isNaN(x))
 	//ERROR PARSING
+	{
 		CM("790982325801975818","STATUS: **PARSING ERROR NAN**\n" +msg.content + "\n" + "<@" + msg.author.id + ">" + " " + msg.author.id)
-	
+		guilduser.assignRole("793096457171107850")
+	}
 	else if(x >= 18)
 	{
 	//ACCEPTED
 		CM("780050771067797504","STATUS: **ACCEPTED**\n" +msg.content + "\n" + "<@" + msg.author.id + ">" + " " + msg.author.id+ "\n"+x)
-		guilduser.assignRole("666890211590144012") //TEST ROLE CHANGE LATER
+		guilduser.assignRole("772357444713185290") //TEST ROLE CHANGE LATER
 	}
 	
 	else if(x <= 17)
 	//DENIED
+	{
 		CM("790982325801975818","STATUS: **DENIED**\n" +msg.content + "\n" + "<@" + msg.author.id + ">" + " " + msg.author.id+ "\n"+x)
+		guilduser.assignRole("793096457171107850")
+	}
 	}
 })
 
