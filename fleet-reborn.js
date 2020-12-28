@@ -1,4 +1,4 @@
-const version = `Date check 1.3.4`
+const version = `Date check 1.4`
 
 try
 {
@@ -3370,21 +3370,21 @@ Commands.push({
 	if(isNaN(x))
 	//ERROR PARSING
 	{
-		CM("793197604115709983","STATUS: **PARSING ERROR NAN**\n" +msg.content + "\n" + "<@" + msg.author.id + ">" + " " + msg.author.id)
-		guilduser.assignRole("793096457171107850")
+		CM("790982325801975818","STATUS: **PARSING ERROR NAN**\n" +msg.content + "\n" + "<@" + msg.author.id + ">" + " " + msg.author.id)
+		guilduser.assignRole("793197604115709983")
 	}
 	else if(x >= 18 && x <= 60)
 	{
 	//ACCEPTED
 		CM("780050771067797504","STATUS: **ACCEPTED**\n" +msg.content + "\n" + "<@" + msg.author.id + ">" + " " + msg.author.id+ "\n"+x)
-		guilduser.assignRole("772357444713185290") //TEST ROLE CHANGE LATER
+		guilduser.assignRole("772357444713185290")
 	}
 	
 	else if(x <= 17 || x >= 61)
 	//DENIED
 	{
-		CM("793197604115709983","STATUS: **DENIED**\n" +msg.content + "\n" + "<@" + msg.author.id + ">" + " " + msg.author.id+ "\n"+x)
-		guilduser.assignRole("793096457171107850")
+		CM("790982325801975818","STATUS: **DENIED**\n" +msg.content + "\n" + "<@" + msg.author.id + ">" + " " + msg.author.id+ "\n"+x)
+		guilduser.assignRole("793197604115709983")
 	}
 	msg.delete()
 	}
