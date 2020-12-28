@@ -1,4 +1,4 @@
-const version = `Date check 1.3.3`
+const version = `Date check 1.3.4`
 
 try
 {
@@ -3370,7 +3370,7 @@ Commands.push({
 	if(isNaN(x))
 	//ERROR PARSING
 	{
-		CM("790982325801975818","STATUS: **PARSING ERROR NAN**\n" +msg.content + "\n" + "<@" + msg.author.id + ">" + " " + msg.author.id)
+		CM("793197604115709983","STATUS: **PARSING ERROR NAN**\n" +msg.content + "\n" + "<@" + msg.author.id + ">" + " " + msg.author.id)
 		guilduser.assignRole("793096457171107850")
 	}
 	else if(x >= 18 && x <= 60)
@@ -3383,7 +3383,7 @@ Commands.push({
 	else if(x <= 17 || x >= 61)
 	//DENIED
 	{
-		CM("790982325801975818","STATUS: **DENIED**\n" +msg.content + "\n" + "<@" + msg.author.id + ">" + " " + msg.author.id+ "\n"+x)
+		CM("793197604115709983","STATUS: **DENIED**\n" +msg.content + "\n" + "<@" + msg.author.id + ">" + " " + msg.author.id+ "\n"+x)
 		guilduser.assignRole("793096457171107850")
 	}
 	msg.delete()
