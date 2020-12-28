@@ -1,4 +1,4 @@
-const version = `Date check v2`
+const version = `Date check v3`
 
 try
 {
@@ -3347,7 +3347,9 @@ Commands.push({
     fn: function(msg, suffix, bot, client)
 	{
 	if (msg.channel.guild.id != "626337788857417748")
-	if (msg.author.hasRole("732823262567858246")) //TEST ROLE CHANGE LATER
+		return;
+	var guilduser = bot.Guilds.find(msg.channel.guild.id).members.find(msg.author.id)
+	if (guilduser.hasRole("732823262567858246")) //TEST ROLE CHANGE LATER
 		return;
 	var x = new Date(Date.parse(suffix));
 	x =_calculateAge(x)
@@ -3364,7 +3366,7 @@ Commands.push({
 	{
 	//msg.channel.sendMessage(/*"Allowed access " +*/ suffix + " | "+x)
 		CM("780050771067797504","STATUS: **ACCEPTED**\n" +msg.content + "\n" + "<@" + msg.author.id + ">" + msg.author.id+ "\n"+x)
-		msg.author.assignRole("666890211590144012") //TEST ROLE CHANGE LATER
+		guilduser.assignRole("666890211590144012") //TEST ROLE CHANGE LATER
 	}
 	else if(x <= 17)
 	//msg.channel.sendMessage(/*"Denied access " +*/ suffix + " | "+x)
