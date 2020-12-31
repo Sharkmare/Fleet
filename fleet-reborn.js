@@ -1,4 +1,4 @@
-const version = `Date check 1.4.1`
+const version = `New Years Update`
 
 try
 {
@@ -35,7 +35,7 @@ var fs = require("fs"),
 	unirest = require("unirest"),
 	game = {
 		type: 1,
-		name: "with your planets~",
+		name: "Happy new Year!~",
 		url: "http://discordvore.info"
 	};
 
@@ -3351,7 +3351,7 @@ Commands.push({
 	var guilduser = msg.channel.guild.members.find(e => e.id == msg.author.id)
 	
 	//Here we check if our requesting user was denied already or has the role, we could implement an autokick on trying this but lets not.
-	if (guilduser.hasRole("793096457171107850") || guilduser.hasRole("772357444713185290")) //TEST ROLE CHANGE LATER
+	if (guilduser.hasRole("793197140980924436") || guilduser.hasRole("772357444713185290")) //TEST ROLE CHANGE LATER
 	{
 		//msg.reply("Request has already been made.")
 		msg.delete()
