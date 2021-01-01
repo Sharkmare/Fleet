@@ -1,4 +1,4 @@
-const version = `New Years Update 2`
+const version = `New Years Update 3`
 
 try
 {
@@ -3348,17 +3348,17 @@ Commands.push({
 	{
 	if (msg.channel.guild.id != "626337788857417748")
 		return;
-	var guilduser = msg.channel.guild.members.find(e => e.id == msg.author.id)
+	var guilduser = msg.channel.guild.members.find(e => e.id == msg.author.id);
+	var content = msg.content;
+	var authorid = msg.author.id;
+	var reuseend = content + "\n" + "<@" + authorid + ">" + " " + authorid
+	msg.delete()
 	
 	//Here we check if our requesting user was denied already or has the role, we could implement an autokick on trying this but lets not.
-	if (guilduser.hasRole("793197140980924436") || guilduser.hasRole("772357444713185290")) //TEST ROLE CHANGE LATER
+	if (guilduser && (guilduser.hasRole("793197140980924436") || guilduser.hasRole("772357444713185290"))) //TEST ROLE CHANGE LATER
 	{
-		//msg.reply("Request has already been made.")
-		msg.delete()
 		return;
-	}
-	//msg.reply("\nYour request has been succesfully generated.\nThe verification Process may take a while to complete please be patient!");
-		
+	}	
 	var x = new Date(Date.parse(suffix));
 	x =_calculateAge(x)
 	//MM DD YYYY
@@ -3370,23 +3370,22 @@ Commands.push({
 	if(isNaN(x))
 	//ERROR PARSING
 	{
-		CM("790982325801975818","STATUS: **PARSING ERROR NAN**\n" +msg.content + "\n" + "<@" + msg.author.id + ">" + " " + msg.author.id)
+		CM("790982325801975818","STATUS: **PARSING ERROR NAN**\n" + reuseend)
 		guilduser.assignRole("793197140980924436")
 	}
 	else if(x >= 19 && x <= 60)
 	{
 	//ACCEPTED
-		CM("780050771067797504","STATUS: **ACCEPTED**\n" +msg.content + "\n" + "<@" + msg.author.id + ">" + " " + msg.author.id+ "\n"+x)
+		CM("780050771067797504","STATUS: **ACCEPTED**\n" + reuseend + "\n" + x)
 		guilduser.assignRole("772357444713185290")
 	}
 	
 	else if(x <= 18 || x >= 61)
 	//DENIED
 	{
-		CM("790982325801975818","STATUS: **DENIED**\n" +msg.content + "\n" + "<@" + msg.author.id + ">" + " " + msg.author.id+ "\n"+x)
+		CM("790982325801975818","STATUS: **DENIED**\n" + reuseend + "\n" + x)
 		guilduser.assignRole("793197140980924436")
 	}
-	msg.delete()
 	}
 })
 
