@@ -1,4 +1,4 @@
-const version = `New Years Update`
+const version = `New Years Update 2`
 
 try
 {
@@ -35,7 +35,7 @@ var fs = require("fs"),
 	unirest = require("unirest"),
 	game = {
 		type: 1,
-		name: "Happy new Year!~",
+		name: "Your world, my plaything~",
 		url: "http://discordvore.info"
 	};
 
@@ -3373,14 +3373,14 @@ Commands.push({
 		CM("790982325801975818","STATUS: **PARSING ERROR NAN**\n" +msg.content + "\n" + "<@" + msg.author.id + ">" + " " + msg.author.id)
 		guilduser.assignRole("793197140980924436")
 	}
-	else if(x >= 18 && x <= 60)
+	else if(x >= 19 && x <= 60)
 	{
 	//ACCEPTED
 		CM("780050771067797504","STATUS: **ACCEPTED**\n" +msg.content + "\n" + "<@" + msg.author.id + ">" + " " + msg.author.id+ "\n"+x)
 		guilduser.assignRole("772357444713185290")
 	}
 	
-	else if(x <= 17 || x >= 61)
+	else if(x <= 18 || x >= 61)
 	//DENIED
 	{
 		CM("790982325801975818","STATUS: **DENIED**\n" +msg.content + "\n" + "<@" + msg.author.id + ">" + " " + msg.author.id+ "\n"+x)
