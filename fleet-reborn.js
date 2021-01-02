@@ -1,4 +1,4 @@
-const version = `New Years Update 3`
+const version = `New Years Update 4`
 
 try
 {
@@ -3348,23 +3348,25 @@ Commands.push({
 	{
 	if (msg.channel.guild.id != "626337788857417748")
 		return;
-	var guilduser = msg.channel.guild.members.find(e => e.id == msg.author.id);
-	var content = msg.content;
-	var authorid = msg.author.id;
-	var reuseend = content + "\n" + "<@" + authorid + ">" + " " + authorid
+	let guilduser = msg.channel.guild.members.find(e => e.id == msg.author.id);
+	let content = msg.content;
+	let authorid = msg.author.id;
+	let reuseend = content + "\n" + "<@" + authorid + ">" + " " + authorid
 	msg.delete()
 	
 	//Here we check if our requesting user was denied already or has the role, we could implement an autokick on trying this but lets not.
 	if (guilduser && (guilduser.hasRole("793197140980924436") || guilduser.hasRole("772357444713185290"))) //TEST ROLE CHANGE LATER
 	{
 		return;
-	}	
+	}
+	if(!guilduser){return;}
+	
 	var x = new Date(Date.parse(suffix));
 	x =_calculateAge(x)
 	//MM DD YYYY
 	function _calculateAge(birthday) { // birthday is a date
-	    var ageDifMs = Date.now() - birthday.getTime();
-	    var ageDate = new Date(ageDifMs); // miliseconds from epoch
+	    let ageDifMs = Date.now() - birthday.getTime();
+	    let ageDate = new Date(ageDifMs); // miliseconds from epoch
 	    return Math.abs(ageDate.getUTCFullYear() - 1970);
 	}
 	if(isNaN(x))
@@ -3373,20 +3375,35 @@ Commands.push({
 		CM("790982325801975818","STATUS: **PARSING ERROR NAN**\n" + reuseend)
 		guilduser.assignRole("793197140980924436")
 	}
-	else if(x >= 19 && x <= 60)
+	else if(x >= 18 && x <= 60)
 	{
 	//ACCEPTED
 		CM("780050771067797504","STATUS: **ACCEPTED**\n" + reuseend + "\n" + x)
 		guilduser.assignRole("772357444713185290")
 	}
 	
-	else if(x <= 18 || x >= 61)
+	else if(x <= 17 || x >= 61)
 	//DENIED
 	{
 		CM("790982325801975818","STATUS: **DENIED**\n" + reuseend + "\n" + x)
 		guilduser.assignRole("793197140980924436")
 	}
 	}
+})
+
+bot.Dispatcher.on("MESSAGE_CREATE", e =>
+{
+	var guild;
+	var msg;
+	var attached;
+	if (e.message.guild) {guild = e.message.guild.name}
+	if(!guild) {return}
+	if (e.message){msg = e.message}
+	if(msg.channel.id != "780050343407910922"){return}
+	if (e.message.attachments[0]){attached = e.message.attachments[0]}
+	if (msg.author == "311682437728043009"){return}
+	if(msg.content.toLowerCase().includes("-age")){return}
+	else {msg.delete()}
 })
 
 //values are as follows: (snomchannels,searchindex,suffix,file,posttxt,delay)
