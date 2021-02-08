@@ -1,4 +1,4 @@
-const version = `New Years Update 4`
+const version = `debug enabled`
 
 try
 {
@@ -413,6 +413,7 @@ bot.Dispatcher.on("MESSAGE_DELETE", (e) =>
 	{
 		return
 	}
+	console.log(e)
 	//console.log(server)
 	if (server == "Chompers")
 	{
