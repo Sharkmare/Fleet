@@ -1,4 +1,4 @@
-const version = `debug enabled`
+const version = `debug enabled 2`
 
 try
 {
@@ -413,7 +413,12 @@ bot.Dispatcher.on("MESSAGE_DELETE", (e) =>
 	{
 		return
 	}
-	console.log(e)
+	
+	console.log(e.message)
+	
+	if(e.message.channel)
+		console.log(e.message.channel)
+	
 	//console.log(server)
 	if (server == "Chompers")
 	{
