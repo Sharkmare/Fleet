@@ -417,7 +417,7 @@ bot.Dispatcher.on("MESSAGE_DELETE", (e) =>
 	//console.log(server)
 	if (server == "Chompers")
 	{
-		if(bot.Channels.get(channelId).name.toLowerCase().contains("ss13"))
+		if(bot.Channels.get(channelId).name.toLowerCase().includes("ss13"))
 			return;
 		var hookurl = Config.webhooks.chomplog
 		unirest.post(hookurl)
