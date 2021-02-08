@@ -1,4 +1,4 @@
-const version = `debug enabled 3`
+const version = `debug enabled 5`
 
 try
 {
@@ -413,13 +413,12 @@ bot.Dispatcher.on("MESSAGE_DELETE", (e) =>
 	{
 		return
 	}
-	if(e.message.channel.name)
-		if (e.message.channel.name.toLowerCase().contains("ss13")) 
-			return;
 	
 	//console.log(server)
 	if (server == "Chompers")
 	{
+		if(bot.Channels.get(channelId).name.toLowerCase().contains("ss13"))
+			return;
 		var hookurl = Config.webhooks.chomplog
 		unirest.post(hookurl)
 			.header('Content-Type', 'application/json').send(
@@ -1734,9 +1733,13 @@ Commands.push(
 		var matureneeded="";
 		if (msg.guild.id == 180538463655821312) //Chompers
 		{
-			if (suffix.toLowerCase().includes("ss13")) { matureneeded="\n❗❗❗ONE OF THE REQUESTED ROLES RQUIRES MATURE❗❗❗" }
 			msg.reply("your request has been received. A mod will be by to set your roles shortly!")
 			var CID = "180860061998907392" //chompers
+			if (suffix.toLowerCase().includes("ss13")) 
+			{ 
+				matureneeded="\n❗❗❗ONE OF THE REQUESTED ROLES RQUIRES AGE VERIFICATION❗❗❗";
+				CID = "709137708781666304"
+			}
 			let embed = {
 				author:
 				{
