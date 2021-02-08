@@ -1,4 +1,4 @@
-const version = `Space that clown`
+const version = `Space Clown 13`
 
 try
 {
@@ -417,7 +417,7 @@ bot.Dispatcher.on("MESSAGE_DELETE", (e) =>
 	//console.log(server)
 	if (server == "Chompers")
 	{
-		if(bot.Channels.get(channelId).name.toLowerCase().includes("ss13"))
+		if(bot.Channels.get(e.channelId).name.toLowerCase().includes("ss13"))
 			return;
 		var hookurl = Config.webhooks.chomplog
 		unirest.post(hookurl)
