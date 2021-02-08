@@ -1,4 +1,4 @@
-const version = `debug enabled 5`
+const version = `Space that clown`
 
 try
 {
