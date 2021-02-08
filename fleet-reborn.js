@@ -1,4 +1,4 @@
-const version = `debug enabled 2`
+const version = `debug enabled 3`
 
 try
 {
@@ -413,11 +413,9 @@ bot.Dispatcher.on("MESSAGE_DELETE", (e) =>
 	{
 		return
 	}
-	
-	console.log(e.message)
-	
-	if(e.message.channel)
-		console.log(e.message.channel)
+	if(e.message.channel.name)
+		if (e.message.channel.name.toLowerCase().contains("ss13")) 
+			return;
 	
 	//console.log(server)
 	if (server == "Chompers")
