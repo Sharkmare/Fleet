@@ -1738,7 +1738,7 @@ Commands.push(
 			if (suffix.toLowerCase().includes("ss13")) 
 			{ 
 				matureneeded="\n❗❗❗ONE OF THE REQUESTED ROLES RQUIRES AGE VERIFICATION❗❗❗";
-				CID = "709137708781666304"
+				//CID = "709137708781666304"
 			}
 			let embed = {
 				author:
