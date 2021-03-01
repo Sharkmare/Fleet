@@ -175,6 +175,7 @@ Commands.push ({
 		manbans = fs.readFileSync(manbanfile, "utf8")
 		manbans = manbans + "\n" + suffix;
 		fs.writeFileSync(manbanfile, manbans)
+		msg.reply("🖤omae wa mou shindeiru🖤")
 	}
   })
 
