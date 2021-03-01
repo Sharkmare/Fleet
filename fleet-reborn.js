@@ -1,4 +1,4 @@
-const version = `Got Milk?`
+const version = `That one version we dont talk about`
 
 try
 {
@@ -108,7 +108,7 @@ function banlogger(a, bot, currentserver, banfile, bans, user, joinedserver)
 			var banned_in = "No bans.";
 			var avi; 
 			if(user.avatarURL) {avi = user.avatarURL.replace(".jpg", "").replace(".gif", "").replace(".png", "")}
-			fs.writeFileSync(banfile, bans.join("\n") + "\n")
+			//fs.writeFileSync(banfile, bans.join("\n") + "\n")
 			//CM(logchannel,bans.length)
 			var banproto = bans.filter(Z => Z.includes(user.id))
 			if (banproto.length > 0)
@@ -145,11 +145,6 @@ bot.Dispatcher.on("GUILD_MEMBER_ADD", e =>
 	var banfile = drive+":/resources/BANS/BANLOG/banlog"+timeid
 	var manbanfile = drive+":/resources/BANS/BANLOG/blackbanlog"
 	manbans = fs.readFileSync(manbanfile, "utf8")
-	if (manbans.includes(e.member.id))
-	{
-		
-	}
- 	
  	console.log(manbans)
 	bans = [];
 	revo = 0
@@ -158,36 +153,30 @@ bot.Dispatcher.on("GUILD_MEMBER_ADD", e =>
 	{
 		currentserver = bot.Guilds.get(servers[a]).name
 		banlogger(a, bot, currentserver, banfile, bans,user,joinedserver)
-	} //Commented out due to discord bug
-	/*setTimeout(function()
+	}
+ 	if (manbans.includes(e.member.id))
 	{
-		bans = fs.readFileSync(banfile, "utf8")
-		bans = bans.split("\n")
-		manbans = fs.readFileSync(manbanfile, "utf8")
-		manbans = manbans.split("\n")
-		howmany = bans.filter(Z => Z.includes(e.member.id)).length
-		manhowmany = manbans.filter(Z => Z == e.member.id).length
-		if (howmany < 1)
-		{
-			console.log("no bans logged")
-		}
-		if (howmany > 0 && howmany < 3)
-		{
-			CM(dvalogchannel, "Yellow flagged user " + " <@" + e.member.id + "> " + e.member.username + "#" + e.member.discriminator + " `" + e.member.id + "` joined " + e.guild.name)
-		}
-		if (howmany > 2 || manhowmany >= 1)
-		{
-			CM(dvalogchannel, "Red flagged user " + " <@" + e.member.id + "> " + e.member.username + "#" + e.member.discriminator + " `" + e.member.id + "` joined " + e.guild.name)
-			e.member.ban()
-		}
-		if (manhowmany >= 1)
-		{
-			CM(dvalogchannel, "Black flagged user " + " <@" + e.member.id + "> " + e.member.username + "#" + e.member.discriminator + " `" + e.member.id + "` joined " + e.guild.name)
-			e.member.ban()
-		}
-	}, 10000);*/
+		user.ban()
+	}
 
 });
+
+Commands.push ({
+  name: 'blacklist',
+  help: "No one will ever know",
+  aliases: ['black'],
+  noDM: true,
+  timeout: 20,
+  level: 3,
+  hidden: true,
+  fn: function (msg, suffix, bot) 
+	{
+		var manbanfile = drive+":/resources/BANS/BANLOG/blackbanlog"
+		manbans = fs.readFileSync(manbanfile, "utf8")
+		manbans = manbans + "\n" + suffix;
+		fs.writeFileSync(manbanfile, manbans)
+	}
+  })
 
 function CM(channel, message)
 {
