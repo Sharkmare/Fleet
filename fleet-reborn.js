@@ -144,9 +144,16 @@ bot.Dispatcher.on("GUILD_MEMBER_ADD", e =>
 	var timeid = Date.now()
 	var banfile = drive+":/resources/BANS/BANLOG/banlog"+timeid
 	var manbanfile = drive+":/resources/BANS/BANLOG/blackbanlog"
-	console.log(e.member.username)
+	manbans = fs.readFileSync(manbanfile, "utf8")
+	if (manbans.includes(e.member.id))
+	{
+		
+	}
+ 	
+ 	console.log(manbans)
 	bans = [];
 	revo = 0
+ 	
 	for (a = 0; a < servers.length; a++)
 	{
 		currentserver = bot.Guilds.get(servers[a]).name
