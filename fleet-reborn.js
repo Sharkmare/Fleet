@@ -1,4 +1,5 @@
 const version = `That one version we dont talk about`
+const noban = [""]
 
 try
 {
@@ -125,12 +126,19 @@ function banlogger(a, bot, currentserver, banfile, bans, user, joinedserver)
 					case 3:
 						var type = "red";
 						break;
+					default: 
+						var type = "crimson"
+						break;
 				}
-				CM(dvalogchannel, `Flag of type ${type} has been triggered.\n<@${user.id}> ${user.id} \`${user.username}#${user.discriminator}\` \nJoined ${joinedserver.name}\nBans: ${banproto.length}\nBan logger: ${banned_in}\n${avi}`)
+				var optout = (!noban.includes(joinedserver.id))
+				CM(dvalogchannel, `Flag of type ${type} has been triggered. Can autoban at 3: ${optout} .\n<@${user.id}> ${user.id} \`${user.username}#${user.discriminator}\` \nJoined ${joinedserver.name}\nBans: ${banproto.length}\nBan logger: ${banned_in}\n${avi}`)
 			}
 			if (banproto.length > 2)
 			{
-				user.ban()
+				if(!noban.includes(joinedserver.id))
+				   {
+				   user.ban()
+				}
 			}
 		}
 		revo++
@@ -156,7 +164,10 @@ bot.Dispatcher.on("GUILD_MEMBER_ADD", e =>
 	}
  	if (manbans.includes(e.member.id))
 	{
-		user.ban()
+		if(!noban.includes(joinedserver.id))
+		   {
+		   user.ban()
+		}
 	}
 
 });
