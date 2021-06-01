@@ -1,5 +1,5 @@
-const version = `That one version we dont talk about`
-const noban = [""]
+const version = `Kobold beans`
+const noban = ["730609289110224947"]
 
 try
 {
