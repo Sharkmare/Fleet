@@ -724,7 +724,7 @@ bot.Dispatcher.on("GUILD_MEMBER_ADD", (e) =>
 	let srv = e.guild.name
 	let srvuid = e.guild.id
 	console.log(joineduser + discordid + srv)
-	if (srvuid != '626337788857417748' && srvuid != '664287690870489089' && srvuid != '574956208645996547' && srvuid != '460676626083217409' && srvuid != '549467320922144788' && srvuid != '170967912008515586')
+	if (srvuid != '730609289110224947' && srvuid != '626337788857417748' && srvuid != '664287690870489089' && srvuid != '574956208645996547' && srvuid != '460676626083217409' && srvuid != '549467320922144788' && srvuid != '170967912008515586')
 	{
 		//console.log(srv);
 		//console.log(srvuid);
