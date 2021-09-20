@@ -1,4 +1,4 @@
-const version = `Kobold beans`
+const version = `World Doomination`
 const noban = ["730609289110224947"]
 
 try
