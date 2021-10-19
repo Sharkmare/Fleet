@@ -332,54 +332,6 @@ function relaymedaddy(message)
 		})
 }
 
-bot.Dispatcher.on("MESSAGE_REACTION_ADD", (e) =>
-{
-if(e.data.guild_id != "407311323412824065") {return}
-if(e.emoji.id != "667255069544284160") {return}
-//console.log(e)
-var userroles = e.data.member.roles
-if (!userroles.includes("652990131757907978")) {return}
-var messagestore = bot.Messages.forChannel(e.data.channel_id);
-//console.log(messagestore)
-var message = messagestore.filter(m => m.id == e.data.message_id)[0];
-//console.log(message)
-//console.log(message.content)
-if(!message) {return}
-if(!message.author.avatarURL) {message.author.avatarURL = "https://cdn.discordapp.com/attachments/300130710671458304/667285437479518208/ribbon.png"}
-var unirest = require('unirest')
-var hookurl = Config.webhooks.ribbonroom
-    unirest.post(hookurl)
-        .header('Content-Type', 'application/json').send(
-        {
-            "avatar_url": message.author.avatarURL,
-            "username": message.author.username,
-            "content": message.content
-        }).end()
-
-})
-
-bot.Dispatcher.on("MESSAGE_REACTION_ADD", (e) =>
-{
-	if (!e.message)
-	{
-		return
-	}
-	fs = require('fs')
-	var makerid = e.message.author.id
-	var myhooks = fs.readFileSync(drive+':/resources/variables/myhook');
-	myhooks = JSON.parse(myhooks)
-	let myhook;
-	myhook = myhooks.filter(d => d.channel.id == e.message.channel.id)
-	if (myhook.length >= 1)
-	{
-		var hookid = myhook[0].webhook.id
-		if (hookid == makerid)
-		{
-			e.message.addReaction('🇫')
-		}
-	}
-})
-
 function protoDM(ID, MESSAGE, bot)
 {
 	bot.Users.get(ID).openDM() //opens the dm
