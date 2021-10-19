@@ -16,7 +16,7 @@ if(Config.bot.dir)
 }
 
 const botmain = require("discordie"),
-	logchannel = "620908518911901716",
+	logchannel = "899906158050025483",
 	botowner = "201983882625548299",
 	hungermaster = ["148914844190507018", botowner];
 const axios = require('axios'); //better HTML request.
