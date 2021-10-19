@@ -1,4 +1,4 @@
-const version = `Independent integration`
+const version = `Independent integration V1`
 
 try
 {
@@ -6,7 +6,7 @@ try
 }
 catch (e)
 {
-	console.log('\Fleet encountered an error while trying to load the config file, please resolve this issue and restart Fleet\n\n' + e.message)
+	console.log('\Kuro encountered an error while trying to load the config file, please resolve this issue and restart Fleet\n\n' + e.message)
 	process.exit()
 }
 var drive = "C"
