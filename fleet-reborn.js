@@ -1,4 +1,4 @@
-const version = `World Doomination`
+const version = `Dextro`
 const noban = ["730609289110224947"]
 
 try
@@ -17,9 +17,9 @@ if(Config.bot.dir)
 }
 
 const botmain = require("discordie"),
-	logchannel = "620908518911901716",
-	dvaserver = "186245290431348737",
-	dvalogchannel = "226952415797051394",
+	logchannel = "903695431186415636",
+	fleetserver = "903694055609888769",
+	fleetlogchannel = "903694400914325514",
 	botowner = "201983882625548299",
 	hungermaster = ["148914844190507018", botowner];
 const axios = require('axios'); //better HTML request.
@@ -37,7 +37,7 @@ var fs = require("fs"),
 	game = {
 		type: 1,
 		name: "Your world, my plaything~",
-		url: "http://discordvore.info"
+		url: "http://discord.com"
 	};
 
 const protocord = require('discord.js');
@@ -131,7 +131,7 @@ function banlogger(a, bot, currentserver, banfile, bans, user, joinedserver)
 						break;
 				}
 				var optout = (!noban.includes(joinedserver.id))
-				CM(dvalogchannel, `Flag of type ${type} has been triggered. Can autoban at 3: ${optout} .\n<@${user.id}> ${user.id} \`${user.username}#${user.discriminator}\` \nJoined ${joinedserver.name}\nBans: ${banproto.length}\nBan logger: ${banned_in}\n${avi}`)
+				CM(fleetlogchannel, `Flag of type ${type} has been triggered. Can autoban at 3: ${optout} .\n<@${user.id}> ${user.id} \`${user.username}#${user.discriminator}\` \nJoined ${joinedserver.name}\nBans: ${banproto.length}\nBan logger: ${banned_in}\n${avi}`)
 			}
 			if (banproto.length > 2)
 			{
@@ -554,10 +554,10 @@ bot.Dispatcher.on("GUILD_BAN_ADD", (e) =>
 	var webhookmessage = "`" + name + "#" + discriminator + "`\n**Unique ID:**" + discordid + "\n<@" + discordid + "> \n<#" + srvid + ">\n" + usericon + ""
 	
 	//server reporting
-	CM("321260472735367168",hookname+"\n"+webhookmessage) //VoreSphere
+	//CM("321260472735367168",hookname+"\n"+webhookmessage) //VoreSphere
 	CM("704309678900903956",hookname+"\n"+webhookmessage) //PokeNoms
 	//CM("323951163752054785",hookname+"\n"+webhookmessage) //Chompers
-	CM("686959547872575519",hookname+"\n"+webhookmessage) //Milky Mountains
+	//CM("686959547872575519",hookname+"\n"+webhookmessage) //Milky Mountains
 	
 	//Webhook
 	
@@ -1529,7 +1529,7 @@ function uniquenumber()
 }
 Commands.push(
 {
-	name: 'dvawarn',
+	name: 'gwarn',
 	help: 'WRITE WARN',
 	noDM: true,
 	hidden: true,
@@ -3278,6 +3278,18 @@ Commands.push({
 			}
 			msg.reply("Response:\n" + message);
 		});
+	}
+})
+
+Commands.push({
+    name: 'leave',
+    help: "NO words just death",
+    hidden: true,
+    timeout: 3,
+    level: 'master',
+    fn: function(msg, suffix, bot, client)
+	{
+		bot.Guilds.get(suffix).leave()
 	}
 })
 
