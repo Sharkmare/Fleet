@@ -78,10 +78,9 @@ bot.Dispatcher.on("GATEWAY_READY", e =>
 	console.log("Connected as: " + bot.User.username);
 	bot.User.setStatus("online", game)
 	console.log(bot.User)
-	
-	let msg = "Systems online. Version: " + version+"\nBoot Code: "+bot.isFirstConnect+"\n"+"Connected to: "+ servers + " Servers"
 	if(!Config.bot.subversion)
 		(Config.bot.subversion = "TBA")
+	let msg = "Systems online. Version: " + version + "\nSub Version: " + subversion+"\nBoot Code: "+bot.isFirstConnect+"\n"+"Connected to: "+ servers + " Servers"
 	var namedservers=[];
 	for (i = 0; i < bot.Guilds.toArray().length; i++)
 	{
