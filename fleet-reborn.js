@@ -75,18 +75,19 @@ client.on('channelUpdate', e =>{ if(e.guild.id == '180538463655821312') {CM('323
 bot.isFirstConnect = 1
 bot.Dispatcher.on("GATEWAY_READY", e =>
 {
-	
-	
 	console.log("Connected as: " + bot.User.username);
 	bot.User.setStatus("online", game)
 	console.log(bot.User)
-	bot.Channels.get(logchannel).sendMessage("Systems online. Version: " + version+"\nBoot Code: "+bot.isFirstConnect+"\n"+"Connected to: "+ servers + " Servers")
+	
+	let msg = "Systems online. Version: " + version+"\nBoot Code: "+bot.isFirstConnect+"\n"+"Connected to: "+ servers + " Servers"
+	if(!Config.bot.subversion)
+		(Config.bot.subversion = "TBA")
 	var namedservers=[];
 	for (i = 0; i < bot.Guilds.toArray().length; i++)
 	{
 		if(!servers.includes(bot.Guilds.toArray()[i].id)) {servers.push(bot.Guilds.toArray()[i].id);namedservers.push(bot.Guilds.toArray()[i].name)}
 	}
-	bot.Channels.get(logchannel).sendMessage(namedservers.join(" | "))
+	bot.Channels.get(logchannel).sendMessage(msg + 	namedservers.join(" | "))
 	console.log("Connected to:", servers)
 	bot.isFirstConnect = 0
 });
