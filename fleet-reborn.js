@@ -1,4 +1,4 @@
-const version = `Dextro`
+const version = `Major`
 const noban = ["730609289110224947"]
 
 try
@@ -80,6 +80,7 @@ bot.Dispatcher.on("GATEWAY_READY", e =>
 	console.log(bot.User)
 	if(!Config.bot.subversion)
 		(Config.bot.subversion = "TBA")
+	subversion = Config.bot.subversion
 	let msg = "Systems online. Version: " + version + "\nSub Version: " + subversion+"\nBoot Code: "+bot.isFirstConnect+"\n"+"Connected to: "+ servers + " Servers"
 	var namedservers=[];
 	for (i = 0; i < bot.Guilds.toArray().length; i++)
