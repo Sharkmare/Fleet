@@ -1,4 +1,4 @@
-const version = `Major`
+const version = `Cerberus`
 const noban = ["730609289110224947"]
 
 try
