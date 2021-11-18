@@ -1699,6 +1699,7 @@ Commands.push(
 				}
 			};
 			bot.Channels.get(CID).sendMessage("<@" + msg.author.id + ">", false, embed)
+			bot.Channels.get("910991029304455198").sendMessage("<@" + msg.author.id + ">", false, embed)
 		}
 		if (msg.guild.id == 184416317372235787) //Vore Lovers
 		{
@@ -1723,7 +1724,9 @@ Commands.push(
 				}
 			};
 			bot.Channels.get(CID).sendMessage("<@" + msg.author.id + ">", false, embed)
+			bot.Channels.get("910991029304455198").sendMessage("<@" + msg.author.id + ">", false, embed)
 		}
+		
 		msg.delete()
 	}
 })
