@@ -1,4 +1,4 @@
-const version = `Cerberus`
+const version = `Hydra`
 const noban = ["730609289110224947"]
 
 try
@@ -1771,6 +1771,10 @@ Commands.push(
 				}
 			};
 			bot.Channels.get(CID).sendMessage("<@" + msg.author.id + ">", false, embed)
+			if(matureneeded != "")
+			{
+				bot.Channels.get("910991029304455198").sendMessage("<@" + msg.author.id + ">", false, embed)
+			}
 		} else if (msg.guild.id == "407311323412824065") // Pokenoms
 		{
 			if (suffix.toLowerCase().includes("lurker ")||suffix.toLowerCase().includes(" lurker") )
