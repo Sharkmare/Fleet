@@ -1,4 +1,4 @@
-const version = `Hydra`
+const version = `Meow`
 const noban = ["730609289110224947"]
 
 try
@@ -1544,7 +1544,9 @@ Commands.push(
 		{
 			fs.mkdirSync(dir + "/" + suffix[0])
 		}
-		fs.writeFile(dir + "/" + suffix[0] + "/" + curtime, `${msg.author.username}(${msg.author.id}) in ${msg.guild.name}` + '\n**' + `${suffix[1]}` + '**', function(err)
+		let today = new Date();
+		let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()+"\n"+today.getHours()+":"+today.getMinutes();
+		fs.writeFile(dir + "/" + suffix[0] + "/" + curtime, `${msg.author.username}(${msg.author.id}) in ${msg.guild.name}` + '\n**' + `${suffix[1]}` + '**'+'\n'+date, function(err)
 		{
 			if (err)
 			{
