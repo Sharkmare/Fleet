@@ -252,7 +252,7 @@ bot.Dispatcher.on("MESSAGE_CREATE", e =>
 		if (execute.length > 1) {CM(logchannel,"Duplicate commands found:\n"+msg.content)}
 		if (execute.length > 0)
 		{
-			if (execute[0].permFlag && msg.guild)
+			if (execute[0].permFlag && msg.guild && false)
 			{flags = hasPerm(msg.guild.id, msg.author.id)
 				if(flags[0]) {}
 			 	else if(flags[execute[0].permFlag])
