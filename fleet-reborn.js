@@ -1,4 +1,4 @@
-const version = `Meow`
+const version = `Rawr`
 const noban = ["730609289110224947"]
 
 try
@@ -226,7 +226,7 @@ bot.Dispatcher.on("MESSAGE_CREATE", e =>
 	{
 		msg = e.message
 	}
-	if (msg.author == "311682437728043009")
+	if (msg.author == "311682437728043009" || !msg.author.id)
 	{
 		return
 	}
@@ -252,7 +252,7 @@ bot.Dispatcher.on("MESSAGE_CREATE", e =>
 		if (execute.length > 1) {CM(logchannel,"Duplicate commands found:\n"+msg.content)}
 		if (execute.length > 0)
 		{
-			if (execute[0].permFlag)
+			if (execute[0].permFlag && msg.guild)
 			{flags = hasPerm(msg.guild.id, msg.author.id)
 				if(flags[0]) {}
 			 	else if(flags[execute[0].permFlag])
@@ -3217,7 +3217,7 @@ ${TABLE}
 		}
 	}
 })
-
+/*
 Commands.push({
     name: 'roler',
     help: "NO words just death",
@@ -3237,7 +3237,8 @@ Commands.push({
 	}    
     }
 })
-
+*/
+/*
 client.on('message', msg => {
   if(!msg || !msg.guild) {return}
 	if (msg.content == "_hasPerms") {
@@ -3251,7 +3252,7 @@ client.on('message', msg => {
 	msg.channel.send(result)
   }
 });
-
+*/
 const permflags=["ADMINISTRATOR","BAN_MEMBERS","KICK_MEMBERS","MANAGE_MESSAGES","MANAGE_NICKNAMES"]
 function hasPerm(guild,user)
 {
