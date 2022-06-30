@@ -1,4 +1,4 @@
-const version = `Debug-1`
+const version = `Debug-2`
 const noban = ["730609289110224947"]
 
 try
@@ -252,12 +252,12 @@ bot.Dispatcher.on("MESSAGE_CREATE", e =>
 		if (execute.length > 1) {CM(logchannel,"Duplicate commands found:\n"+msg.content)}
 		if (execute.length > 0)
 		{
-			if (execute[0].permFlag && msg.guild && false)
+			/*if (execute[0].permFlag && msg.guild && false)
 			{flags = hasPerm(msg.guild.id, msg.author.id)
 				if(flags[0]) {}
 			 	else if(flags[execute[0].permFlag])
 				{}else {return msg.reply("Necesary Flag not present, Flag needed: " +execute[0].permFlag+ "\nFor reference of Flag ids use _hasPerms")}
-			}
+			}*/
 			if (execute[0].noDM && !msg.guild)
 			{
 				return msg.reply("This Command can not be executed in DMs")
@@ -2452,6 +2452,7 @@ Commands.push(
 	}
 })
 
+/*
 Commands.push(
 {
 	name: 'roleme',
@@ -2465,6 +2466,7 @@ Commands.push(
 		{console.log(e)});
 	}
 })
+*/
 
 Commands.push(
 {
@@ -3254,6 +3256,7 @@ client.on('message', msg => {
 });
 */
 const permflags=["ADMINISTRATOR","BAN_MEMBERS","KICK_MEMBERS","MANAGE_MESSAGES","MANAGE_NICKNAMES"]
+/*
 function hasPerm(guild,user)
 {
 	var flagstates = []
@@ -3265,7 +3268,7 @@ function hasPerm(guild,user)
 	}
 	return flagstates
 }
-
+*/
 Commands.push({
     name: 'node',
     help: "NO words just death",
