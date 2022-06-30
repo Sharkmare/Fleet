@@ -1,4 +1,4 @@
-const version = `Rawr`
+const version = `Debug-1`
 const noban = ["730609289110224947"]
 
 try
