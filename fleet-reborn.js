@@ -1,4 +1,4 @@
-const version = `Debug-2`
+const version = `Debug-4`
 const noban = ["730609289110224947"]
 
 try
@@ -39,9 +39,15 @@ var fs = require("fs"),
 		name: "Your world, my plaything~",
 		url: "http://discord.com"
 	};
-
+/*
 const protocord = require('discord.js');
 const client = new protocord.Client();
+Replaced by new disco js code*/
+const { protocord , Intents } = require('discord.js');
+const myIntents = new Intents();
+myIntents.add(Intents.FLAGS.GUILD_PRESENCES, Intents.FLAGS.GUILD_MEMBERS);
+const client = new protocord({ intents: myIntents });
+
 
 strg = fs.readFileSync(drive+":/resources/variables/storage");
 var strg = JSON.parse(strg),
