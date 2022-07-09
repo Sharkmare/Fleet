@@ -1,4 +1,4 @@
-const version = `Debug-6`
+const version = `Debug-7`
 const noban = ["730609289110224947"]
 
 try
@@ -154,7 +154,9 @@ function banlogger(a, bot, currentserver, banfile, bans, user, joinedserver)
 }
 
 bot.Dispatcher.on("GUILD_MEMBER_ADD", e =>
-{	var user = e.member
+{	
+	return //debug exclude of ban check may need to rewrite this function entirely
+	var user = e.member
 	var joinedserver = e.guild
 	var timeid = Date.now()
 	var banfile = drive+":/resources/BANS/BANLOG/banlog"+timeid
