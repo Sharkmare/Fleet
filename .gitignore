@@ -1,6 +1,5 @@
 
 */config.json
-*.json
 Project Phoenix/config.json
 Project Phoenix/node_modules/*
 Project Phoenix/starter.cmd
