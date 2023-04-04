@@ -740,7 +740,7 @@ bot.Dispatcher.on("GUILD_MEMBER_ADD", (e) =>
 		var message = `Welcome to ${srv}! \nPlease take a moment to read the rules!\nWe hope you have a great time.`
 		if (srvuid == '180538463655821312') //Chompers
 		{
-			message = `Hello, ${joineduser}! Welcome to ${srv}! \nPlease bring your attention to <#575623788977455104> to learn how to access the rest of the server.\nWe hope you have a great time.`
+			message = `Hello, ${joineduser}! Welcome to ${srv}! \nPlease bring your attention to <#1091922258500518018> to learn how to access the rest of the server.\nWe hope you have a great time.`
 			//Console.log("Preparing DM message");
 			protoDM(discordid, message, bot)
 			//Console.log("Preparing Server message");
