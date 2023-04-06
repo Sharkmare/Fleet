@@ -1,4 +1,4 @@
-const version = `Legacy-1`
+const version = `Legacy-2`
 const noban = ["730609289110224947"]
 
 try
@@ -79,24 +79,44 @@ client.on('channelUpdate', e =>{ if(e.guild.id == '180538463655821312') {CM('323
 									}
 			       })*/
 bot.isFirstConnect = 1
-bot.Dispatcher.on("GATEWAY_READY", e =>
-{
-	console.log("Connected as: " + bot.User.username);
-	bot.User.setStatus("online", game)
-	console.log(bot.User)
-	if(!Config.bot.subversion)
-		(Config.bot.subversion = "TBA")
-	subversion = Config.bot.subversion
-	let msg = "Systems online. Version: " + version + "\nSub Version: " + subversion+"\nBoot Code: "+bot.isFirstConnect+"\n"+"Connected to: "+ servers + " Servers"
-	var namedservers=[];
-	for (i = 0; i < bot.Guilds.toArray().length; i++)
-	{
-		if(!servers.includes(bot.Guilds.toArray()[i].id)) {servers.push(bot.Guilds.toArray()[i].id);namedservers.push(bot.Guilds.toArray()[i].name)}
-	}
-	bot.Channels.get(logchannel).sendMessage(msg + 	namedservers.join(" | "))
-	console.log("Connected to:", servers)
-	bot.isFirstConnect = 0
+bot.Dispatcher.on("GATEWAY_READY", e => {
+  // Log the bot's username to the console
+  console.log(`Connected as: ${bot.User.username}`);
+  // Set the bot's status to "online" with the specified game
+  bot.User.setStatus("online", game);
+  // Log the bot user object to the console
+  console.log(bot.User);
+
+  // Set subversion to "TBA" if it is not defined in the config
+  if (!Config.bot.subversion) {
+    Config.bot.subversion = "TBA";
+  }
+  const subversion = Config.bot.subversion;
+
+  // Create an array of objects representing each server
+  const servers = bot.Guilds.toArray().map(guild => {
+    const guildId = guild.id;
+    const guildName = guild.name;
+    // Add the server to the array if it is not already included
+    if (!servers.includes(guildId)) {
+      return { id: guildId, name: guildName };
+    }
+  });
+
+  // Create the message to send to the log channel
+  const msg = `Systems online. Version: ${version}\nSub Version: ${subversion}\nBoot Code: ${bot.isFirstConnect}\nConnected to: ${servers.length} Servers`;
+
+  // Send the message to the log channel with the server names
+  bot.Channels.get(logchannel).sendMessage(`${msg}\n${servers.map(guild => guild.name).join(", ")}`);
+
+  // Log the list of servers to the console
+  console.log("Connected to:", servers.map(guild => guild.name).join(", "));
+  
+  // Set isFirstConnect to 0 to indicate that the bot has connected before
+  bot.isFirstConnect = 0;
 });
+
+
 bot.Dispatcher.on("DISCONNECTED", e =>
 {
 	return console.log("Connection lost", console.log(servers))
