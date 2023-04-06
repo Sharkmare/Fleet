@@ -10,7 +10,7 @@ const prefix = '!'; // Set your desired prefix here
 client.commands = new Discord.Collection();
 
 // Load the config file
-const config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
+const config = JSON.parse(fs.readFileSync('../../config.json', 'utf8'));
 
 // Read all the command files from the commands folder
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
