@@ -73,12 +73,9 @@ bot.connect(
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
-/*
-client.on('channelUpdate', e =>{ if(e.guild.id == '180538463655821312') {CM('323951163752054785',"A Channel was moved:\nChannel "+e.name+"\n Moved to "+e.position)
-									//console.log(e)
-									}
-			       })*/
+
 bot.isFirstConnect = 1
+
 bot.Dispatcher.on("GATEWAY_READY", async e => {
   // Log the bot's username to the console
   console.log(`Connected as: ${bot.User.username}`);
@@ -107,20 +104,6 @@ bot.Dispatcher.on("GATEWAY_READY", async e => {
       return { id: guildId, name: guildName };
     }
   });
-  
-  // Create the message to send to the log channel
-  const msg = `Systems online. Version: ${version}\nSub Version: ${subversion}\nBoot Code: ${bot.isFirstConnect}\nConnected to: ${servers.length} Servers`;
-
-  // Send the message to the log channel with the server names
-  bot.Channels.get(logchannel).sendMessage(`${msg}\n${servers.map(guild => guild.name).join(", ")}`);
-
-  // Log the list of servers to the console
-  console.log("Connected to:", servers.map(guild => guild.name).join(", "));
-  
-  // Set isFirstConnect to 0 to indicate that the bot has connected before
-  bot.isFirstConnect = 0;
-});
-
 
   // Create the message to send to the log channel
   const msg = `Systems online. Version: ${version}\nSub Version: ${subversion}\nBoot Code: ${bot.isFirstConnect}\nConnected to: ${servers.length} Servers`;
@@ -130,10 +113,11 @@ bot.Dispatcher.on("GATEWAY_READY", async e => {
 
   // Log the list of servers to the console
   console.log("Connected to:", servers.map(guild => guild.name).join(", "));
-  
+
   // Set isFirstConnect to 0 to indicate that the bot has connected before
   bot.isFirstConnect = 0;
 });
+
 
 
 bot.Dispatcher.on("DISCONNECTED", e =>
