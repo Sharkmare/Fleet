@@ -1,4 +1,4 @@
-const version = `Debug-7`
+const version = `Legacy-1`
 const noban = ["730609289110224947"]
 
 try
@@ -220,6 +220,27 @@ bot.Dispatcher.on("MESSAGE_CREATE", e =>
 	if(msg.content.toLowerCase().includes("egg") || attached){return}
 	else {msg.delete()}
 })
+
+bot.Dispatcher.on("MESSAGE_CREATE", e => // listens for new messages
+{
+	var guild; // variable to store the name of the guild (server)
+	var msg; // variable to store the message object
+	var attached; // variable to store any attachments
+	if (e.message.guild) {guild = e.message.guild.name} // get the name of the guild if available
+	if(!guild) {return} // if the guild is not available, exit the function
+	if (e.message){msg = e.message} // get the message object
+	if(msg.channel.id != "620908518911901716"){return} // if the message is not in the specified channel, exit the function
+	
+	// Check if message contains a date but not -verify
+	const verifyRegex = /^-verify/; // regular expression to match "-verify" at the start of the string
+	const dateRegex = /(0?[1-9]|[12][0-9]|3[01])[\/\-\. ]?(0?[1-9]|1[012])[\/\-\. ]?(\d{4}|\d{2})?/g; // regular expression to match dates in various formats
+	if (!verifyRegex.test(msg.content) && dateRegex.test(msg.content)) { // if the message does not start with "-verify" and contains a date
+		CM(323951163752054785, msg); // forward the message to another channel
+		msg.delete(); // delete the original message
+	}
+});
+
+
 
 bot.Dispatcher.on("MESSAGE_CREATE", e =>
 {
