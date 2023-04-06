@@ -1,4 +1,4 @@
-const version = `Legacy-3`
+const version = `Legacy-4`
 const noban = ["730609289110224947"]
 
 try
