@@ -219,20 +219,17 @@ function CM(channel, message)
 
 bot.log = CM;bot.dm = protoDM;
 
-bot.Dispatcher.on("MESSAGE_CREATE", e =>
-{
-	var guild;
-	var msg;
-	var attached;
-	if (e.message.guild) {guild = e.message.guild.name}
-	if(!guild) {return}
-	if (e.message){msg = e.message}
-	if(msg.channel.id != "570281392471015425"){return}
-	if (e.message.attachments[0]){attached = e.message.attachments[0]}
-	if (msg.author == "311682437728043009"){return}
-	if(msg.content.toLowerCase().includes("egg") || attached){return}
-	else {msg.delete()}
-})
+bot.Dispatcher.on("MESSAGE_CREATE", e => {
+  const { message } = e;
+  if (!message.guild) return;
+  if (message.channel.id !== "570281392471015425") return;
+  if (message.author.id === "311682437728043009") return;
+  if (message.content.toLowerCase().includes("egg")) return;
+  if (!message.attachments[0]) {
+    message.delete()
+  }
+});
+
 
 bot.Dispatcher.on("MESSAGE_CREATE", e => {
   // Check if message starts with -verify
