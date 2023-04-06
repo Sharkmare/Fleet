@@ -1,4 +1,4 @@
-const version = `Legacy-2`
+const version = `Legacy-3`
 const noban = ["730609289110224947"]
 
 try
@@ -77,46 +77,36 @@ client.on('ready', () => {
 bot.isFirstConnect = 1
 
 bot.Dispatcher.on("GATEWAY_READY", async e => {
-  // Log the bot's username to the console
   console.log(`Connected as: ${bot.User.username}`);
-  // Set the bot's status to "online" with the specified game
   bot.User.setStatus("online", game);
-  // Log the bot user object to the console
   console.log(bot.User);
 
-  // Wait for the servers to be initialized
   await new Promise(resolve => {
-    bot.Dispatcher.on("GUILD_CREATE", resolve);
+    setTimeout(resolve, 30000); //hopefully delay long enough for client to be accesible
   });
 
-  // Set subversion to "TBA" if it is not defined in the config
   if (!Config.bot.subversion) {
     Config.bot.subversion = "TBA";
   }
   const subversion = Config.bot.subversion;
 
-  // Create an array of objects representing each server
   const servers = bot.Guilds.toArray().map(guild => {
     const guildId = guild.id;
     const guildName = guild.name;
-    // Add the server to the array if it is not already included
     if (!servers.includes(guildId)) {
       return { id: guildId, name: guildName };
     }
   });
 
-  // Create the message to send to the log channel
   const msg = `Systems online. Version: ${version}\nSub Version: ${subversion}\nBoot Code: ${bot.isFirstConnect}\nConnected to: ${servers.length} Servers`;
 
-  // Send the message to the log channel with the server names
   bot.Channels.get(logchannel).sendMessage(`${msg}\n${servers.map(guild => guild.name).join(", ")}`);
 
-  // Log the list of servers to the console
   console.log("Connected to:", servers.map(guild => guild.name).join(", "));
 
-  // Set isFirstConnect to 0 to indicate that the bot has connected before
   bot.isFirstConnect = 0;
 });
+
 
 
 
