@@ -90,16 +90,16 @@ bot.Dispatcher.on("GATEWAY_READY", async e => {
   }
   const subversion = Config.bot.subversion;
 
-  const servers = bot.Guilds.toArray().map(guild => {
-    const guildId = guild.id;
-    const guildName = guild.name;
-    if (!servers.includes(guildId)) {
-      return { id: guildId, name: guildName };
-    }
-  });
+bot.Guilds.toArray().forEach(guild => {
+  const guildId = guild.id;
+  const guildName = guild.name;
+  if (!servers.some(server => server.id === guildId)) {
+    servers.push({ id: guildId, name: guildName });
+  }
+});
 
-  const msg = `Systems online. Version: ${version}\nSub Version: ${subversion}\nBoot Code: ${bot.isFirstConnect}\nConnected to: ${servers.length} Servers`;
-
+const serverNames = servers.map(guild => guild.name).join(", ");
+const msg = `Systems online. Version: ${version}\nSub Version: ${subversion}\nBoot Code: ${bot.isFirstConnect}\nConnected to: ${servers.length} Servers\n${serverNames}`;
   bot.Channels.get(logchannel).sendMessage(`${msg}\n${servers.map(guild => guild.name).join(", ")}`);
 
   console.log("Connected to:", servers.map(guild => guild.name).join(", "));
