@@ -79,13 +79,18 @@ client.on('channelUpdate', e =>{ if(e.guild.id == '180538463655821312') {CM('323
 									}
 			       })*/
 bot.isFirstConnect = 1
-bot.Dispatcher.on("GATEWAY_READY", e => {
+bot.Dispatcher.on("GATEWAY_READY", async e => {
   // Log the bot's username to the console
   console.log(`Connected as: ${bot.User.username}`);
   // Set the bot's status to "online" with the specified game
   bot.User.setStatus("online", game);
   // Log the bot user object to the console
   console.log(bot.User);
+
+  // Wait for the servers to be initialized
+  await new Promise(resolve => {
+    bot.once("GUILD_CREATE", resolve);
+  });
 
   // Set subversion to "TBA" if it is not defined in the config
   if (!Config.bot.subversion) {
@@ -102,6 +107,20 @@ bot.Dispatcher.on("GATEWAY_READY", e => {
       return { id: guildId, name: guildName };
     }
   });
+  
+  // Create the message to send to the log channel
+  const msg = `Systems online. Version: ${version}\nSub Version: ${subversion}\nBoot Code: ${bot.isFirstConnect}\nConnected to: ${servers.length} Servers`;
+
+  // Send the message to the log channel with the server names
+  bot.Channels.get(logchannel).sendMessage(`${msg}\n${servers.map(guild => guild.name).join(", ")}`);
+
+  // Log the list of servers to the console
+  console.log("Connected to:", servers.map(guild => guild.name).join(", "));
+  
+  // Set isFirstConnect to 0 to indicate that the bot has connected before
+  bot.isFirstConnect = 0;
+});
+
 
   // Create the message to send to the log channel
   const msg = `Systems online. Version: ${version}\nSub Version: ${subversion}\nBoot Code: ${bot.isFirstConnect}\nConnected to: ${servers.length} Servers`;
