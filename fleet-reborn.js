@@ -86,7 +86,7 @@ bot.Dispatcher.on("GATEWAY_READY", async e => {
 
   // Wait for the servers to be initialized
   await new Promise(resolve => {
-    bot.once("GUILD_CREATE", resolve);
+    bot.Dispatcher.on("GUILD_CREATE", resolve);
   });
 
   // Set subversion to "TBA" if it is not defined in the config
