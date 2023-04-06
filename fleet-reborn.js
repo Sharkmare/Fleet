@@ -230,7 +230,7 @@ bot.Dispatcher.on("MESSAGE_CREATE", e => {
   }
 });
 
-
+/*
 bot.Dispatcher.on("MESSAGE_CREATE", e => {
   // Check if message starts with -verify
   if (e.message.content.startsWith("-verify")) {
@@ -261,7 +261,7 @@ bot.Dispatcher.on("MESSAGE_CREATE", e => {
     msg.delete();
   }
 });
-
+*/
 
 
 
